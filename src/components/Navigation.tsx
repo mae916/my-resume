@@ -3,87 +3,77 @@
 import { classNames, isActiveLink } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Navigation() {
   const pathname = usePathname();
 
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsSticky(entry.boundingClientRect.top < 0);
+      },
+      { threshold: 0 }
+    );
+
+    if (sentinelRef.current) {
+      observer.observe(sentinelRef.current);
+    }
+
+    return () => {
+      if (sentinelRef.current) {
+        observer.unobserve(sentinelRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <nav className="flex items-center justify-between h-17 rounded-full p-3 bg-[var(--pointcolor-navy)] text-[var(--background)] w-full text-lg">
-      <div className="flex items-center h-full">
-        <div className="bg-[var(--pointcolor-yellow)] text-[var(--pointcolor-navy)] rounded-full aspect-square h-full flex items-center justify-center font-medium text-2xl">
-          H
-        </div>
-        <div className="ml-3 text-xl">
-          HyeJin<b className="text-[var(--pointcolor-yellow)]">.</b>
-        </div>
-      </div>
-      <ul className="flex items-center justify-between w-1/2">
-        <li>
-          <Link
-            href="/"
-            className={classNames(
-              '',
-              isActiveLink(pathname, '/') && ' text-[var(--pointcolor-yellow)]'
-            )}
-          >
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/qna"
-            className={classNames(
-              '',
-              isActiveLink(pathname, '/qna') &&
-                ' text-[var(--pointcolor-yellow)]'
-            )}
-          >
-            Q & A
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/skills"
-            className={classNames(
-              '',
-              isActiveLink(pathname, '/skills') &&
-                ' text-[var(--pointcolor-yellow)]'
-            )}
-          >
-            Skills
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/career"
-            className={classNames(
-              '',
-              isActiveLink(pathname, '/career') &&
-                ' text-[var(--pointcolor-yellow)]'
-            )}
-          >
-            Career
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/project"
-            className={classNames(
-              '',
-              isActiveLink(pathname, '/project') &&
-                ' text-[var(--pointcolor-yellow)]'
-            )}
-          >
-            Project
-          </Link>
-        </li>
-      </ul>
-      <a
-        href="mailto:ruchia916@naver.com"
-        className="bg-[var(--background)] text-[var(--pointcolor-navy)] rounded-full h-full flex items-center justify-center font-medium px-5"
-      >
-        Contact Me
-      </a>
-    </nav>
+    <header
+      className={`flex items-center justify-center sticky top-10 z-50 h-17 rounded-full p-3 bg-[var(--pointcolor-navy)] text-[var(--background)] w-full text-lg transition-shadow duration-300 ${
+        isSticky ? 'shadow-lg' : ''
+      }`}
+    >
+      <nav className="flex items-center lg:justify-between w-full h-full">
+        <Link href="/" className="flex items-center h-full">
+          <div className="mr-3 lg:mr-0 bg-[var(--pointcolor-yellow)] text-[var(--pointcolor-navy)] rounded-full aspect-square h-full flex items-center justify-center font-medium text-2xl">
+            H
+          </div>
+          <div className="ml-3 text-xl hidden lg:block">
+            HyeJin<b className="text-[var(--pointcolor-yellow)]">.</b>
+          </div>
+        </Link>
+        <ul className="flex items-center justify-between lg:w-1/2 w-full pr-3">
+          {[
+            { href: '/', label: 'Home' },
+            { href: '/qna', label: 'Q & A' },
+            { href: '/skills', label: 'Skills' },
+            { href: '/career', label: 'Career' },
+            { href: '/project', label: 'Project' },
+          ].map(({ href, label }) => (
+            <li key={href}>
+              <Link
+                href={href}
+                className={classNames(
+                  '',
+                  isActiveLink(pathname, href) &&
+                    ' text-[var(--pointcolor-yellow)]'
+                )}
+              >
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <a
+          href="mailto:ruchia916@naver.com"
+          className="hidden bg-[var(--background)] text-[var(--pointcolor-navy)] rounded-full h-full lg:flex items-center justify-center font-semibold px-5 transition-transform duration-200 hover:scale-105 hover:bg-[var(--pointcolor-yellow)] hover:text-[var(--pointcolor-white)]"
+        >
+          Contact Me
+        </a>
+      </nav>
+    </header>
   );
 }

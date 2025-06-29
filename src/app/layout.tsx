@@ -1,8 +1,6 @@
 import Navigation from '@/components/Navigation';
 import '../styles/globals.css';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
+import FloatingBtn from '@/components/FloatingBtn';
 
 export const metadata = {
   title: 'My App',
@@ -15,13 +13,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <header className="flex items-center justify-center w-full my-8">
+    <html lang="ko">
+      <body>
+        <div className="lg:w-[60%] w-[95%] mx-auto">
           <Navigation />
-        </header>
-        {children}
-        <footer></footer>
+          {children}
+          <FloatingBtn />
+          <footer></footer>
+        </div>
       </body>
     </html>
   );

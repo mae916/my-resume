@@ -42,7 +42,7 @@ export default function Project() {
               key={project.title}
               href={project.link}
               target="_blank"
-              className="rounded-xl shadow hover:opacity-80 hover:shadow-lg transition cursor-pointer overflow-hidden h-130"
+              className="rounded-xl shadow hover:opacity-80 hover:shadow-lg transition cursor-pointer overflow-hidden h-fit lg:h-130"
             >
               <div className="bg-white rounded-xl shadow hover:shadow-md transition overflow-hidden h-full">
                 <img

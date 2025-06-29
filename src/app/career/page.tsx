@@ -104,7 +104,7 @@ function CardContainer({
       {limit && items.length > limit && (
         <button
           onClick={() => setShowAll(!showAll)}
-          className="flex items-center justify-center w-full mt-4 text-sm text-gray-600 hover:text-gray-800"
+          className="flex items-center justify-center w-full mt-4 text-sm text-gray-600 hover:text-gray-800 cursor-pointer"
         >
           {showAll ? (
             <ChevronUp className="w-4 h-4 ml-1" />
