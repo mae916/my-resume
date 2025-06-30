@@ -40,20 +40,18 @@ const qnaList = [
 export default function QNA() {
   return (
     <main className="py-20 text-[var(--foreground)]">
-      <h2 className="text-center mb-10 text-2xl font-bold">
+      <h2 className="mb-10 text-2xl font-bold text-center">
         <span className="text-gray-800">Q & A</span>
       </h2>
-      <div className="space-y-8 mx-auto">
+      <div className="mx-auto space-y-8">
         {qnaList.map((q, idx) => (
           <div key={idx} className="space-y-2">
-            <div className="rounded-xl px-4 py-3 text-lg underline underline-offset-4">
-              <strong className="text-[var(--pointcolor-navy)]">Q. </strong>
+            <div className="px-1 py-3 text-lg underline rounded-xl underline-offset-4">
+              <strong className="text-primary">Q. </strong>
               {q.question}
             </div>
-            <div className="bg-white rounded-xl px-4 py-4 text text-gray-800 shadow">
-              <p className="text-[var(--pointcolor-yellow)] font-semibold mb-2">
-                {q.highlight}
-              </p>
+            <div className="px-4 py-4 text-gray-800 bg-white shadow rounded-xl text">
+              <p className="mb-2 font-semibold text-accent">{q.highlight}</p>
               <p className="leading-relaxed">{q.answer}</p>
             </div>
           </div>

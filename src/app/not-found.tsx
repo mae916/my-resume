@@ -8,7 +8,7 @@ export default function NotFound() {
       </h1>
       <Link
         href="/"
-        className="px-4 py-2 bg-[var(--pointcolor-navy)] text-white rounded hover:bg-[var(--pointcolor-yellow)]"
+        className="px-4 py-2 bg-primary text-white rounded hover:bg-accent"
       >
         홈으로 돌아가기
       </Link>

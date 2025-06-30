@@ -42,25 +42,27 @@ const skills = [
 export default function Skills() {
   return (
     <main className="py-20 text-[var(--foreground)]">
-      <h2 className="text-center mb-10 text-2xl font-bold">
+      <h2 className="mb-10 text-2xl font-bold text-center">
         <span className="text-gray-800">Skills</span>
       </h2>
-      <div className="grid md:grid-cols-2 gap-6 mx-auto">
+      <div className="grid gap-6 mx-auto md:grid-cols-2">
         {skills.map((skill) => (
           <div
             key={skill.name}
-            className="p-5 rounded-xl shadow flex gap-4 items-start bg-white"
+            className="flex items-start gap-4 p-5 bg-white shadow rounded-xl"
           >
             <Image
+              width={40}
+              height={40}
               src={skill.icon}
               alt={skill.name}
-              className="w-10 h-10 object-contain mt-1"
+              className="object-contain w-10 h-10 mt-1"
             />
             <div>
-              <h3 className="text-lg font-semibold text-[var(--pointcolor-navy)]">
+              <h3 className="text-lg font-semibold text-primary">
                 {skill.name}
               </h3>
-              <p className="text-sm mt-2 text-gray-700 leading-relaxed">
+              <p className="mt-2 text-sm leading-relaxed text-gray-700">
                 {skill.description}
               </p>
             </div>

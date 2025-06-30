@@ -102,7 +102,7 @@ function CardContainer<T extends { period: string }>({
         {icon}
         {title}
       </h3>
-      <ul className="space-y-4 border-l-2 text-[var(--pointcolor-navy)] border-[var(--pointcolor-yellow)] pl-4">
+      <ul className="space-y-4 border-l-2 text-primary border-accent pl-4">
         {visibleItems.map((item, idx) => (
           <li key={idx}>
             <p className="text-gray-400">{item.period}</p>
@@ -151,7 +151,7 @@ export default function Career() {
       <div className="grid md:grid-cols-2 gap-8">
         <CardContainer<EducationItem>
           icon={
-            <GraduationCap className="w-10 h-10 p-2 text-[#272527] bg-[var(--pointcolor-yellow)] rounded-full" />
+            <GraduationCap className="w-10 h-10 p-2 text-[#272527] bg-accent rounded-full" />
           }
           title="Education"
           items={educationData}
@@ -159,7 +159,7 @@ export default function Career() {
         />
         <CardContainer<WorkItem>
           icon={
-            <Briefcase className="w-10 h-10 p-2 text-[#272527] bg-[var(--pointcolor-yellow)] rounded-full" />
+            <Briefcase className="w-10 h-10 p-2 text-[#272527] bg-accent rounded-full" />
           }
           title="Work Experience"
           items={workData}

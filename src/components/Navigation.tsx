@@ -10,10 +10,22 @@ export default function Navigation() {
 
   const sentinelRef = useRef<HTMLDivElement | null>(null);
   const [isSticky, setIsSticky] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
+  // 모바일 여부 감지
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // IntersectionObserver
   useEffect(() => {
     const sentinel = sentinelRef.current;
-
     if (!sentinel) return;
 
     const observer = new IntersectionObserver(
@@ -24,28 +36,42 @@ export default function Navigation() {
     );
 
     observer.observe(sentinel);
-
-    return () => {
-      observer.unobserve(sentinel);
-    };
+    return () => observer.unobserve(sentinel);
   }, []);
 
   return (
-    <header
-      className={`flex items-center justify-center sticky top-10 z-50 h-17 rounded-full p-3 bg-[var(--pointcolor-navy)] text-[var(--background)] w-full text-lg transition-shadow duration-300 ${
-        isSticky ? 'shadow-lg' : ''
-      }`}
-    >
-      <nav className="flex items-center lg:justify-between w-full h-full">
+    <div className="relative h-20">
+      <div ref={sentinelRef} className="h-0"></div>
+
+      {/* Header Background */}
+      <header
+        style={{
+          top: isSticky ? '0px' : '40px',
+          width: isSticky ? '100%' : isMobile ? '95%' : '60%', // ✅ 조건 추가
+          borderRadius: isSticky ? '0' : '50px',
+          transition: 'all 0.2s ease-in-out',
+        }}
+        className="fixed left-0 right-0 mx-auto shadow-md z-40 h-[4.2rem] p-3 bg-primary"
+      ></header>
+
+      {/* Navigation */}
+      <nav
+        style={{
+          top: isSticky ? '0px' : '40px',
+          transition: 'all 0.2s ease-in-out',
+        }}
+        className="fixed top-0 left-0 right-0 mx-auto lg:w-[58.5%] w-[90%] h-[4.2rem] flex items-center justify-between z-50"
+      >
         <Link href="/" className="flex items-center h-full">
-          <div className="mr-3 lg:mr-0 bg-[var(--pointcolor-yellow)] text-[var(--pointcolor-navy)] rounded-full aspect-square h-full flex items-center justify-center font-medium text-2xl">
+          <div className="flex items-center justify-center h-[65%] mr-3 text-2xl font-medium rounded-full lg:mr-0 bg-accent text-primary aspect-square">
             H
           </div>
-          <div className="ml-3 text-xl hidden lg:block">
-            HyeJin<b className="text-[var(--pointcolor-yellow)]">.</b>
+          <div className="hidden ml-3 text-xl text-white lg:block">
+            HyeJin<b className="text-accent">.</b>
           </div>
         </Link>
-        <ul className="flex items-center justify-between lg:w-1/2 w-full pr-3">
+
+        <ul className="flex items-center justify-between w-full pr-3 text-lg text-white lg:w-1/2">
           {[
             { href: '/', label: 'Home' },
             { href: '/qna', label: 'Q & A' },
@@ -58,8 +84,7 @@ export default function Navigation() {
                 href={href}
                 className={classNames(
                   '',
-                  isActiveLink(pathname, href) &&
-                    ' text-[var(--pointcolor-yellow)]'
+                  isActiveLink(pathname, href) && ' text-accent'
                 )}
               >
                 {label}
@@ -67,13 +92,14 @@ export default function Navigation() {
             </li>
           ))}
         </ul>
+
         <a
           href="mailto:ruchia916@naver.com"
-          className="hidden bg-[var(--background)] text-[var(--pointcolor-navy)] rounded-full h-full lg:flex items-center justify-center font-semibold px-5 transition-transform duration-200 hover:scale-105 hover:bg-[var(--pointcolor-yellow)] hover:text-[var(--pointcolor-white)]"
+          className="text-lg hidden bg-[var(--background)] text-primary rounded-full h-[65%] lg:flex items-center justify-center font-semibold px-5 transition-transform duration-200 hover:scale-105 hover:bg-accent hover:text-[var(--pointcolor-white)]"
         >
           Contact Me
         </a>
       </nav>
-    </header>
+    </div>
   );
 }

@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <div className="lg:w-[60%] w-[95%] mx-auto">
+        <div className="lg:w-[60%] w-[95%] mx-auto mb-5 lg:mb-0">
           <Navigation />
           {children}
           <FloatingBtn />
