@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const projectList = [
   {
     title: '채팅 웹앱 Kotalk',
@@ -45,7 +47,7 @@ export default function Project() {
               className="rounded-xl shadow hover:opacity-80 hover:shadow-lg transition cursor-pointer overflow-hidden h-fit lg:h-130"
             >
               <div className="bg-white rounded-xl shadow hover:shadow-md transition overflow-hidden h-full">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
                   className="w-full h-90 object-cover object-left-top border-gray-400"

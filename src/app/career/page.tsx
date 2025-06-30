@@ -3,7 +3,19 @@
 import { GraduationCap, Briefcase, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 
-const educationData = [
+type EducationItem = {
+  period: string;
+  school: string;
+  major: string;
+};
+
+type WorkItem = {
+  period: string;
+  company: string;
+  desc: string;
+};
+
+const educationData: EducationItem[] = [
   {
     period: '2025.03 – 2025.04',
     school: '인프런',
@@ -33,7 +45,7 @@ const educationData = [
   {
     period: '2023.07 – 2023.07',
     school: '인프런',
-    major: 'Vue.js 중급 강좌 - 웹앱 제작으로 배워보는 Vue.js, ES6, Vuex 수료',
+    major: 'Vue.js 중급 강좌 - 웹앱 제작으로 배우는 Vue.js, ES6, Vuex 수료',
   },
   {
     period: '2021.07 – 2021.12',
@@ -52,7 +64,7 @@ const educationData = [
   },
 ];
 
-const workData = [
+const workData: WorkItem[] = [
   {
     period: '2025.01 – 현재',
     company: '프리랜서 (크몽, 위시켓, 숨고 등)',
@@ -70,7 +82,7 @@ const workData = [
   },
 ];
 
-function CardContainer({
+function CardContainer<T extends { period: string }>({
   icon,
   title,
   items,
@@ -78,7 +90,7 @@ function CardContainer({
 }: {
   icon: React.ReactNode;
   title: string;
-  items: any[];
+  items: T[];
   limit?: number;
 }) {
   const [showAll, setShowAll] = useState(false);
@@ -94,14 +106,24 @@ function CardContainer({
         {visibleItems.map((item, idx) => (
           <li key={idx}>
             <p className="text-gray-400">{item.period}</p>
-            <p className="font-medium text-lg">{item.school || item.company}</p>
-            <p className="text-sm text-gray-600">{item.major || item.desc}</p>
+            <p className="font-medium text-lg">
+              {String(
+                'school' in item
+                  ? item.school
+                  : 'company' in item
+                  ? item.company
+                  : ''
+              )}
+            </p>
+            <p className="text-sm text-gray-600">
+              {String(
+                'major' in item ? item.major : 'desc' in item ? item.desc : ''
+              )}
+            </p>
           </li>
         ))}
       </ul>
-
-      {/* 더보기 버튼 */}
-      {limit && items.length > limit && (
+      {limit && items.length > limit ? (
         <button
           onClick={() => setShowAll(!showAll)}
           className="flex items-center justify-center w-full mt-4 text-sm text-gray-600 hover:text-gray-800 cursor-pointer"
@@ -112,6 +134,8 @@ function CardContainer({
             <ChevronDown className="w-4 h-4 ml-1" />
           )}
         </button>
+      ) : (
+        <div className="h-12"></div>
       )}
     </div>
   );
@@ -125,7 +149,7 @@ export default function Career() {
       </h2>
 
       <div className="grid md:grid-cols-2 gap-8">
-        <CardContainer
+        <CardContainer<EducationItem>
           icon={
             <GraduationCap className="w-10 h-10 p-2 text-[#272527] bg-[var(--pointcolor-yellow)] rounded-full" />
           }
@@ -133,7 +157,7 @@ export default function Career() {
           items={educationData}
           limit={workData.length}
         />
-        <CardContainer
+        <CardContainer<WorkItem>
           icon={
             <Briefcase className="w-10 h-10 p-2 text-[#272527] bg-[var(--pointcolor-yellow)] rounded-full" />
           }

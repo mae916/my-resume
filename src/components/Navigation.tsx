@@ -12,6 +12,10 @@ export default function Navigation() {
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
+    const sentinel = sentinelRef.current;
+
+    if (!sentinel) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsSticky(entry.boundingClientRect.top < 0);
@@ -19,14 +23,10 @@ export default function Navigation() {
       { threshold: 0 }
     );
 
-    if (sentinelRef.current) {
-      observer.observe(sentinelRef.current);
-    }
+    observer.observe(sentinel);
 
     return () => {
-      if (sentinelRef.current) {
-        observer.unobserve(sentinelRef.current);
-      }
+      observer.unobserve(sentinel);
     };
   }, []);
 
