@@ -3,8 +3,11 @@ import '../styles/globals.css';
 import FloatingBtn from '@/components/FloatingBtn';
 
 export const metadata = {
-  title: 'My App',
-  description: 'Next + Tailwind + ReactQuery project',
+  title: "Hyejin's resume",
+  description: '프론트엔드 개발자 김혜진의 포트폴리오 사이트 입니다.',
+  icons: {
+    icon: '/images/favicon.png',
+  },
 };
 
 export default function RootLayout({

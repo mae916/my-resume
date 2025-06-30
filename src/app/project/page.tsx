@@ -20,8 +20,9 @@ const projectList = [
     title: '개인 포트폴리오 웹사이트',
     image: '/images/project/profile.png',
     tags: ['Next', 'Responsive', 'Docker'],
-    link: 'https://github.com/mae916/My-resume',
-    description: '실제 운영을 위해 제작된 PC/모바일 저의 이력서 사이트 입니다.',
+    link: 'https://github.com/mae916/my-resume',
+    description:
+      '실제 운영을 위해 제작된 저의 프론트엔드 개발자 포트폴리오 PC/모바일 사이트 입니다.',
   },
 ];
 
