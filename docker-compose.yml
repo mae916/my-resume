@@ -1,0 +1,27 @@
+version: '3.8'
+
+# 이력서 개별 실행용 Docker Compose
+# 단독 실행: docker-compose up -d
+# 통합 실행: mycrojet/docker-compose.yml 사용
+
+services:
+  # ============================================
+  # 이력서 (Next.js)
+  # resume.jinproject.xyz
+  # ============================================
+  my-resume:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my-resume
+    restart: always
+    ports:
+      - "8004:9000"
+    environment:
+      NODE_ENV: production
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
