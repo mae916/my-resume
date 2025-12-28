@@ -97,13 +97,13 @@ export default function Navigation() {
           ))}
         </ul>
 
-        <a
-          href="mailto:ruchia916@naver.com"
+        <Link
+          href="/contact"
           className="text-lg hidden bg-[var(--background)] text-primary rounded-full h-[65%] lg:flex items-center justify-center font-semibold px-5 transition-transform duration-200 hover:scale-105 hover:bg-accent hover:text-[var(--pointcolor-white)]"
-          aria-label="이메일로 연락하기"
+          aria-label="문의하기"
         >
           Contact Me
-        </a>
+        </Link>
       </nav>
     </div>
   );
