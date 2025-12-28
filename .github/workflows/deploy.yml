@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
 
 env:
-  DOCKER_IMAGE: my-resume
-  CONTAINER_NAME: my-resume
+  APP_NAME: my-resume
+  DEPLOY_PATH: /home/ec2-user/my-resume
 
 jobs:
   # 1단계: 코드 품질 검사
@@ -72,24 +72,50 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          command_timeout: 20m
           script: |
-            cd /home/ec2-user/myProject
+            set -e
+
+            # 배포 디렉토리 설정
+            DEPLOY_DIR="${{ env.DEPLOY_PATH }}"
+
+            # 프로젝트 디렉토리가 없으면 클론
+            if [ ! -d "$DEPLOY_DIR" ]; then
+              echo "📦 Cloning repository..."
+              git clone https://github.com/${{ github.repository }}.git "$DEPLOY_DIR"
+            fi
+
+            cd "$DEPLOY_DIR"
 
             # 최신 코드 가져오기
-            git pull origin main
+            echo "📥 Pulling latest code..."
+            git fetch origin main
+            git reset --hard origin/main
 
-            # my-resume 컨테이너만 재빌드 및 재시작
-            docker-compose stop my-resume
-            docker-compose rm -f my-resume
-            docker-compose build --no-cache my-resume
-            docker-compose up -d my-resume
+            # 기존 컨테이너 중지 및 삭제
+            echo "🛑 Stopping existing container..."
+            docker stop my-resume 2>/dev/null || true
+            docker rm my-resume 2>/dev/null || true
+
+            # Docker 이미지 빌드
+            echo "🔨 Building Docker image..."
+            docker build -t my-resume:latest .
+
+            # 컨테이너 실행
+            echo "🚀 Starting container..."
+            docker run -d \
+              --name my-resume \
+              --restart unless-stopped \
+              -p 8004:9000 \
+              my-resume:latest
 
             # 사용하지 않는 이미지 정리
+            echo "🧹 Cleaning up..."
             docker image prune -f
 
             # 배포 완료 확인
-            echo "Deployment completed at $(date)"
-            docker ps | grep my-resume
+            echo "✅ Deployment completed at $(date)"
+            docker ps | grep my-resume || true
 
       - name: Health Check
         uses: appleboy/ssh-action@v1.0.3
@@ -98,19 +124,22 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            # 서비스 상태 확인 (최대 30초 대기)
-            for i in {1..6}; do
-              if curl -s -o /dev/null -w "%{http_code}" http://localhost:8004 | grep -q "200"; then
-                echo "Health check passed!"
+            # 서비스 상태 확인 (최대 60초 대기)
+            echo "🔍 Running health check..."
+            for i in {1..12}; do
+              HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8004 2>/dev/null || echo "000")
+              if [ "$HTTP_CODE" = "200" ]; then
+                echo "✅ Health check passed! (HTTP $HTTP_CODE)"
                 exit 0
               fi
-              echo "Waiting for service to be ready... ($i/6)"
+              echo "⏳ Waiting for service... ($i/12) - HTTP $HTTP_CODE"
               sleep 5
             done
-            echo "Health check failed!"
+            echo "❌ Health check failed!"
+            docker logs my-resume --tail 50
             exit 1
 
-  # 배포 완료 알림 (선택사항)
+  # 배포 완료 알림
   notify:
     name: Notify Deployment
     runs-on: ubuntu-latest
