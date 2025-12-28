@@ -13,9 +13,11 @@
 
 ## Preview
 
-| Home | Skills |
-|:----:|:------:|
-| ![Home](/public/images/project/profile.png) | 기술 스택 소개 |
+<p align="center">
+  <img src="./public/images/project/profile.png" alt="Portfolio Preview" width="700" />
+</p>
+
+> 반응형 디자인으로 모바일, 태블릿, 데스크톱 모두 지원합니다.
 
 ---
 
