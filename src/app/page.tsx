@@ -85,11 +85,11 @@ export default function Home() {
             Visit My Github &nbsp; &gt;
           </a>
           <a
-            href="mailto:ruchia916@naver.com"
+            href="/contact"
             className="border-2 border-[var(--foreground)] rounded-full h-full px-5 py-3 font-bold hover:text-[var(--background)] hover:bg-[var(--foreground)] bg-white transition-colors"
-            aria-label="이메일로 연락하기"
+            aria-label="문의하기"
           >
-            Hire Me
+            Contact Me
           </a>
         </div>
       </div>
