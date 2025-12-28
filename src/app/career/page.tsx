@@ -2,102 +2,28 @@
 
 import { GraduationCap, Briefcase, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
+import type { EducationItem, WorkItem } from '@/types';
+import { educationData, workData } from '@/data/career';
 
-type EducationItem = {
-  period: string;
-  school: string;
-  major: string;
-};
-
-type WorkItem = {
-  period: string;
-  company: string;
-  desc: string;
-};
-
-const educationData: EducationItem[] = [
-  {
-    period: '2025.03 – 2025.04',
-    school: '인프런',
-    major: '한 입 크기로 잘라먹는 Next.js(v15)',
-  },
-  {
-    period: '2025.01 – 2025.01',
-    school: '인프런',
-    major:
-      '풀스택을 위한 도커와 최신 서버 기술(리눅스, nginx, AWS, HTTPS, 배포까지)',
-  },
-  {
-    period: '2024.02 – 2024.02',
-    school: '노마드코더',
-    major: 'React JS 마스터클래스',
-  },
-  {
-    period: '2023.08 – 2023.09',
-    school: '인프런',
-    major: '비전공자의 전공자 따라잡기 - 자료구조(with JavaScript)',
-  },
-  {
-    period: '2023.07 – 2023.08',
-    school: '인프런',
-    major: 'Vue.js 완벽 가이드 - 실습과 리팩토링으로 배우는 실전 개념 수료',
-  },
-  {
-    period: '2023.07 – 2023.07',
-    school: '인프런',
-    major: 'Vue.js 중급 강좌 - 웹앱 제작으로 배우는 Vue.js, ES6, Vuex 수료',
-  },
-  {
-    period: '2021.07 – 2021.12',
-    school: '연희직업전문학교',
-    major: '프론트엔드&백엔드 디지털커머스융합 웹앱개발자과정',
-  },
-  {
-    period: '2021.07 – 2021.09',
-    school: '노마드코더',
-    major: '[풀스택] 유튜브 클론코딩 - NodeJS, MongoDB, ES6, Express',
-  },
-  {
-    period: '2021.05 – 2021.06',
-    school: '노마드코더',
-    major: '코코아톡 클론코딩 - CSS',
-  },
-];
-
-const workData: WorkItem[] = [
-  {
-    period: '2025.01 – 현재',
-    company: '프리랜서 (크몽, 위시켓, 숨고 등)',
-    desc: '웹 퍼블리싱 및 프론트엔드 개발 외주 수행',
-  },
-  {
-    period: '2023.02 – 2024.07',
-    company: '주식회사 올수',
-    desc: '프론트엔드 개발 (Vue 기반 하이브리드 앱 + PHP 기반 어드민)',
-  },
-  {
-    period: '2022.04 – 2022.09',
-    company: '컨택트',
-    desc: 'PHP, JS 기반 기존 커뮤니티 사이트 유지보수 및 리뉴얼',
-  },
-];
+interface CardContainerProps<T extends { period: string }> {
+  icon: React.ReactNode;
+  title: string;
+  items: T[];
+  limit?: number;
+}
 
 function CardContainer<T extends { period: string }>({
   icon,
   title,
   items,
   limit,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  items: T[];
-  limit?: number;
-}) {
+}: CardContainerProps<T>) {
   const [showAll, setShowAll] = useState(false);
   const visibleItems = limit && !showAll ? items.slice(0, limit) : items;
+  const hasMore = limit && items.length > limit;
 
   return (
-    <div className="bg-white rounded-xl shadow p-6 h-fit">
+    <article className="bg-white rounded-xl shadow p-6 h-fit">
       <h3 className="text-lg font-semibold mb-7 flex items-center gap-3">
         {icon}
         {title}
@@ -105,53 +31,58 @@ function CardContainer<T extends { period: string }>({
       <ul className="space-y-4 border-l-2 text-primary border-accent pl-4">
         {visibleItems.map((item, idx) => (
           <li key={idx}>
-            <p className="text-gray-400">{item.period}</p>
+            <time className="text-gray-400">{item.period}</time>
             <p className="font-medium text-lg">
-              {String(
-                'school' in item
-                  ? item.school
-                  : 'company' in item
-                  ? item.company
-                  : ''
-              )}
+              {'school' in item
+                ? (item as EducationItem).school
+                : 'company' in item
+                  ? (item as WorkItem).company
+                  : ''}
             </p>
             <p className="text-sm text-gray-600">
-              {String(
-                'major' in item ? item.major : 'desc' in item ? item.desc : ''
-              )}
+              {'major' in item
+                ? (item as EducationItem).major
+                : 'desc' in item
+                  ? (item as WorkItem).desc
+                  : ''}
             </p>
           </li>
         ))}
       </ul>
-      {limit && items.length > limit ? (
+      {hasMore ? (
         <button
           onClick={() => setShowAll(!showAll)}
-          className="flex items-center justify-center w-full mt-4 text-sm text-gray-600 hover:text-gray-800 cursor-pointer"
+          className="flex items-center justify-center w-full mt-4 text-sm text-gray-600 hover:text-gray-800 cursor-pointer transition-colors"
+          aria-expanded={showAll}
+          aria-label={showAll ? '목록 접기' : '더 보기'}
         >
           {showAll ? (
-            <ChevronUp className="w-4 h-4 ml-1" />
+            <ChevronUp className="w-4 h-4" aria-hidden="true" />
           ) : (
-            <ChevronDown className="w-4 h-4 ml-1" />
+            <ChevronDown className="w-4 h-4" aria-hidden="true" />
           )}
         </button>
       ) : (
-        <div className="h-12"></div>
+        <div className="h-12" aria-hidden="true" />
       )}
-    </div>
+    </article>
   );
 }
 
 export default function Career() {
   return (
-    <main className="py-20 text-[var(--foreground)]" id="career">
-      <h2 className="text-center mb-10 text-2xl font-bold">
+    <section className="py-20 text-[var(--foreground)]" aria-labelledby="career-title">
+      <h2 id="career-title" className="text-center mb-10 text-2xl font-bold">
         <span className="text-gray-800">Career</span>
       </h2>
 
       <div className="grid md:grid-cols-2 gap-8">
         <CardContainer<EducationItem>
           icon={
-            <GraduationCap className="w-10 h-10 p-2 text-[#272527] bg-accent rounded-full" />
+            <GraduationCap
+              className="w-10 h-10 p-2 text-[#272527] bg-accent rounded-full"
+              aria-hidden="true"
+            />
           }
           title="Education"
           items={educationData}
@@ -159,12 +90,15 @@ export default function Career() {
         />
         <CardContainer<WorkItem>
           icon={
-            <Briefcase className="w-10 h-10 p-2 text-[#272527] bg-accent rounded-full" />
+            <Briefcase
+              className="w-10 h-10 p-2 text-[#272527] bg-accent rounded-full"
+              aria-hidden="true"
+            />
           }
           title="Work Experience"
           items={workData}
         />
       </div>
-    </main>
+    </section>
   );
 }
