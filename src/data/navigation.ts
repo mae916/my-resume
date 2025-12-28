@@ -6,6 +6,7 @@ export const navItems: NavItem[] = [
   { href: '/skills', label: 'Skills' },
   { href: '/career', label: 'Career' },
   { href: '/project', label: 'Project' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export const hashTags = [
