@@ -4,6 +4,10 @@ import FloatingBtn from '@/components/FloatingBtn';
 import { Github, Mail } from 'lucide-react';
 import '../styles/globals.css';
 
+// 2022년부터 시작한 경력 연차 자동 계산
+const CAREER_START_YEAR = 2022;
+const yearsOfExperience = new Date().getFullYear() - CAREER_START_YEAR + 1;
+
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -20,8 +24,7 @@ export const metadata: Metadata = {
     default: '프론트엔드 개발자 김혜진 | React, Vue.js, TypeScript 포트폴리오',
     template: '%s | 김혜진 포트폴리오',
   },
-  description:
-    '3년차 프론트엔드 개발자 김혜진입니다. React, Vue.js, Next.js, TypeScript 기반 웹 개발 전문. 사용자 경험을 최우선으로 생각하며, 비즈니스 가치를 만드는 개발자입니다.',
+  description: `${yearsOfExperience}년차 프론트엔드 개발자 김혜진입니다. React, Vue.js, Next.js, TypeScript 기반 웹 개발 전문. 사용자 경험을 최우선으로 생각하며, 비즈니스 가치를 만드는 개발자입니다.`,
   keywords: [
     '프론트엔드 개발자',
     '프론트엔드',
@@ -69,8 +72,7 @@ export const metadata: Metadata = {
     url: 'https://profile.jinproject.xyz',
     siteName: '김혜진 포트폴리오',
     title: '프론트엔드 개발자 김혜진 | React, Vue.js, TypeScript',
-    description:
-      '3년차 프론트엔드 개발자 김혜진입니다. React, Vue.js, Next.js, TypeScript 기반 웹 개발 전문. 기능보다 이유를 먼저 묻는 개발자.',
+    description: `${yearsOfExperience}년차 프론트엔드 개발자 김혜진입니다. React, Vue.js, Next.js, TypeScript 기반 웹 개발 전문. 기능보다 이유를 먼저 묻는 개발자.`,
     images: [
       {
         url: '/images/profile.jpg',
@@ -83,8 +85,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '프론트엔드 개발자 김혜진 | Portfolio',
-    description:
-      '3년차 프론트엔드 개발자. React, Vue.js, Next.js, TypeScript 전문. 기능보다 이유를 먼저 묻는 개발자.',
+    description: `${yearsOfExperience}년차 프론트엔드 개발자. React, Vue.js, Next.js, TypeScript 전문. 기능보다 이유를 먼저 묻는 개발자.`,
     images: ['/images/profile.jpg'],
     creator: '@hyejin_dev',
   },
@@ -127,7 +128,7 @@ export default function RootLayout({
               name: '김혜진',
               alternateName: 'Hyejin Kim',
               jobTitle: '프론트엔드 개발자',
-              description: '3년차 프론트엔드 개발자. React, Vue.js, Next.js, TypeScript 전문.',
+              description: `${yearsOfExperience}년차 프론트엔드 개발자. React, Vue.js, Next.js, TypeScript 전문.`,
               url: 'https://profile.jinproject.xyz',
               image: 'https://profile.jinproject.xyz/images/profile.jpg',
               sameAs: [
