@@ -20,9 +20,9 @@ export const projectList: ProjectItem[] = [
   {
     title: '보험 설계사 소개 웹사이트',
     image: '/images/project/jagang.png',
-    tags: ['React', 'CSR', 'Responsive', 'QRCode', 'Docker'],
-    link: 'https://github.com/mae916/Insurance-agent-profile',
+    tags: ['React 19', 'TypeScript', 'Tailwind CSS', 'Docker', 'AWS'],
+    link: '/project/jagang',
     description:
-      '실제 운영을 위해 제작된 보험 설계사용 PC/모바일 소개페이지이며, 상담 연결 기능이 있습니다.',
+      '삼성생명 보험설계사를 위한 모바일 최적화 프로필 페이지. QR코드 스캔으로 접근하여 상담을 바로 연결합니다.',
   },
 ];

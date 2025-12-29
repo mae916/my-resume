@@ -52,11 +52,12 @@ export default function Home() {
 
             {/* Main Heading */}
             <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-light leading-[1.1] tracking-tight mb-6">
-              <span className="block animate-fade-up">기능보다</span>
-              <span className="block animate-fade-up delay-100">
-                <span className="text-accent">이유</span>를 먼저 묻는
+              <span className="block animate-fade-up">
+                기능보다 <span className="text-accent">이유</span>를
               </span>
-              <span className="block animate-fade-up delay-200">개발자 김혜진</span>
+              <span className="block animate-fade-up delay-100">
+                먼저 묻는 개발자
+              </span>
             </h1>
 
             {/* Description */}
