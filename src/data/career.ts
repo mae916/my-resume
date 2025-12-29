@@ -52,17 +52,20 @@ export const educationData: EducationItem[] = [
 export const workData: WorkItem[] = [
   {
     period: '2025.01 – 현재',
-    company: '프리랜서 (크몽, 위시켓, 숨고 등)',
-    desc: '웹 퍼블리싱 및 프론트엔드 개발 외주 수행',
+    company: '프리랜서',
+    desc: '크몽, 위시켓, 숨고 등 플랫폼을 통해 웹 퍼블리싱 및 프론트엔드 개발 프로젝트를 수행하고 있습니다. 클라이언트 요구사항 분석부터 견적, 일정 관리, 커뮤니케이션까지 전 과정을 독립적으로 진행하며 문제 해결력과 비즈니스 감각을 키우고 있습니다.',
+    tags: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
   },
   {
     period: '2023.02 – 2024.07',
     company: '주식회사 올수',
-    desc: '프론트엔드 개발 (Vue 기반 하이브리드 앱 + PHP 기반 어드민)',
+    desc: 'Vue.js 기반 물류 하이브리드 앱과 PHP 기반 어드민 시스템을 개발했습니다. Chart.js를 활용한 B2B 대시보드 리뉴얼을 제안·구현하여 영업팀 미팅 활용도와 고객 만족도를 높였고, 파트너사 전용 시스템에서는 빠른 배포와 피드백 반영으로 사용성을 개선했습니다.',
+    tags: ['Vue.js', 'PHP', 'Chart.js', 'MySQL', 'Git'],
   },
   {
     period: '2022.04 – 2022.09',
     company: '컨택트',
-    desc: 'PHP, JS 기반 기존 커뮤니티 사이트 유지보수 및 리뉴얼',
+    desc: 'PHP와 JavaScript 기반 커뮤니티 사이트의 유지보수 및 UI 리뉴얼을 담당했습니다. 기존 코드를 분석하고 레거시 시스템을 점진적으로 개선하면서 실무 대응력과 코드 리딩 역량을 쌓았습니다.',
+    tags: ['PHP', 'JavaScript', 'jQuery', 'MySQL'],
   },
 ];

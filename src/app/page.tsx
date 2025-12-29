@@ -111,19 +111,19 @@ export default function Home() {
           {/* Left */}
           <div>
             <h2 className="text-2xl lg:text-3xl font-bold text-light mb-6">
-              사용자와 서비스의 흐름을
+              사용자 관점에서
               <br />
-              <span className="text-muted">함께 설계하는 개발자</span>
+              <span className="text-muted">서비스를 설계합니다</span>
             </h2>
             <div className="space-y-4 text-muted leading-relaxed">
               <p>
-                단순히 작동하는 기능보다,{' '}
-                <span className="text-light">왜 이렇게 동작해야 하는가</span>,
-                이 방식이 사용자에게 더 나은가를 먼저 고민합니다.
+                단순히 동작하는 코드보다,{' '}
+                <span className="text-light">왜 이렇게 구현해야 하는지</span>를 먼저 고민합니다.
+                사용자에게 더 나은 경험을 제공하는 것이 개발의 목적이라고 생각합니다.
               </p>
               <p>
-                업무 중 마주친 문제는 그대로 넘기지 않고,
-                주말이나 퇴근 후에라도 다시 복기하고 분석하는 습관을 가지고 있습니다.
+                궁금한 건 끝까지 파고들고, 모르는 건 찾아서 해결합니다.
+                퇴근 후에도 그날 마주친 문제를 복기하며 성장하는 개발자입니다.
               </p>
             </div>
           </div>
