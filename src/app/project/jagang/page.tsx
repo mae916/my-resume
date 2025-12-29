@@ -4,34 +4,41 @@ import Link from 'next/link';
 import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '보험 설계사 소개 웹사이트 - 삼성생명 FC 프로필 페이지',
-  description: '삼성생명 보험설계사를 위한 모바일 최적화 프로필 소개 페이지. QR코드를 통한 빠른 접근과 상담 연결 기능 제공.',
+  title: '보험 설계사 소개 웹사이트 - 삼성화재 FC 프로필 페이지',
+  description:
+    '삼성화재 보험설계사를 위한 모바일 최적화 프로필 소개 페이지. QR코드를 통한 빠른 접근과 상담 연결 기능 제공.',
 };
 
 const features = [
   {
     title: '모바일 최적화',
-    description: '명함 QR코드 스캔을 통한 접근을 고려해 모바일 퍼스트로 설계. 터치 친화적 UI와 빠른 로딩 속도 구현.',
+    description:
+      '명함 QR코드 스캔을 통한 접근을 고려해 모바일 퍼스트로 설계. 터치 친화적 UI와 빠른 로딩 속도 구현.',
   },
   {
     title: '원페이지 스크롤',
-    description: '부드러운 스크롤 애니메이션과 섹션 기반 네비게이션으로 직관적인 정보 탐색 경험 제공.',
+    description:
+      '부드러운 스크롤 애니메이션과 섹션 기반 네비게이션으로 직관적인 정보 탐색 경험 제공.',
   },
   {
     title: '상담 연결 기능',
-    description: '카카오톡 1:1 채팅, 전화 연결, 문자 보내기 등 다양한 상담 채널을 원클릭으로 연결.',
+    description:
+      '카카오톡 1:1 채팅, 전화 연결, 문자 보내기 등 다양한 상담 채널을 원클릭으로 연결.',
   },
   {
     title: '반응형 디자인',
-    description: 'Tailwind CSS를 활용한 PC/태블릿/모바일 완벽 대응. 어떤 기기에서도 일관된 브랜드 경험 제공.',
+    description:
+      'Tailwind CSS를 활용한 PC/태블릿/모바일 완벽 대응. 어떤 기기에서도 일관된 브랜드 경험 제공.',
   },
   {
     title: '보험 사례 소개',
-    description: '실제 고객 케이스를 카드 형태로 시각화하여 보험의 필요성과 혜택을 직관적으로 전달.',
+    description:
+      '실제 고객 케이스를 카드 형태로 시각화하여 보험의 필요성과 혜택을 직관적으로 전달.',
   },
   {
     title: 'Docker 배포',
-    description: 'Docker 컨테이너화로 AWS EC2에 배포. Nginx 리버스 프록시와 SSL 인증서 적용으로 안정적인 서비스 운영.',
+    description:
+      'Docker 컨테이너화로 AWS EC2에 배포. Nginx 리버스 프록시와 SSL 인증서 적용으로 안정적인 서비스 운영.',
   },
 ];
 
@@ -75,7 +82,7 @@ export default function JagangPage() {
             보험 설계사 소개
           </h1>
           <p className="text-muted text-lg">
-            삼성생명 보험설계사를 위한 모바일 최적화 프로필 페이지
+            삼성화재 보험설계사를 위한 모바일 최적화 프로필 페이지
           </p>
         </div>
         <div className="flex gap-3">
@@ -123,12 +130,17 @@ export default function JagangPage() {
       {/* Project Info */}
       <div className="grid lg:grid-cols-2 gap-6 mb-16">
         <div className="card">
-          <h2 className="text-lg font-semibold text-light mb-4">프로젝트 개요</h2>
+          <h2 className="text-lg font-semibold text-light mb-4">
+            프로젝트 개요
+          </h2>
           <div className="space-y-3 text-sm">
             {[
               { label: '참여 기간', value: '2025.12' },
               { label: '참여 인원', value: '1명 (개인 프로젝트)' },
-              { label: '담당 역할', value: '기획, 디자인, 퍼블리싱, 프론트엔드, 배포' },
+              {
+                label: '담당 역할',
+                value: '기획, 디자인, 퍼블리싱, 프론트엔드, 배포',
+              },
               { label: '프로젝트 유형', value: '프로필 소개 원페이지' },
             ].map((item) => (
               <div key={item.label} className="flex gap-4">
@@ -143,7 +155,10 @@ export default function JagangPage() {
           <h2 className="text-lg font-semibold text-light mb-4">페이지 구성</h2>
           <ul className="grid grid-cols-1 gap-2">
             {sections.map((section) => (
-              <li key={section} className="flex items-start gap-2 text-sm text-muted">
+              <li
+                key={section}
+                className="flex items-start gap-2 text-sm text-muted"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                 <span>{section}</span>
               </li>
@@ -157,23 +172,35 @@ export default function JagangPage() {
         <h2 className="text-lg font-semibold text-light mb-4">프로젝트 배경</h2>
         <div className="space-y-3 text-sm text-muted leading-relaxed">
           <p>
-            지인 보험설계사의 요청으로 시작한 프로젝트입니다. 기존에는 명함만으로 고객에게 정보를 전달했지만,
-            <span className="text-light"> QR코드를 통해 접근할 수 있는 디지털 프로필 페이지</span>가 필요했습니다.
+            지인 보험설계사의 요청으로 시작한 프로젝트입니다. 기존에는
+            명함만으로 고객에게 정보를 전달했지만,
+            <span className="text-light">
+              {' '}
+              QR코드를 통해 접근할 수 있는 디지털 프로필 페이지
+            </span>
+            가 필요했습니다.
           </p>
           <p>
-            고객이 명함의 QR코드를 스캔하면 설계사의 프로필, 전문 분야, 실제 보험 사례를 한눈에 확인하고,
-            바로 카카오톡이나 전화로 상담을 요청할 수 있습니다.
-            <span className="text-light"> 실제로 운영 중인 서비스</span>로, 고객 상담 전환율 향상에 기여하고 있습니다.
+            고객이 명함의 QR코드를 스캔하면 설계사의 프로필, 전문 분야, 실제
+            보험 사례를 한눈에 확인하고, 바로 카카오톡이나 전화로 상담을 요청할
+            수 있습니다.
+            <span className="text-light"> 실제로 운영 중인 서비스</span>로, 고객
+            상담 전환율 향상에 기여하고 있습니다.
           </p>
         </div>
       </div>
 
       {/* Features */}
       <div>
-        <h2 className="text-2xl font-bold text-light text-center mb-10">주요 기능 및 기술</h2>
+        <h2 className="text-2xl font-bold text-light text-center mb-10">
+          주요 기능 및 기술
+        </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((feature) => (
-            <div key={feature.title} className="card group hover:border-accent/30">
+            <div
+              key={feature.title}
+              className="card group hover:border-accent/30"
+            >
               <h3 className="text-base font-semibold text-light mb-2 group-hover:text-accent transition-colors">
                 {feature.title}
               </h3>

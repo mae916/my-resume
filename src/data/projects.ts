@@ -23,6 +23,6 @@ export const projectList: ProjectItem[] = [
     tags: ['React 19', 'TypeScript', 'Tailwind CSS', 'Docker', 'AWS'],
     link: '/project/jagang',
     description:
-      '삼성생명 보험설계사를 위한 모바일 최적화 프로필 페이지. QR코드 스캔으로 접근하여 상담을 바로 연결합니다.',
+      '삼성화재 보험설계사를 위한 모바일 최적화 프로필 페이지. QR코드 스캔으로 접근하여 상담을 바로 연결합니다.',
   },
 ];

@@ -118,7 +118,7 @@ export default function IBCPage() {
           <h2 className="text-lg font-semibold text-light mb-4">프로젝트 개요</h2>
           <div className="space-y-3 text-sm">
             {[
-              { label: '참여 기간', value: '2024.09 - 2024.10' },
+              { label: '참여 기간', value: '2025.09 - 2025.10' },
               { label: '참여 형태', value: '프리랜서 (단독 개발)' },
               { label: '담당 역할', value: '기획, 디자인, 프론트엔드 개발' },
               { label: '프로젝트 유형', value: '기업 소개 웹사이트' },
