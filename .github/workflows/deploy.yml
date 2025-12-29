@@ -139,7 +139,7 @@ jobs:
         run: |
           if [ "${{ needs.deploy.result }}" == "success" ]; then
             echo "✅ Deployment successful!"
-            echo "🌐 Site: https://portfolio.jinproject.xyz"
+            echo "🌐 Site: https://profile.jinproject.xyz"
           else
             echo "❌ Deployment failed!"
           fi

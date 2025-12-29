@@ -15,7 +15,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://portfolio.jinproject.xyz'),
+  metadataBase: new URL('https://profile.jinproject.xyz'),
   title: {
     default: '프론트엔드 개발자 김혜진 | React, Vue.js, TypeScript 포트폴리오',
     template: '%s | 김혜진 포트폴리오',
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
-    url: 'https://portfolio.jinproject.xyz',
+    url: 'https://profile.jinproject.xyz',
     siteName: '김혜진 포트폴리오',
     title: '프론트엔드 개발자 김혜진 | React, Vue.js, TypeScript',
     description:
@@ -94,9 +94,9 @@ export const metadata: Metadata = {
   category: 'technology',
   classification: 'Portfolio',
   alternates: {
-    canonical: 'https://portfolio.jinproject.xyz',
+    canonical: 'https://profile.jinproject.xyz',
     languages: {
-      'ko-KR': 'https://portfolio.jinproject.xyz',
+      'ko-KR': 'https://profile.jinproject.xyz',
     },
   },
   other: {
@@ -128,8 +128,8 @@ export default function RootLayout({
               alternateName: 'Hyejin Kim',
               jobTitle: '프론트엔드 개발자',
               description: '3년차 프론트엔드 개발자. React, Vue.js, Next.js, TypeScript 전문.',
-              url: 'https://portfolio.jinproject.xyz',
-              image: 'https://portfolio.jinproject.xyz/images/profile.jpg',
+              url: 'https://profile.jinproject.xyz',
+              image: 'https://profile.jinproject.xyz/images/profile.jpg',
               sameAs: [
                 'https://github.com/mae916',
               ],

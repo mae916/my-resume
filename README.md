@@ -2,7 +2,7 @@
 
 프론트엔드 개발자 김혜진의 포트폴리오 웹사이트입니다.
 
-**Live Site:** [portfolio.jinproject.xyz](https://portfolio.jinproject.xyz)
+**Live Site:** [profile.jinproject.xyz](https://profile.jinproject.xyz)
 
 ![Next.js](https://img.shields.io/badge/Next.js-15.3.3-black?logo=next.js)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)

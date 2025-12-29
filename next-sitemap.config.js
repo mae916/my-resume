@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://portfolio.jinproject.xyz',
+  siteUrl: 'https://profile.jinproject.xyz',
   generateRobotsTxt: false, // 이미 수동으로 생성했으므로 false
   generateIndexSitemap: false,
   changefreq: 'monthly',

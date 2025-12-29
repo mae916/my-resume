@@ -86,7 +86,7 @@ npm start
 | 환경 | 포트 | URL |
 |-----|------|-----|
 | 로컬 개발 | 3000 | http://localhost:3000 |
-| 프로덕션 | 9000 (내부) → 8004 (외부) | https://portfolio.jinproject.xyz |
+| 프로덕션 | 9000 (내부) → 8004 (외부) | https://profile.jinproject.xyz |
 
 ## 트러블슈팅
 
