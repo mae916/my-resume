@@ -2,11 +2,11 @@ import type { Metadata, Viewport } from 'next';
 import Navigation from '@/components/Navigation';
 import FloatingBtn from '@/components/FloatingBtn';
 import { Github, Mail } from 'lucide-react';
+import { getYearsOfExperience } from '@/lib/career';
 import '../styles/globals.css';
 
-// 2022년부터 시작한 경력 연차 자동 계산
-const CAREER_START_YEAR = 2022;
-const yearsOfExperience = new Date().getFullYear() - CAREER_START_YEAR + 1;
+// 경력 연차 (공통 유틸리티 사용)
+const yearsOfExperience = getYearsOfExperience();
 
 export const viewport: Viewport = {
   width: 'device-width',

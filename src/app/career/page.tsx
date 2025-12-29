@@ -1,6 +1,7 @@
 import { Briefcase, Calendar, MapPin } from 'lucide-react';
 import type { WorkItem } from '@/types';
 import { workData } from '@/data/career';
+import { getYearsOfExperienceLabel } from '@/lib/career';
 
 export default function Career() {
   return (
@@ -82,10 +83,10 @@ export default function Career() {
       {/* Summary Stats */}
       <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
-          { value: '3+', label: 'Years Experience' },
-          { value: '10+', label: 'Projects' },
-          { value: '5+', label: 'Companies' },
-          { value: '100%', label: 'Dedication' },
+          { value: getYearsOfExperienceLabel(), label: '년 경력' },
+          { value: '10+', label: '프로젝트' },
+          { value: '5+', label: '협업 기업' },
+          { value: '100%', label: '열정' },
         ].map((stat) => (
           <div key={stat.label} className="card text-center py-6">
             <p className="text-2xl lg:text-3xl font-bold text-accent mb-1">

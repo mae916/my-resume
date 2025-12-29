@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { hashTags } from '@/data/navigation';
 import { externalLinkProps } from '@/lib/utils';
+import { getYearsOfExperienceLabel } from '@/lib/career';
 import profileImg from '@/../public/images/profile.jpg';
 import { ArrowUpRight, Github, Mail, ChevronDown } from 'lucide-react';
 
@@ -132,7 +133,7 @@ export default function Home() {
           {/* Right - Stats */}
           <div className="grid grid-cols-2 gap-6">
             {[
-              { number: '3+', label: '년 경력' },
+              { number: getYearsOfExperienceLabel(), label: '년 경력' },
               { number: '10+', label: '프로젝트' },
               { number: 'React', label: 'Vue.js / Next.js' },
               { number: 'TS', label: 'TypeScript' },
