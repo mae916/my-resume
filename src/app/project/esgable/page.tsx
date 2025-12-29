@@ -87,9 +87,9 @@ export default function ESGablePage() {
           <h2 className="text-lg font-semibold text-light mb-4">프로젝트 개요</h2>
           <div className="space-y-3 text-sm">
             {[
-              { label: '참여 기간', value: '2024.08 - 2024.12' },
-              { label: '참여 인원', value: '프론트엔드 2명, 백엔드 2명' },
-              { label: '담당 역할', value: '프론트엔드 개발' },
+              { label: '참여 기간', value: '2024.07 - 2024.12' },
+              { label: '참여 인원', value: '프론트엔드 1명, 백엔드 1명' },
+              { label: '담당 역할', value: '기획, 디자인, 퍼블리싱, 프론트엔드' },
               { label: '개발 유형', value: 'B2B SaaS 플랫폼' },
             ].map((item) => (
               <div key={item.label} className="flex gap-4">

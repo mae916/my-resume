@@ -126,9 +126,9 @@ export default function JagangPage() {
           <h2 className="text-lg font-semibold text-light mb-4">프로젝트 개요</h2>
           <div className="space-y-3 text-sm">
             {[
-              { label: '참여 기간', value: '2024.07 - 2024.12' },
-              { label: '참여 인원', value: '프론트엔드 1명, 백엔드 1명' },
-              { label: '담당 역할', value: '기획, 디자인, 퍼블리싱, 프론트엔드' },
+              { label: '참여 기간', value: '2024.12' },
+              { label: '참여 인원', value: '1명 (개인 프로젝트)' },
+              { label: '담당 역할', value: '기획, 디자인, 퍼블리싱, 프론트엔드, 배포' },
               { label: '프로젝트 유형', value: '프로필 소개 원페이지' },
             ].map((item) => (
               <div key={item.label} className="flex gap-4">
