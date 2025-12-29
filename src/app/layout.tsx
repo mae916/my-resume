@@ -1,13 +1,14 @@
 import type { Metadata, Viewport } from 'next';
 import Navigation from '@/components/Navigation';
 import FloatingBtn from '@/components/FloatingBtn';
+import { Github, Mail, Linkedin } from 'lucide-react';
 import '../styles/globals.css';
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#1d3557',
+  themeColor: '#0a0a0a',
 };
 
 export const metadata: Metadata = {
@@ -83,13 +84,52 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body>
-        <div className="lg:w-[60%] w-[95%] mx-auto mb-5 lg:mb-0">
+      <body className="min-h-screen bg-dark">
+        <div className="lg:w-[60%] w-[95%] mx-auto">
           <Navigation />
-          <main>{children}</main>
+          <main className="animate-fade-up">{children}</main>
           <FloatingBtn />
-          <footer className="py-8 text-center text-sm text-gray-500">
-            <p>&copy; {new Date().getFullYear()} 김혜진. All rights reserved.</p>
+
+          {/* Footer */}
+          <footer className="py-16 border-t border-dark-200">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+              {/* Left */}
+              <div className="text-center md:text-left">
+                <p className="text-2xl font-bold text-light mb-2">
+                  hyejin<span className="text-accent">.</span>dev
+                </p>
+                <p className="text-sm text-muted">
+                  Frontend Developer based in Seoul
+                </p>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex items-center gap-4">
+                <a
+                  href="https://github.com/mae916"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-dark-100 border border-dark-200 text-muted hover:text-light hover:border-dark-300 transition-all"
+                  aria-label="GitHub"
+                >
+                  <Github size={18} />
+                </a>
+                <a
+                  href="/contact"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-dark-100 border border-dark-200 text-muted hover:text-light hover:border-dark-300 transition-all"
+                  aria-label="Contact"
+                >
+                  <Mail size={18} />
+                </a>
+              </div>
+            </div>
+
+            {/* Copyright */}
+            <div className="mt-12 pt-8 border-t border-dark-200 text-center">
+              <p className="text-sm text-muted">
+                &copy; {new Date().getFullYear()} Kim Hyejin. All rights reserved.
+              </p>
+            </div>
           </footer>
         </div>
       </body>

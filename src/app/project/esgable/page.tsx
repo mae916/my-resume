@@ -49,120 +49,112 @@ const techStack = [
 
 export default function ESGablePage() {
   return (
-    <section className="py-20">
-      {/* Header */}
-      <div className="mb-12">
-        <Link
-          href="/project"
-          className="inline-flex items-center gap-2 text-muted hover:text-accent transition-colors mb-6"
-        >
-          <ArrowLeft size={20} />
-          <span>프로젝트 목록</span>
-        </Link>
+    <section className="section">
+      {/* Back Button */}
+      <Link
+        href="/project"
+        className="inline-flex items-center gap-2 text-muted hover:text-light transition-colors mb-8"
+      >
+        <ArrowLeft size={16} />
+        <span className="text-sm font-medium">프로젝트 목록</span>
+      </Link>
 
-        <h1 className="text-4xl font-bold text-primary mb-4">ESGable</h1>
-        <p className="text-xl text-muted mb-6">
+      {/* Header */}
+      <div className="mb-8">
+        <p className="text-accent text-sm font-medium tracking-widest uppercase mb-3">
+          B2B SaaS Platform
+        </p>
+        <h1 className="text-4xl lg:text-5xl font-bold text-light mb-3">
+          ESGable
+        </h1>
+        <p className="text-muted text-lg">
           기업의 ESG 경영을 위한 탄소 배출량 관리 및 공급망 조사 플랫폼
         </p>
+      </div>
 
-        {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          {techStack.map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
+      {/* Tech Stack */}
+      <div className="flex flex-wrap gap-2 mb-10">
+        {techStack.map((tech) => (
+          <span key={tech} className="tag">
+            {tech}
+          </span>
+        ))}
+      </div>
 
-        {/* Project Info */}
-        <div className="bg-white rounded-xl shadow-md p-6 mb-8">
-          <h2 className="text-lg font-semibold text-primary mb-4">프로젝트 개요</h2>
-          <div className="grid md:grid-cols-2 gap-4 text-sm">
-            <div>
-              <span className="text-muted">참여 기간:</span>
-              <span className="ml-2 text-mutedDark">2024.08 - 2024.12</span>
-            </div>
-            <div>
-              <span className="text-muted">참여 인원:</span>
-              <span className="ml-2 text-mutedDark">프론트엔드 2명, 백엔드 2명</span>
-            </div>
-            <div>
-              <span className="text-muted">담당 역할:</span>
-              <span className="ml-2 text-mutedDark">프론트엔드 개발</span>
-            </div>
-            <div>
-              <span className="text-muted">개발 유형:</span>
-              <span className="ml-2 text-mutedDark">B2B SaaS 플랫폼</span>
-            </div>
+      {/* Project Info */}
+      <div className="grid lg:grid-cols-2 gap-6 mb-16">
+        <div className="card">
+          <h2 className="text-lg font-semibold text-light mb-4">프로젝트 개요</h2>
+          <div className="space-y-3 text-sm">
+            {[
+              { label: '참여 기간', value: '2024.08 - 2024.12' },
+              { label: '참여 인원', value: '프론트엔드 2명, 백엔드 2명' },
+              { label: '담당 역할', value: '프론트엔드 개발' },
+              { label: '개발 유형', value: 'B2B SaaS 플랫폼' },
+            ].map((item) => (
+              <div key={item.label} className="flex gap-4">
+                <span className="text-muted min-w-[100px]">{item.label}</span>
+                <span className="font-medium text-light">{item.value}</span>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Main Responsibilities */}
-        <div className="bg-white rounded-xl shadow-md p-6">
-          <h2 className="text-lg font-semibold text-primary mb-4">주요 담당 업무</h2>
-          <ul className="space-y-2 text-mutedDark">
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">•</span>
-              <span>Vue.js 3 + TypeScript 기반 프론트엔드 아키텍처 설계 및 개발</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">•</span>
-              <span>조직/구성원 관리 모듈 - 트리 구조 조직도, CRUD, 권한 관리</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">•</span>
-              <span>공급망 조사 모듈 - 설문 생성/배포/응답 수집/결과 분석</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">•</span>
-              <span>탄소 라이브러리 모듈 - 배출계수/가이드라인/GWP 데이터 관리</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">•</span>
-              <span>대시보드 차트 시각화 (Chart.js)</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">•</span>
-              <span>다국어 지원 (i18n) - 한국어/영어</span>
-            </li>
+        <div className="card">
+          <h2 className="text-lg font-semibold text-light mb-4">주요 담당 업무</h2>
+          <ul className="space-y-2">
+            {[
+              'Vue.js 3 + TypeScript 기반 프론트엔드 아키텍처 설계 및 개발',
+              '조직/구성원 관리 모듈 - 트리 구조 조직도, CRUD, 권한 관리',
+              '공급망 조사 모듈 - 설문 생성/배포/응답 수집/결과 분석',
+              '탄소 라이브러리 모듈 - 배출계수/가이드라인/GWP 데이터 관리',
+              '대시보드 차트 시각화 (Chart.js)',
+              '다국어 지원 (i18n) - 한국어/영어',
+            ].map((item, index) => (
+              <li key={index} className="flex items-start gap-2 text-sm text-muted">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
 
       {/* Features */}
-      <div className="space-y-16">
-        <h2 className="text-2xl font-bold text-primary">주요 기능</h2>
+      <div>
+        <h2 className="text-2xl font-bold text-light text-center mb-12">주요 기능</h2>
+        <div className="space-y-20">
+          {features.map((feature, index) => (
+            <div
+              key={feature.title}
+              className={`flex flex-col ${
+                index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'
+              } gap-10 items-center`}
+            >
+              {/* Image */}
+              <div className="lg:w-1/2">
+                <div className="relative aspect-video rounded-2xl overflow-hidden border border-dark-200">
+                  <Image
+                    src={feature.image}
+                    alt={feature.title}
+                    fill
+                    className="object-cover object-top"
+                  />
+                </div>
+              </div>
 
-        {features.map((feature, index) => (
-          <div
-            key={feature.title}
-            className={`flex flex-col ${
-              index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'
-            } gap-8 items-center`}
-          >
-            <div className="lg:w-1/2">
-              <div className="relative aspect-video rounded-xl overflow-hidden shadow-lg">
-                <Image
-                  src={feature.image}
-                  alt={feature.title}
-                  fill
-                  className="object-cover object-top"
-                />
+              {/* Content */}
+              <div className="lg:w-1/2 space-y-4">
+                <h3 className="text-xl font-bold text-light">
+                  {feature.title}
+                </h3>
+                <p className="text-muted leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
             </div>
-            <div className="lg:w-1/2">
-              <h3 className="text-xl font-semibold text-primary mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-mutedDark leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

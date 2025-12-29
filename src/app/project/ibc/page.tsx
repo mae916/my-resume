@@ -58,88 +58,85 @@ const sections = [
 
 export default function IBCPage() {
   return (
-    <section className="py-20">
+    <section className="section">
+      {/* Back Button */}
+      <Link
+        href="/project"
+        className="inline-flex items-center gap-2 text-muted hover:text-light transition-colors mb-8"
+      >
+        <ArrowLeft size={16} />
+        <span className="text-sm font-medium">프로젝트 목록</span>
+      </Link>
+
       {/* Header */}
-      <div className="mb-12">
-        <Link
-          href="/project"
-          className="inline-flex items-center gap-2 text-muted hover:text-accent transition-colors mb-6"
+      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
+        <div>
+          <p className="text-accent text-sm font-medium tracking-widest uppercase mb-3">
+            Corporate Website
+          </p>
+          <h1 className="text-4xl lg:text-5xl font-bold text-light mb-3">
+            IBC Group
+          </h1>
+          <p className="text-muted text-lg">
+            아프리카 중심 글로벌 엔지니어링 및 컨설팅 기업 웹사이트
+          </p>
+        </div>
+        <a
+          href="https://ibcgroup-sz4v.vercel.app/en"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary"
         >
-          <ArrowLeft size={20} />
-          <span>프로젝트 목록</span>
-        </Link>
+          <span>사이트 방문</span>
+          <ExternalLink size={14} />
+        </a>
+      </div>
 
-        <div className="flex items-start justify-between flex-wrap gap-4">
-          <div>
-            <h1 className="text-4xl font-bold text-primary mb-4">IBC Group</h1>
-            <p className="text-xl text-muted mb-6">
-              아프리카 중심 글로벌 엔지니어링 및 컨설팅 기업 웹사이트
-            </p>
-          </div>
-          <a
-            href="https://ibcgroup-sz4v.vercel.app/en"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-full hover:bg-accent/90 transition-colors"
-          >
-            <span>사이트 방문</span>
-            <ExternalLink size={16} />
-          </a>
-        </div>
+      {/* Tech Stack */}
+      <div className="flex flex-wrap gap-2 mb-10">
+        {techStack.map((tech) => (
+          <span key={tech} className="tag">
+            {tech}
+          </span>
+        ))}
+      </div>
 
-        {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          {techStack.map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
+      {/* Main Screenshot */}
+      <div className="relative aspect-video rounded-2xl overflow-hidden border border-dark-200 mb-10">
+        <Image
+          src="/images/project/ibc.png"
+          alt="IBC Group 웹사이트 메인 화면"
+          fill
+          className="object-cover object-top"
+          priority
+        />
+      </div>
 
-        {/* Main Screenshot */}
-        <div className="relative aspect-video rounded-xl overflow-hidden shadow-lg mb-8">
-          <Image
-            src="/images/project/ibc.png"
-            alt="IBC Group 웹사이트 메인 화면"
-            fill
-            className="object-cover object-top"
-            priority
-          />
-        </div>
-
-        {/* Project Info */}
-        <div className="bg-white rounded-xl shadow-md p-6 mb-8">
-          <h2 className="text-lg font-semibold text-primary mb-4">프로젝트 개요</h2>
-          <div className="grid md:grid-cols-2 gap-4 text-sm">
-            <div>
-              <span className="text-muted">참여 기간:</span>
-              <span className="ml-2 text-mutedDark">2024.09 - 2024.10</span>
-            </div>
-            <div>
-              <span className="text-muted">참여 형태:</span>
-              <span className="ml-2 text-mutedDark">프리랜서 (단독 개발)</span>
-            </div>
-            <div>
-              <span className="text-muted">담당 역할:</span>
-              <span className="ml-2 text-mutedDark">기획, 디자인, 프론트엔드 개발</span>
-            </div>
-            <div>
-              <span className="text-muted">프로젝트 유형:</span>
-              <span className="ml-2 text-mutedDark">기업 소개 웹사이트</span>
-            </div>
+      {/* Project Info */}
+      <div className="grid lg:grid-cols-2 gap-6 mb-16">
+        <div className="card">
+          <h2 className="text-lg font-semibold text-light mb-4">프로젝트 개요</h2>
+          <div className="space-y-3 text-sm">
+            {[
+              { label: '참여 기간', value: '2024.09 - 2024.10' },
+              { label: '참여 형태', value: '프리랜서 (단독 개발)' },
+              { label: '담당 역할', value: '기획, 디자인, 프론트엔드 개발' },
+              { label: '프로젝트 유형', value: '기업 소개 웹사이트' },
+            ].map((item) => (
+              <div key={item.label} className="flex gap-4">
+                <span className="text-muted min-w-[100px]">{item.label}</span>
+                <span className="font-medium text-light">{item.value}</span>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Page Sections */}
-        <div className="bg-white rounded-xl shadow-md p-6 mb-8">
-          <h2 className="text-lg font-semibold text-primary mb-4">페이지 구성</h2>
-          <ul className="grid md:grid-cols-2 gap-2 text-sm text-mutedDark">
+        <div className="card">
+          <h2 className="text-lg font-semibold text-light mb-4">페이지 구성</h2>
+          <ul className="grid grid-cols-1 gap-2">
             {sections.map((section) => (
-              <li key={section} className="flex items-start gap-2">
-                <span className="text-accent mt-0.5">•</span>
+              <li key={section} className="flex items-start gap-2 text-sm text-muted">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                 <span>{section}</span>
               </li>
             ))}
@@ -149,17 +146,14 @@ export default function IBCPage() {
 
       {/* Features */}
       <div>
-        <h2 className="text-2xl font-bold text-primary mb-8">주요 기술 구현</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <h2 className="text-2xl font-bold text-light text-center mb-10">주요 기술 구현</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-lg font-semibold text-primary mb-3">
+            <div key={feature.title} className="card group hover:border-accent/30">
+              <h3 className="text-base font-semibold text-light mb-2 group-hover:text-accent transition-colors">
                 {feature.title}
               </h3>
-              <p className="text-sm text-mutedDark leading-relaxed">
+              <p className="text-sm text-muted leading-relaxed">
                 {feature.description}
               </p>
             </div>
