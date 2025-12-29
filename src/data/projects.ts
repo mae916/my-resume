@@ -4,7 +4,7 @@ export const projectList: ProjectItem[] = [
   {
     title: 'ESGable - 탄소 배출량 관리 플랫폼',
     image: '/images/project/esgable.png',
-    tags: ['Vue.js 3', 'TypeScript', 'Pinia', 'Tailwind CSS', 'i18n'],
+    tags: ['Vue.js 3', 'Pinia', 'Tailwind CSS', 'ApexCharts', 'i18n'],
     link: '/project/esgable',
     description:
       '기업의 ESG 경영을 위한 탄소 배출량 관리 및 공급망 조사 B2B SaaS 플랫폼입니다.',

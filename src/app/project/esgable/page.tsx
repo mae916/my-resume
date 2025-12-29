@@ -38,13 +38,12 @@ const features = [
 
 const techStack = [
   'Vue.js 3',
-  'TypeScript',
   'Pinia',
   'Tailwind CSS',
   'Vite',
   'i18n',
   'Axios',
-  'Chart.js',
+  'ApexCharts',
 ];
 
 export default function ESGablePage() {
@@ -104,11 +103,11 @@ export default function ESGablePage() {
           <h2 className="text-lg font-semibold text-light mb-4">주요 담당 업무</h2>
           <ul className="space-y-2">
             {[
-              'Vue.js 3 + TypeScript 기반 프론트엔드 아키텍처 설계 및 개발',
+              'Vue.js 3 기반 프론트엔드 아키텍처 설계 및 개발',
               '조직/구성원 관리 모듈 - 트리 구조 조직도, CRUD, 권한 관리',
               '공급망 조사 모듈 - 설문 생성/배포/응답 수집/결과 분석',
               '탄소 라이브러리 모듈 - 배출계수/가이드라인/GWP 데이터 관리',
-              '대시보드 차트 시각화 (Chart.js)',
+              '대시보드 차트 시각화 (ApexCharts)',
               '다국어 지원 (i18n) - 한국어/영어',
             ].map((item, index) => (
               <li key={index} className="flex items-start gap-2 text-sm text-muted">
