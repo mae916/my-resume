@@ -1,43 +1,63 @@
 import type { Metadata, Viewport } from 'next';
 import Navigation from '@/components/Navigation';
 import FloatingBtn from '@/components/FloatingBtn';
-import { Github, Mail, Linkedin } from 'lucide-react';
+import { Github, Mail } from 'lucide-react';
 import '../styles/globals.css';
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#0a0a0a',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#0a0a0a' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
+  ],
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://portfolio.jinproject.xyz'),
   title: {
-    default: "Hyejin's Portfolio | 프론트엔드 개발자 김혜진",
+    default: '프론트엔드 개발자 김혜진 | React, Vue.js, TypeScript 포트폴리오',
     template: '%s | 김혜진 포트폴리오',
   },
   description:
-    '기능보다 이유를 먼저 묻는 프론트엔드 개발자 김혜진입니다. React, Vue.js, TypeScript를 활용한 웹 개발 포트폴리오입니다.',
+    '3년차 프론트엔드 개발자 김혜진입니다. React, Vue.js, Next.js, TypeScript 기반 웹 개발 전문. 사용자 경험을 최우선으로 생각하며, 비즈니스 가치를 만드는 개발자입니다.',
   keywords: [
     '프론트엔드 개발자',
+    '프론트엔드',
+    'Frontend Developer',
     '김혜진',
     'React',
+    'React 개발자',
     'Vue.js',
+    'Vue 개발자',
     'TypeScript',
     'Next.js',
-    '포트폴리오',
+    'JavaScript',
     '웹 개발자',
+    '포트폴리오',
+    '개발자 포트폴리오',
+    '서울 개발자',
+    '프리랜서 개발자',
+    'Tailwind CSS',
+    'NestJS',
   ],
   authors: [{ name: '김혜진', url: 'https://github.com/mae916' }],
   creator: '김혜진',
   publisher: '김혜진',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
@@ -48,15 +68,15 @@ export const metadata: Metadata = {
     locale: 'ko_KR',
     url: 'https://portfolio.jinproject.xyz',
     siteName: '김혜진 포트폴리오',
-    title: '프론트엔드 개발자 김혜진 | Portfolio',
+    title: '프론트엔드 개발자 김혜진 | React, Vue.js, TypeScript',
     description:
-      '기능보다 이유를 먼저 묻는 프론트엔드 개발자 김혜진의 포트폴리오입니다.',
+      '3년차 프론트엔드 개발자 김혜진입니다. React, Vue.js, Next.js, TypeScript 기반 웹 개발 전문. 기능보다 이유를 먼저 묻는 개발자.',
     images: [
       {
         url: '/images/profile.jpg',
         width: 520,
         height: 570,
-        alt: '김혜진 프로필 이미지',
+        alt: '프론트엔드 개발자 김혜진 포트폴리오',
       },
     ],
   },
@@ -64,16 +84,23 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '프론트엔드 개발자 김혜진 | Portfolio',
     description:
-      '기능보다 이유를 먼저 묻는 프론트엔드 개발자 김혜진의 포트폴리오입니다.',
+      '3년차 프론트엔드 개발자. React, Vue.js, Next.js, TypeScript 전문. 기능보다 이유를 먼저 묻는 개발자.',
     images: ['/images/profile.jpg'],
+    creator: '@hyejin_dev',
   },
-  icons: {
-    icon: '/images/favicon.png',
-    apple: '/images/favicon.png',
+  verification: {
+    google: 'google-site-verification-code', // Google Search Console 인증 코드로 교체 필요
   },
-  manifest: '/manifest.json',
+  category: 'technology',
+  classification: 'Portfolio',
   alternates: {
     canonical: 'https://portfolio.jinproject.xyz',
+    languages: {
+      'ko-KR': 'https://portfolio.jinproject.xyz',
+    },
+  },
+  other: {
+    'naver-site-verification': 'naver-verification-code', // 네이버 웹마스터 인증 코드로 교체 필요
   },
 };
 
@@ -84,7 +111,53 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
+      <head>
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body className="min-h-screen bg-dark">
+        {/* JSON-LD 구조화된 데이터 */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: '김혜진',
+              alternateName: 'Hyejin Kim',
+              jobTitle: '프론트엔드 개발자',
+              description: '3년차 프론트엔드 개발자. React, Vue.js, Next.js, TypeScript 전문.',
+              url: 'https://portfolio.jinproject.xyz',
+              image: 'https://portfolio.jinproject.xyz/images/profile.jpg',
+              sameAs: [
+                'https://github.com/mae916',
+              ],
+              knowsAbout: [
+                'React',
+                'Vue.js',
+                'Next.js',
+                'TypeScript',
+                'JavaScript',
+                'Tailwind CSS',
+                'NestJS',
+                'PostgreSQL',
+                'Docker',
+                'AWS',
+              ],
+              worksFor: {
+                '@type': 'Organization',
+                name: '프리랜서',
+              },
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Seoul',
+                addressCountry: 'KR',
+              },
+            }),
+          }}
+        />
+
         <div className="lg:w-[60%] w-[95%] mx-auto">
           <Navigation />
           <main className="animate-fade-up">{children}</main>
