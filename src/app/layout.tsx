@@ -101,7 +101,7 @@ export const metadata: Metadata = {
     },
   },
   other: {
-    'naver-site-verification': 'naver-verification-code', // 네이버 웹마스터 인증 코드로 교체 필요
+    'naver-site-verification': '4aadc5d2f8667c22b2835a51a9ce82523656b677',
   },
 };
 
