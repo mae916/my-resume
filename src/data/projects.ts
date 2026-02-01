@@ -2,6 +2,14 @@ import type { ProjectItem } from '@/types';
 
 export const projectList: ProjectItem[] = [
   {
+    title: 'S&HT - 스마트 엔지니어링 기업 웹사이트',
+    image: '/images/project/snht.png',
+    tags: ['Next.js 16', 'TypeScript', 'Tailwind CSS', 'GSAP', 'i18n'],
+    link: '/project/snht',
+    description:
+      '산업 자동화 및 AI 관제 솔루션 전문 기업의 다국어 반응형 기업 소개 웹사이트입니다.',
+  },
+  {
     title: 'ESGable - 탄소 배출량 관리 플랫폼',
     image: '/images/project/esgable.png',
     tags: ['Vue.js 3', 'Pinia', 'Tailwind CSS', 'ApexCharts', 'i18n'],
