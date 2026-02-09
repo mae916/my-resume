@@ -33,4 +33,12 @@ export const projectList: ProjectItem[] = [
     description:
       '삼성화재 보험설계사를 위한 모바일 최적화 프로필 페이지. QR코드 스캔으로 접근하여 상담을 바로 연결합니다.',
   },
+  {
+    title: 'Quai - AI 견적 플랫폼',
+    image: '/images/project/quai.png',
+    tags: ['Next.js 14', 'TypeScript', 'Supabase', 'OpenAI', 'Toss Payments'],
+    link: '/project/quai',
+    description:
+      'AI 기반 양면 견적 플랫폼. 공급자는 3분 만에 견적서를 생성하고, 소비자는 3초 만에 견적을 검증합니다.',
+  },
 ];
