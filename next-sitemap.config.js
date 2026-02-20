@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://portfolio.jinproject.xyz',
+  siteUrl: 'https://profile.jinproject.xyz',
   generateRobotsTxt: false,
   generateIndexSitemap: false,
   changefreq: 'monthly',

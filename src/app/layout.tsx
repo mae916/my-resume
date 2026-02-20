@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://portfolio.jinproject.xyz'),
+  metadataBase: new URL('https://profile.jinproject.xyz'),
   title: {
     default: '프론트엔드 개발자 김혜진 | React, Vue.js, TypeScript 포트폴리오',
     template: '%s | 김혜진 포트폴리오',
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
-    url: 'https://portfolio.jinproject.xyz',
+    url: 'https://profile.jinproject.xyz',
     siteName: '김혜진 포트폴리오',
     title: '프론트엔드 개발자 김혜진 | React, Vue.js, TypeScript',
     description: `${yearsOfExperience}년차 프론트엔드 개발자 김혜진입니다. React, Vue.js, Next.js, TypeScript 기반 웹 개발 전문. 기능보다 이유를 먼저 묻는 개발자.`,
@@ -92,9 +92,9 @@ export const metadata: Metadata = {
   category: 'technology',
   classification: 'Portfolio',
   alternates: {
-    canonical: 'https://portfolio.jinproject.xyz',
+    canonical: 'https://profile.jinproject.xyz',
     languages: {
-      'ko-KR': 'https://portfolio.jinproject.xyz',
+      'ko-KR': 'https://profile.jinproject.xyz',
     },
   },
   other: {
@@ -135,8 +135,8 @@ export default function RootLayout({
               alternateName: 'Hyejin Kim',
               jobTitle: '프론트엔드 개발자',
               description: `${yearsOfExperience}년차 프론트엔드 개발자. React, Vue.js, Next.js, TypeScript 전문.`,
-              url: 'https://portfolio.jinproject.xyz',
-              image: 'https://portfolio.jinproject.xyz/images/profile.jpg',
+              url: 'https://profile.jinproject.xyz',
+              image: 'https://profile.jinproject.xyz/images/profile.jpg',
               sameAs: [
                 'https://github.com/mae916',
               ],
@@ -173,7 +173,7 @@ export default function RootLayout({
               '@type': 'WebSite',
               name: '김혜진 포트폴리오',
               alternateName: 'Hyejin Kim Portfolio',
-              url: 'https://portfolio.jinproject.xyz',
+              url: 'https://profile.jinproject.xyz',
               description: `${yearsOfExperience}년차 프론트엔드 개발자 김혜진의 포트폴리오`,
               author: {
                 '@type': 'Person',
@@ -191,12 +191,12 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'BreadcrumbList',
               itemListElement: [
-                { '@type': 'ListItem', position: 1, name: '홈', item: 'https://portfolio.jinproject.xyz' },
-                { '@type': 'ListItem', position: 2, name: 'Q&A', item: 'https://portfolio.jinproject.xyz/qna' },
-                { '@type': 'ListItem', position: 3, name: 'Skills', item: 'https://portfolio.jinproject.xyz/skills' },
-                { '@type': 'ListItem', position: 4, name: 'Career', item: 'https://portfolio.jinproject.xyz/career' },
-                { '@type': 'ListItem', position: 5, name: 'Projects', item: 'https://portfolio.jinproject.xyz/project' },
-                { '@type': 'ListItem', position: 6, name: 'Contact', item: 'https://portfolio.jinproject.xyz/contact' },
+                { '@type': 'ListItem', position: 1, name: '홈', item: 'https://profile.jinproject.xyz' },
+                { '@type': 'ListItem', position: 2, name: 'Q&A', item: 'https://profile.jinproject.xyz/qna' },
+                { '@type': 'ListItem', position: 3, name: 'Skills', item: 'https://profile.jinproject.xyz/skills' },
+                { '@type': 'ListItem', position: 4, name: 'Career', item: 'https://profile.jinproject.xyz/career' },
+                { '@type': 'ListItem', position: 5, name: 'Projects', item: 'https://profile.jinproject.xyz/project' },
+                { '@type': 'ListItem', position: 6, name: 'Contact', item: 'https://profile.jinproject.xyz/contact' },
               ],
             }),
           }}
