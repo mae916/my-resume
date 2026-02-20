@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: 'Quai - AI 기반 견적 플랫폼',
   description:
     'AI로 견적서를 생성하고 검증하는 양면 플랫폼. 공급자는 3분 만에 견적서를, 소비자는 3초 만에 견적 분석을 받습니다.',
+  openGraph: {
+    title: 'Quai - AI 기반 견적 플랫폼 | 김혜진 포트폴리오',
+    description: 'AI로 견적서를 생성하고 검증하는 양면 플랫폼. 공급자는 3분 만에 견적서를, 소비자는 3초 만에 견적 분석을 받습니다.',
+    images: [{ url: '/images/project/quai.png', width: 1200, height: 630, alt: 'Quai 메인 화면' }],
+  },
 };
 
 const features = [

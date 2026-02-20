@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   title: 'Projects',
   description:
     '김혜진의 프론트엔드 개발 프로젝트들입니다. React, Next.js, Vue.js를 활용한 웹 애플리케이션을 확인해보세요.',
+  openGraph: {
+    title: 'Projects | 김혜진 포트폴리오',
+    description: 'React, Next.js, Vue.js를 활용한 프론트엔드 프로젝트 포트폴리오',
+  },
 };
 
 export default function Project() {

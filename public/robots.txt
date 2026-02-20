@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://profile.jinproject.xyz/sitemap.xml
+Sitemap: https://portfolio.jinproject.xyz/sitemap.xml
 
 # Host
-Host: https://profile.jinproject.xyz
+Host: https://portfolio.jinproject.xyz

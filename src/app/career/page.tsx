@@ -1,7 +1,18 @@
+import type { Metadata } from 'next';
 import { Briefcase, Calendar, MapPin } from 'lucide-react';
 import type { WorkItem } from '@/types';
 import { workData } from '@/data/career';
 import { getYearsOfExperienceLabel } from '@/lib/career';
+
+export const metadata: Metadata = {
+  title: 'Career',
+  description:
+    '프론트엔드 개발자 김혜진의 경력 사항입니다. 프리랜서, 올수, 컨택트에서의 실무 경험을 확인해보세요.',
+  openGraph: {
+    title: 'Career | 김혜진 포트폴리오',
+    description: '프론트엔드 개발자 김혜진의 경력과 프로젝트 경험',
+  },
+};
 
 export default function Career() {
   return (

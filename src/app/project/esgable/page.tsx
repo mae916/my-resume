@@ -6,6 +6,11 @@ import { ArrowLeft } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'ESGable - ESG 탄소 배출량 관리 플랫폼',
   description: '기업의 ESG 경영을 위한 탄소 배출량 관리 및 공급망 조사 플랫폼',
+  openGraph: {
+    title: 'ESGable - ESG 탄소 배출량 관리 플랫폼 | 김혜진 포트폴리오',
+    description: '기업의 ESG 경영을 위한 탄소 배출량 관리 및 공급망 조사 플랫폼',
+    images: [{ url: '/images/project/esgable.png', width: 1200, height: 630, alt: 'ESGable 플랫폼 메인 화면' }],
+  },
 };
 
 const features = [

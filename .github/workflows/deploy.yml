@@ -1,4 +1,4 @@
-name: Deploy to EC2
+name: Build and Deploy My-Resume
 
 on:
   push:
@@ -7,11 +7,10 @@ on:
   workflow_dispatch:
 
 env:
-  APP_NAME: my-resume
-  DEPLOY_PATH: /home/ec2-user/my-resume
+  REGISTRY: ghcr.io
 
 jobs:
-  # 1단계: 코드 품질 검사
+  # ==================== 코드 품질 검사 ====================
   lint-and-typecheck:
     name: Lint & Type Check
     runs-on: ubuntu-latest
@@ -22,7 +21,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
 
       - name: Install dependencies
@@ -36,76 +35,79 @@ jobs:
         run: npx tsc --noEmit
         continue-on-error: true
 
-  # 2단계: 빌드 테스트
-  build-test:
-    name: Build Test
+  # ==================== Docker 이미지 빌드 & 푸시 ====================
+  build-and-push:
+    name: Build and Push Docker Image
     runs-on: ubuntu-latest
     needs: lint-and-typecheck
+    permissions:
+      contents: read
+      packages: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
         with:
-          node-version: '18'
-          cache: 'npm'
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      - name: Build application
-        run: npm run build
+      - name: Build and push image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ github.repository_owner }}/my-resume:latest
+            ${{ env.REGISTRY }}/${{ github.repository_owner }}/my-resume:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
-  # 3단계: EC2 배포
+  # ==================== EC2 배포 ====================
   deploy:
     name: Deploy to EC2
     runs-on: ubuntu-latest
-    needs: build-test
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    needs: build-and-push
 
-      - name: Deploy to EC2 via SSH
+    steps:
+      - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          command_timeout: 20m
+          port: 22
+          command_timeout: 10m
           script: |
-            set -e
+            echo ">>> Logging into GitHub Container Registry..."
+            echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-            DEPLOY_DIR="${{ env.DEPLOY_PATH }}"
-            REPO_URL="https://github.com/${{ github.repository }}.git"
+            echo ">>> Pulling latest image..."
+            docker pull ghcr.io/${{ github.repository_owner }}/my-resume:latest
 
-            echo "🧹 Cleaning up old deployment..."
-            rm -rf "$DEPLOY_DIR"
-
-            echo "📦 Cloning repository..."
-            git clone --depth 1 --branch main "$REPO_URL" "$DEPLOY_DIR"
-
-            cd "$DEPLOY_DIR"
-
-            echo "🛑 Stopping existing container..."
+            echo ">>> Stopping old container..."
             docker stop my-resume 2>/dev/null || true
             docker rm my-resume 2>/dev/null || true
 
-            echo "🔨 Building Docker image..."
-            docker build -t my-resume:latest .
-
-            echo "🚀 Starting container..."
+            echo ">>> Starting new container..."
             docker run -d \
               --name my-resume \
               --restart unless-stopped \
               -p 8004:9000 \
-              my-resume:latest
+              ghcr.io/${{ github.repository_owner }}/my-resume:latest
 
-            echo "🧹 Cleaning up unused images..."
+            echo ">>> Cleaning up old images..."
             docker image prune -f
 
-            echo "✅ Deployment completed at $(date)"
-            docker ps | grep my-resume || true
+            echo ">>> Deployment complete!"
+            docker ps | grep my-resume
 
       - name: Health Check
         uses: appleboy/ssh-action@v1.0.3
@@ -114,21 +116,21 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            echo "🔍 Running health check..."
+            echo ">>> Running health check..."
             for i in {1..12}; do
               HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8004 2>/dev/null || echo "000")
               if [ "$HTTP_CODE" = "200" ]; then
-                echo "✅ Health check passed! (HTTP $HTTP_CODE)"
+                echo "Health check passed! (HTTP $HTTP_CODE)"
                 exit 0
               fi
-              echo "⏳ Waiting for service... ($i/12) - HTTP $HTTP_CODE"
+              echo "Waiting for service... ($i/12) - HTTP $HTTP_CODE"
               sleep 5
             done
-            echo "❌ Health check failed!"
+            echo "Health check failed!"
             docker logs my-resume --tail 50
             exit 1
 
-  # 배포 완료 알림
+  # ==================== 배포 완료 알림 ====================
   notify:
     name: Notify Deployment
     runs-on: ubuntu-latest
@@ -138,8 +140,8 @@ jobs:
       - name: Deployment Status
         run: |
           if [ "${{ needs.deploy.result }}" == "success" ]; then
-            echo "✅ Deployment successful!"
-            echo "🌐 Site: https://profile.jinproject.xyz"
+            echo "Deployment successful!"
+            echo "Site: https://portfolio.jinproject.xyz"
           else
-            echo "❌ Deployment failed!"
+            echo "Deployment failed!"
           fi

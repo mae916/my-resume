@@ -6,6 +6,11 @@ import { ArrowLeft, ExternalLink } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'S&HT - 스마트 엔지니어링 기업 웹사이트',
   description: '산업 자동화 및 AI 관제 솔루션 전문 기업의 다국어 반응형 기업 소개 웹사이트',
+  openGraph: {
+    title: 'S&HT - 스마트 엔지니어링 기업 | 김혜진 포트폴리오',
+    description: '산업 자동화 및 AI 관제 솔루션 전문 기업의 다국어 반응형 기업 소개 웹사이트',
+    images: [{ url: '/images/project/snht.png', width: 1200, height: 630, alt: 'S&HT 웹사이트 메인 화면' }],
+  },
 };
 
 const features = [
@@ -82,7 +87,7 @@ export default function SNHTPage() {
           <h2 className="text-lg font-semibold text-light mb-4">프로젝트 개요</h2>
           <div className="space-y-3 text-sm">
             {[
-              { label: '참여 기간', value: '2025.01 - 2025.02' },
+              { label: '참여 기간', value: '2025.12 - 2026.01' },
               { label: '참여 인원', value: '프론트엔드 1명' },
               { label: '담당 역할', value: '기획, 디자인, 퍼블리싱, 프론트엔드' },
               { label: '개발 유형', value: '기업 소개 웹사이트' },

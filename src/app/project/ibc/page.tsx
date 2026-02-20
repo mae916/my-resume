@@ -6,6 +6,11 @@ import { ArrowLeft, ExternalLink } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'IBC Group - 글로벌 엔지니어링 컨설팅 기업 웹사이트',
   description: '아프리카 중심 글로벌 엔지니어링 및 컨설팅 기업 IBC Group의 기업 소개 웹사이트',
+  openGraph: {
+    title: 'IBC Group - 글로벌 엔지니어링 기업 | 김혜진 포트폴리오',
+    description: '아프리카 중심 글로벌 엔지니어링 및 컨설팅 기업 IBC Group의 기업 소개 웹사이트',
+    images: [{ url: '/images/project/ibc.png', width: 1200, height: 630, alt: 'IBC Group 웹사이트 메인 화면' }],
+  },
 };
 
 const features = [

@@ -6,11 +6,32 @@ export const metadata: Metadata = {
   title: 'Q & A',
   description:
     '프론트엔드 개발자 김혜진에 대해 자주 묻는 질문들입니다. 실무 경험, 협업 방식, 개발 철학 등을 확인해보세요.',
+  openGraph: {
+    title: 'Q & A | 김혜진 포트폴리오',
+    description: '프론트엔드 개발자 김혜진에 대해 자주 묻는 질문과 답변',
+  },
 };
 
 export default function QNA() {
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: qnaList.map((q) => ({
+      '@type': 'Question',
+      name: q.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: q.answer,
+      },
+    })),
+  };
+
   return (
     <section className="section" aria-labelledby="qna-title">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Header */}
       <div className="mb-16">
         <p className="text-accent text-sm font-medium tracking-widest uppercase mb-3">

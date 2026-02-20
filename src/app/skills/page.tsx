@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   title: 'Skills',
   description:
     '김혜진의 기술 스택입니다. React, Vue.js, TypeScript, Express, Docker 등을 활용한 개발 경험을 확인해보세요.',
+  openGraph: {
+    title: 'Skills | 김혜진 포트폴리오',
+    description: 'React, Vue.js, TypeScript, NestJS, Docker 등 기술 스택과 실무 경험',
+  },
 };
 
 // 스킬 카테고리화

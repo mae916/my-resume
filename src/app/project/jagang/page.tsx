@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: '보험 설계사 소개 웹사이트 - 삼성화재 FC 프로필 페이지',
   description:
     '삼성화재 보험설계사를 위한 모바일 최적화 프로필 소개 페이지. QR코드를 통한 빠른 접근과 상담 연결 기능 제공.',
+  openGraph: {
+    title: '보험 설계사 소개 웹사이트 | 김혜진 포트폴리오',
+    description: '삼성화재 보험설계사를 위한 모바일 최적화 프로필 소개 페이지.',
+    images: [{ url: '/images/project/jagang.png', width: 1200, height: 630, alt: '보험 설계사 소개 웹사이트 메인 화면' }],
+  },
 };
 
 const features = [
