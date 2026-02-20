@@ -3,12 +3,12 @@ import { qnaList } from '@/data/qna';
 import { MessageCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Q & A',
+  title: 'Q&A 인터뷰',
   description:
-    '프론트엔드 개발자 김혜진에 대해 자주 묻는 질문들입니다. 실무 경험, 협업 방식, 개발 철학 등을 확인해보세요.',
+    '프론트엔드 개발자 김혜진에 대해 자주 묻는 질문들입니다. 프론트엔드 개발자의 실무 경험, 협업 방식, 개발 철학을 확인해보세요.',
   openGraph: {
-    title: 'Q & A | 김혜진 포트폴리오',
-    description: '프론트엔드 개발자 김혜진에 대해 자주 묻는 질문과 답변',
+    title: 'Q&A 인터뷰 | 프론트엔드 개발자 김혜진',
+    description: '프론트엔드 개발자 김혜진의 실무 경험, 협업 방식, 개발 철학 Q&A',
   },
 };
 

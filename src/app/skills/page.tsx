@@ -4,12 +4,12 @@ import { skills } from '@/data/skills';
 import { Code2, Layers, Server, Wrench } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Skills',
+  title: '기술 스택',
   description:
-    '김혜진의 기술 스택입니다. React, Vue.js, TypeScript, Express, Docker 등을 활용한 개발 경험을 확인해보세요.',
+    '프론트엔드 개발자 김혜진의 기술 스택입니다. React, Vue.js, Next.js, TypeScript 등 프론트엔드 개발자 핵심 기술과 실무 경험을 확인해보세요.',
   openGraph: {
-    title: 'Skills | 김혜진 포트폴리오',
-    description: 'React, Vue.js, TypeScript, NestJS, Docker 등 기술 스택과 실무 경험',
+    title: '기술 스택 | 프론트엔드 개발자 김혜진',
+    description: '프론트엔드 개발자 김혜진의 React, Vue.js, TypeScript, Next.js 기술 스택',
   },
 };
 

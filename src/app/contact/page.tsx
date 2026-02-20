@@ -3,12 +3,12 @@ import { Mail, Github, Clock, Users, Briefcase } from 'lucide-react';
 import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Contact',
+  title: '문의하기',
   description:
-    '프론트엔드 개발자 김혜진에게 채용, 협업, 프로젝트 의뢰 문의를 보내보세요. 1-2일 내 회신드립니다.',
+    '프론트엔드 개발자 김혜진에게 채용, 협업, 프로젝트 의뢰 문의를 보내보세요. 프론트엔드 개발자 채용 문의 환영합니다.',
   openGraph: {
-    title: 'Contact | 김혜진 포트폴리오',
-    description: '채용 문의, 협업 제안, 프로젝트 의뢰 등 편하게 연락주세요.',
+    title: '문의하기 | 프론트엔드 개발자 김혜진',
+    description: '프론트엔드 개발자 채용 문의, 협업 제안, 프로젝트 의뢰 등 편하게 연락주세요.',
   },
 };
 

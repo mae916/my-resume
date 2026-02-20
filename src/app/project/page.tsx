@@ -6,12 +6,12 @@ import { externalLinkProps } from '@/lib/utils';
 import { ArrowUpRight, ExternalLink, Github } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Projects',
+  title: '프로젝트 포트폴리오',
   description:
-    '김혜진의 프론트엔드 개발 프로젝트들입니다. React, Next.js, Vue.js를 활용한 웹 애플리케이션을 확인해보세요.',
+    '프론트엔드 개발자 김혜진의 프로젝트 포트폴리오입니다. React, Next.js, Vue.js를 활용한 프론트엔드 개발자 실무 프로젝트를 확인해보세요.',
   openGraph: {
-    title: 'Projects | 김혜진 포트폴리오',
-    description: 'React, Next.js, Vue.js를 활용한 프론트엔드 프로젝트 포트폴리오',
+    title: '프로젝트 포트폴리오 | 프론트엔드 개발자 김혜진',
+    description: '프론트엔드 개발자 김혜진의 React, Next.js, Vue.js 프로젝트 포트폴리오',
   },
 };
 
