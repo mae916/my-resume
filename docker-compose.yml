@@ -19,6 +19,10 @@ services:
       - "8004:9000"
     environment:
       NODE_ENV: production
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_REGION: ${AWS_REGION:-ap-northeast-2}
+      SES_FROM_EMAIL: ${SES_FROM_EMAIL:-noreply@jinproject.xyz}
     networks:
       - app-network
 

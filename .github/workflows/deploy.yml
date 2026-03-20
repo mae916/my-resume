@@ -101,6 +101,10 @@ jobs:
               --name my-resume \
               --restart unless-stopped \
               -p 8004:9000 \
+              -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
+              -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+              -e AWS_REGION=ap-northeast-2 \
+              -e SES_FROM_EMAIL=noreply@jinproject.xyz \
               ghcr.io/${{ github.repository_owner }}/my-resume:latest
 
             echo ">>> Cleaning up old images..."

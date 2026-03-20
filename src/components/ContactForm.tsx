@@ -59,7 +59,7 @@ export default function ContactForm() {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('https://pium.jinproject.xyz/api/email/portfolio', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
