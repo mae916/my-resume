@@ -18,16 +18,16 @@ export default function NotFound() {
     >
       <h1
         id="not-found-title"
-        className="lg:text-4xl text-3xl font-bold mb-6 text-center text-primary"
+        className="lg:text-4xl text-3xl font-bold mb-6 text-center text-accent"
       >
         404
       </h1>
-      <p className="text-xl text-gray-600 mb-10 text-center">
+      <p className="text-xl text-muted mb-10 text-center">
         찾을 수 없는 페이지입니다.
       </p>
       <Link
         href="/"
-        className="px-6 py-3 bg-primary text-white rounded-full hover:bg-accent transition-colors font-medium"
+        className="px-6 py-3 bg-accent text-white rounded-full hover:bg-accent-hover transition-colors font-medium"
       >
         홈으로 돌아가기
       </Link>

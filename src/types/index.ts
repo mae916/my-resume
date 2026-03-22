@@ -9,6 +9,7 @@ export interface WorkItem {
   period: string;
   company: string;
   desc: string;
+  tags?: string[];
 }
 
 // Project 관련 타입
