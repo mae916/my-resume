@@ -7,7 +7,7 @@ import { getYearsOfExperienceLabel } from '@/lib/career';
 export const metadata: Metadata = {
   title: '경력사항',
   description:
-    '프론트엔드 개발자 김혜진의 경력사항입니다. 프리랜서, 올수, 컨택트에서의 프론트엔드 실무 경험과 프로젝트 이력을 확인해보세요.',
+    '개발자 김혜진의 경력사항입니다. 다온더케어, 프리랜서, 올수, 컨택트에서의 풀스택·프론트엔드 실무 경험과 프로젝트 이력을 확인해보세요.',
   openGraph: {
     title: '경력사항 | 프론트엔드 개발자 김혜진',
     description: '프론트엔드 개발자 김혜진의 경력과 프로젝트 실무 경험',

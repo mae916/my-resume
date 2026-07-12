@@ -51,6 +51,12 @@ export const educationData: EducationItem[] = [
 
 export const workData: WorkItem[] = [
   {
+    period: '2026.04 – 현재',
+    company: '다온더케어',
+    desc: '방문 재활운동 매칭 플랫폼을 1인 풀스택으로 개발·운영하고 있습니다. React Native 앱(122개 화면), NestJS 백엔드(REST API 548개), Next.js 어드민·웹포털 4개 제품과 AWS 인프라를 전담해 10주 만에 정식 런칭했고, 예약·결제·정산·본인인증·실시간 채팅 등 핵심 도메인을 직접 설계했습니다. 배포 자동화와 백업·무중단 DB 전환 체계를 구축하는 등 1인 운영을 뒷받침하는 안전망을 만들어가고 있습니다.',
+    tags: ['React Native', 'NestJS', 'PostgreSQL', 'Next.js', 'AWS'],
+  },
+  {
     period: '2025.01 – 현재',
     company: '프리랜서',
     desc: '크몽, 위시켓, 숨고 등 플랫폼을 통해 웹 퍼블리싱 및 프론트엔드 개발 프로젝트를 수행하고 있습니다. 클라이언트 요구사항 분석부터 견적, 일정 관리, 커뮤니케이션까지 전 과정을 독립적으로 진행하며 문제 해결력과 비즈니스 감각을 키우고 있습니다.',
