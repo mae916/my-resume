@@ -2,6 +2,22 @@ import type { ProjectItem } from '@/types';
 
 export const projectList: ProjectItem[] = [
   {
+    title: '하늘위컴퍼니 - 디지털 추모관 플랫폼',
+    image: '/images/project/skycompany.png',
+    tags: ['Next.js 16', 'TypeScript', 'Express', 'PostgreSQL', 'Playwright'],
+    link: '/project/skycompany',
+    description:
+      '고인과 반려동물을 위한 온라인 추모관 SaaS. 기획부터 실서비스 배포·운영까지 1인 풀스택으로 개발했습니다.',
+  },
+  {
+    title: '하이다이아 - 예물 예약 관리 플랫폼',
+    image: '/images/project/hidia.png',
+    tags: ['Nuxt.js 2', 'Express', 'MongoDB', 'Kotlin/Swift', 'FCM'],
+    link: '/project/hidia',
+    description:
+      '결혼반지·예물 매장과 고객을 연결하는 상용 예약 플랫폼의 풀스택 고도화. QR·GPS 포인트 시스템을 0→1로 구축했습니다.',
+  },
+  {
     title: 'S&HT - 스마트 엔지니어링 기업 웹사이트',
     image: '/images/project/snht.png',
     tags: ['Next.js 16', 'TypeScript', 'Tailwind CSS', 'GSAP', 'i18n'],
