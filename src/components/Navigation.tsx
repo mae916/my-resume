@@ -4,24 +4,13 @@ import { classNames, isActiveLink } from '@/lib/utils';
 import { navItems } from '@/data/navigation';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function Navigation() {
   const pathname = usePathname();
   const sentinelRef = useRef<HTMLDivElement | null>(null);
   const [isSticky, setIsSticky] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  const checkMobile = useCallback(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
-
-  useEffect(() => {
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, [checkMobile]);
 
   useEffect(() => {
     const sentinel = sentinelRef.current;
@@ -39,7 +28,7 @@ export default function Navigation() {
   }, []);
 
   return (
-    <div className="relative h-20">
+    <div className="relative h-16 md:h-[76px]">
       <div ref={sentinelRef} className="h-0" aria-hidden="true" />
 
       {/* Navigation */}
@@ -47,28 +36,27 @@ export default function Navigation() {
         className={classNames(
           'fixed top-0 left-0 right-0 z-50',
           'transition-all duration-300 ease-out',
-          isSticky ? 'glass border-b border-dark-200' : 'bg-transparent'
+          isSticky ? 'glass border-b border-black/[0.06]' : 'bg-transparent'
         )}
         aria-label="메인 네비게이션"
       >
-        <div className="lg:w-[60%] w-[95%] mx-auto h-16 flex items-center justify-between">
+        <div className="mx-auto w-full max-w-5xl px-5 md:px-8 h-16 md:h-[76px] flex items-center justify-between gap-3">
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-2 group shrink-0"
             aria-label="홈으로 이동"
           >
-            <div className="relative flex items-center justify-center w-10 h-10 text-lg font-bold rounded-xl bg-accent text-white overflow-hidden group-hover:scale-105 transition-transform">
+            <span className="flex items-center justify-center w-8 h-8 rounded-[10px] bg-ink text-white text-sm font-bold shadow-chip group-hover:scale-105 transition-transform">
               H
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-            </div>
-            <span className="hidden lg:block text-lg font-semibold text-light tracking-tight">
-              hyejin<span className="text-accent">.</span>dev
+            </span>
+            <span className="hidden lg:block text-[15px] font-semibold tracking-tight text-ink">
+              hyejin.dev
             </span>
           </Link>
 
-          {/* Nav Links - Desktop */}
-          <ul className="hidden md:flex items-center gap-1">
+          {/* Nav Links - 세그먼트 필 */}
+          <ul className="flex items-center gap-0.5 md:gap-1 bg-white/80 border border-black/[0.06] shadow-chip rounded-full p-1">
             {navItems.map(({ href, label }) => {
               const isActive = isActiveLink(pathname, href);
               return (
@@ -76,39 +64,13 @@ export default function Navigation() {
                   <Link
                     href={href}
                     className={classNames(
-                      'relative px-4 py-2 text-sm font-medium rounded-lg',
-                      'transition-all duration-200',
+                      'block px-2.5 md:px-4 py-1.5 rounded-full text-[11px] md:text-[13px] font-medium',
+                      'transition-all duration-200 whitespace-nowrap',
                       isActive
-                        ? 'text-light bg-dark-100'
-                        : 'text-muted hover:text-light hover:bg-dark-100/50'
+                        ? 'bg-ink text-white shadow-chip'
+                        : 'text-ink-soft hover:bg-paper-100'
                     )}
                     aria-current={isActive ? 'page' : undefined}
-                  >
-                    {label}
-                    {isActive && (
-                      <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-accent" />
-                    )}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-
-          {/* Mobile Nav */}
-          <ul className="flex md:hidden items-center gap-0.5 text-xs">
-            {navItems.map(({ href, label }) => {
-              const isActive = isActiveLink(pathname, href);
-              return (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className={classNames(
-                      'px-2.5 py-1.5 rounded-md font-medium',
-                      'transition-colors duration-150',
-                      isActive
-                        ? 'text-light bg-dark-100'
-                        : 'text-muted'
-                    )}
                   >
                     {label}
                   </Link>
@@ -121,16 +83,19 @@ export default function Navigation() {
           <Link
             href="/contact"
             className={classNames(
-              'hidden lg:flex items-center gap-2',
-              'text-sm font-medium px-5 py-2.5 rounded-full',
-              'bg-light text-dark',
-              'hover:bg-accent hover:text-white',
+              'hidden md:inline-flex items-center gap-1.5 shrink-0',
+              'text-[13px] font-semibold px-4 py-2 rounded-full',
+              'bg-accent text-white shadow-chip',
+              'hover:bg-accent-hover hover:scale-[1.03] active:scale-[0.97]',
               'transition-all duration-200 group'
             )}
             aria-label="문의하기"
           >
             <span>Contact</span>
-            <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <ArrowUpRight
+              size={13}
+              className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+            />
           </Link>
         </div>
       </nav>

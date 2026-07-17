@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
+import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import FloatingBtn from '@/components/FloatingBtn';
-import { Github, Mail } from 'lucide-react';
 import { getYearsOfExperience } from '@/lib/career';
 import '../styles/globals.css';
 
@@ -13,8 +13,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#0a0a0a' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
+    { media: '(prefers-color-scheme: light)', color: '#F5F5F7' },
+    { media: '(prefers-color-scheme: dark)', color: '#F5F5F7' },
   ],
 };
 
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     'Frontend Developer Portfolio',
     '개발자 포트폴리오',
     '김혜진 포트폴리오',
-    '서울 프론트엔드 개발자',
+    '인천 프론트엔드 개발자',
     'JavaScript 개발자',
   ],
   authors: [{ name: '김혜진', url: 'https://github.com/mae916' }],
@@ -123,7 +123,7 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
         />
       </head>
-      <body className="min-h-screen bg-dark">
+      <body className="min-h-screen bg-paper text-ink">
         {/* JSON-LD: Person */}
         <script
           type="application/ld+json"
@@ -158,7 +158,7 @@ export default function RootLayout({
               },
               address: {
                 '@type': 'PostalAddress',
-                addressLocality: 'Seoul',
+                addressLocality: 'Incheon',
                 addressCountry: 'KR',
               },
             }),
@@ -202,49 +202,59 @@ export default function RootLayout({
           }}
         />
 
-        <div className="lg:w-[60%] w-[95%] mx-auto">
-          <Navigation />
+        <Navigation />
+        <div className="mx-auto w-full max-w-5xl px-5 md:px-8">
           <main className="animate-fade-up">{children}</main>
           <FloatingBtn />
 
           {/* Footer */}
-          <footer className="py-16 border-t border-dark-200">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              {/* Left */}
-              <div className="text-center md:text-left">
-                <p className="text-2xl font-bold text-light mb-2">
-                  hyejin<span className="text-accent">.</span>dev
-                </p>
-                <p className="text-sm text-muted">
-                  Frontend Developer based in Seoul
-                </p>
+          <footer className="mt-10 pb-10">
+            {/* 알림 배너 스타일 CTA */}
+            <div className="mac-window">
+              <div className="mac-titlebar">
+                <span className="mac-dot bg-ios-red" />
+                <span className="mac-dot bg-ios-yellow" />
+                <span className="mac-dot bg-ios-green" />
+                <span className="mac-title">contact — hyejin.dev</span>
               </div>
-
-              {/* Social Links */}
-              <div className="flex items-center gap-4">
-                <a
-                  href="https://github.com/mae916"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-dark-100 border border-dark-200 text-muted hover:text-light hover:border-dark-300 transition-all"
-                  aria-label="GitHub"
-                >
-                  <Github size={18} />
-                </a>
-                <a
-                  href="/contact"
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-dark-100 border border-dark-200 text-muted hover:text-light hover:border-dark-300 transition-all"
-                  aria-label="Contact"
-                >
-                  <Mail size={18} />
-                </a>
+              <div className="p-8 md:p-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+                <div>
+                  <p className="eyebrow mb-3">Let&apos;s work together</p>
+                  <p className="text-2xl md:text-3xl font-bold tracking-tight leading-snug">
+                    좋은 질문에서
+                    <br />
+                    좋은 서비스가 시작됩니다<span className="text-accent">.</span>
+                  </p>
+                </div>
+                <div className="flex flex-col items-start md:items-end gap-2.5 text-sm">
+                  <a
+                    href="mailto:ruchia916@naver.com"
+                    className="text-ink-soft hover:text-accent font-medium transition-colors"
+                  >
+                    ruchia916@naver.com
+                  </a>
+                  <a
+                    href="https://github.com/mae916"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-ink-soft hover:text-accent font-medium transition-colors"
+                  >
+                    github.com/mae916
+                  </a>
+                  <Link href="/contact" className="btn btn-primary !py-2.5 mt-1.5">
+                    문의 보내기
+                  </Link>
+                </div>
               </div>
             </div>
 
             {/* Copyright */}
-            <div className="mt-12 pt-8 border-t border-dark-200 text-center">
-              <p className="text-sm text-muted">
-                &copy; {new Date().getFullYear()} Kim Hyejin. All rights reserved.
+            <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-3">
+              <p className="text-tiny text-muted">
+                Kim Hyejin — Full-stack Developer, Incheon
+              </p>
+              <p className="text-tiny text-muted">
+                &copy; {new Date().getFullYear()} All rights reserved
               </p>
             </div>
           </footer>

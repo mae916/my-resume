@@ -93,7 +93,7 @@ export default function SkyCompanyPage() {
       {/* Back Button */}
       <Link
         href="/project"
-        className="inline-flex items-center gap-2 text-muted hover:text-light transition-colors mb-8"
+        className="inline-flex items-center gap-2 text-muted hover:text-ink transition-colors mb-8"
       >
         <ArrowLeft size={16} />
         <span className="text-sm font-medium">프로젝트 목록</span>
@@ -105,7 +105,7 @@ export default function SkyCompanyPage() {
           <p className="text-accent text-sm font-medium tracking-widest uppercase mb-3">
             Memorial Platform
           </p>
-          <h1 className="text-4xl lg:text-5xl font-bold text-light mb-3">
+          <h1 className="text-4xl lg:text-5xl font-bold text-ink mb-3">
             하늘위컴퍼니
           </h1>
           <p className="text-muted text-lg">
@@ -135,7 +135,7 @@ export default function SkyCompanyPage() {
       </div>
 
       {/* Main Screenshot */}
-      <div className="relative aspect-video rounded-2xl overflow-hidden border border-dark-200 mb-10">
+      <div className="relative aspect-video rounded-2xl overflow-hidden border border-line mb-10">
         <Image
           src="/images/project/skycompany.png"
           alt="하늘위컴퍼니 디지털 추모관 메인 화면"
@@ -148,7 +148,7 @@ export default function SkyCompanyPage() {
       {/* Project Info */}
       <div className="grid lg:grid-cols-2 gap-6 mb-16">
         <div className="card">
-          <h2 className="text-lg font-semibold text-light mb-4">
+          <h2 className="text-lg font-semibold text-ink mb-4">
             프로젝트 개요
           </h2>
           <div className="space-y-3 text-sm">
@@ -163,14 +163,14 @@ export default function SkyCompanyPage() {
             ].map((item) => (
               <div key={item.label} className="flex gap-4">
                 <span className="text-muted min-w-[100px]">{item.label}</span>
-                <span className="font-medium text-light">{item.value}</span>
+                <span className="font-medium text-ink">{item.value}</span>
               </div>
             ))}
           </div>
         </div>
 
         <div className="card">
-          <h2 className="text-lg font-semibold text-light mb-4">핵심 지표</h2>
+          <h2 className="text-lg font-semibold text-ink mb-4">핵심 지표</h2>
           <ul className="space-y-2">
             {[
               'TypeScript 약 46,000줄 - 페이지 78개, 컴포넌트 89개, REST API 97개',
@@ -194,22 +194,22 @@ export default function SkyCompanyPage() {
 
       {/* Background */}
       <div className="card mb-16">
-        <h2 className="text-lg font-semibold text-light mb-4">프로젝트 배경</h2>
+        <h2 className="text-lg font-semibold text-ink mb-4">프로젝트 배경</h2>
         <div className="space-y-3 text-sm text-muted leading-relaxed">
           <p>
             하늘위컴퍼니는 고인(사람)과 반려동물을 위한
-            <span className="text-light"> 온라인 납골당/추모관 서비스</span>
+            <span className="text-ink"> 온라인 납골당/추모관 서비스</span>
             입니다. 사용자는 멤버십에 가입해 추모관을 개설하고, 꽃·편지·스티커를
             배치하는 디지털 추모실, 종교별 전통 제사상, 앨범/영상, AI 추모
             챗봇까지 이용할 수 있습니다.
           </p>
           <p>
             Figma 디자인 전환부터 백엔드·결제·알림 인프라·배포 파이프라인까지
-            <span className="text-light"> 전 과정을 1인 풀스택으로 수행</span>
+            <span className="text-ink"> 전 과정을 1인 풀스택으로 수행</span>
             했으며, 한국어/일본어 이중 언어와 장례식장 제휴 비즈니스 모델을
             지원합니다. 이후 펫 추모관을 런칭하면서 사람/펫 서비스를 re-export
             패턴과 basePath 추상화로 공유해
-            <span className="text-light"> 페이지 로직 중복 0줄</span>을
+            <span className="text-ink"> 페이지 로직 중복 0줄</span>을
             달성했습니다.
           </p>
         </div>
@@ -217,12 +217,12 @@ export default function SkyCompanyPage() {
 
       {/* Architecture */}
       <div className="card mb-16">
-        <h2 className="text-lg font-semibold text-light mb-4">
+        <h2 className="text-lg font-semibold text-ink mb-4">
           시스템 아키텍처
         </h2>
         <div className="grid md:grid-cols-2 gap-6 text-sm">
           <div>
-            <h3 className="font-medium text-light mb-2">
+            <h3 className="font-medium text-ink mb-2">
               단일 코드베이스, 3개 서비스
             </h3>
             <div className="space-y-1 text-muted">
@@ -234,7 +234,7 @@ export default function SkyCompanyPage() {
             </div>
           </div>
           <div>
-            <h3 className="font-medium text-light mb-2">운영 인프라</h3>
+            <h3 className="font-medium text-ink mb-2">운영 인프라</h3>
             <div className="space-y-1 text-muted">
               <p>1. EC2 + Docker Compose 3컨테이너 구성</p>
               <p>2. main 브랜치 push 시 자동 배포</p>
@@ -248,13 +248,13 @@ export default function SkyCompanyPage() {
 
       {/* Features */}
       <div>
-        <h2 className="text-2xl font-bold text-light text-center mb-10">
+        <h2 className="text-2xl font-bold text-ink text-center mb-10">
           주요 기능 및 기술
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((feature) => (
             <div key={feature.title} className="card group hover:border-accent/30">
-              <h3 className="text-base font-semibold text-light mb-2 group-hover:text-accent transition-colors">
+              <h3 className="text-base font-semibold text-ink mb-2 group-hover:text-accent transition-colors">
                 {feature.title}
               </h3>
               <p className="text-sm text-muted leading-relaxed">
@@ -267,7 +267,7 @@ export default function SkyCompanyPage() {
 
       {/* Tech Highlights */}
       <div className="mt-16">
-        <h2 className="text-2xl font-bold text-light text-center mb-10">
+        <h2 className="text-2xl font-bold text-ink text-center mb-10">
           기술적 하이라이트
         </h2>
         <div className="grid md:grid-cols-2 gap-4">
@@ -304,7 +304,7 @@ export default function SkyCompanyPage() {
             },
           ].map((item) => (
             <div key={item.title} className="card">
-              <h3 className="text-base font-semibold text-light mb-2">
+              <h3 className="text-base font-semibold text-ink mb-2">
                 {item.title}
               </h3>
               <p className="text-sm text-muted leading-relaxed">

@@ -67,7 +67,7 @@ export default function IBCPage() {
       {/* Back Button */}
       <Link
         href="/project"
-        className="inline-flex items-center gap-2 text-muted hover:text-light transition-colors mb-8"
+        className="inline-flex items-center gap-2 text-muted hover:text-ink transition-colors mb-8"
       >
         <ArrowLeft size={16} />
         <span className="text-sm font-medium">프로젝트 목록</span>
@@ -79,7 +79,7 @@ export default function IBCPage() {
           <p className="text-accent text-sm font-medium tracking-widest uppercase mb-3">
             Corporate Website
           </p>
-          <h1 className="text-4xl lg:text-5xl font-bold text-light mb-3">
+          <h1 className="text-4xl lg:text-5xl font-bold text-ink mb-3">
             IBC Group
           </h1>
           <p className="text-muted text-lg">
@@ -107,7 +107,7 @@ export default function IBCPage() {
       </div>
 
       {/* Main Screenshot */}
-      <div className="relative aspect-video rounded-2xl overflow-hidden border border-dark-200 mb-10">
+      <div className="relative aspect-video rounded-2xl overflow-hidden border border-line mb-10">
         <Image
           src="/images/project/ibc.png"
           alt="IBC Group 웹사이트 메인 화면"
@@ -120,7 +120,7 @@ export default function IBCPage() {
       {/* Project Info */}
       <div className="grid lg:grid-cols-2 gap-6 mb-16">
         <div className="card">
-          <h2 className="text-lg font-semibold text-light mb-4">프로젝트 개요</h2>
+          <h2 className="text-lg font-semibold text-ink mb-4">프로젝트 개요</h2>
           <div className="space-y-3 text-sm">
             {[
               { label: '참여 기간', value: '2025.09 - 2025.10' },
@@ -130,14 +130,14 @@ export default function IBCPage() {
             ].map((item) => (
               <div key={item.label} className="flex gap-4">
                 <span className="text-muted min-w-[100px]">{item.label}</span>
-                <span className="font-medium text-light">{item.value}</span>
+                <span className="font-medium text-ink">{item.value}</span>
               </div>
             ))}
           </div>
         </div>
 
         <div className="card">
-          <h2 className="text-lg font-semibold text-light mb-4">페이지 구성</h2>
+          <h2 className="text-lg font-semibold text-ink mb-4">페이지 구성</h2>
           <ul className="grid grid-cols-1 gap-2">
             {sections.map((section) => (
               <li key={section} className="flex items-start gap-2 text-sm text-muted">
@@ -151,11 +151,11 @@ export default function IBCPage() {
 
       {/* Features */}
       <div>
-        <h2 className="text-2xl font-bold text-light text-center mb-10">주요 기술 구현</h2>
+        <h2 className="text-2xl font-bold text-ink text-center mb-10">주요 기술 구현</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((feature) => (
             <div key={feature.title} className="card group hover:border-accent/30">
-              <h3 className="text-base font-semibold text-light mb-2 group-hover:text-accent transition-colors">
+              <h3 className="text-base font-semibold text-ink mb-2 group-hover:text-accent transition-colors">
                 {feature.title}
               </h3>
               <p className="text-sm text-muted leading-relaxed">

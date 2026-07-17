@@ -57,7 +57,7 @@ export default function ESGablePage() {
       {/* Back Button */}
       <Link
         href="/project"
-        className="inline-flex items-center gap-2 text-muted hover:text-light transition-colors mb-8"
+        className="inline-flex items-center gap-2 text-muted hover:text-ink transition-colors mb-8"
       >
         <ArrowLeft size={16} />
         <span className="text-sm font-medium">프로젝트 목록</span>
@@ -68,7 +68,7 @@ export default function ESGablePage() {
         <p className="text-accent text-sm font-medium tracking-widest uppercase mb-3">
           B2B SaaS Platform
         </p>
-        <h1 className="text-4xl lg:text-5xl font-bold text-light mb-3">
+        <h1 className="text-4xl lg:text-5xl font-bold text-ink mb-3">
           ESGable
         </h1>
         <p className="text-muted text-lg">
@@ -88,7 +88,7 @@ export default function ESGablePage() {
       {/* Project Info */}
       <div className="grid lg:grid-cols-2 gap-6 mb-16">
         <div className="card">
-          <h2 className="text-lg font-semibold text-light mb-4">프로젝트 개요</h2>
+          <h2 className="text-lg font-semibold text-ink mb-4">프로젝트 개요</h2>
           <div className="space-y-3 text-sm">
             {[
               { label: '참여 기간', value: '2025.07 - 2025.12' },
@@ -98,14 +98,14 @@ export default function ESGablePage() {
             ].map((item) => (
               <div key={item.label} className="flex gap-4">
                 <span className="text-muted min-w-[100px]">{item.label}</span>
-                <span className="font-medium text-light">{item.value}</span>
+                <span className="font-medium text-ink">{item.value}</span>
               </div>
             ))}
           </div>
         </div>
 
         <div className="card">
-          <h2 className="text-lg font-semibold text-light mb-4">주요 담당 업무</h2>
+          <h2 className="text-lg font-semibold text-ink mb-4">주요 담당 업무</h2>
           <ul className="space-y-2">
             {[
               'Vue.js 3 기반 프론트엔드 아키텍처 설계 및 개발',
@@ -126,7 +126,7 @@ export default function ESGablePage() {
 
       {/* Features */}
       <div>
-        <h2 className="text-2xl font-bold text-light text-center mb-12">주요 기능</h2>
+        <h2 className="text-2xl font-bold text-ink text-center mb-12">주요 기능</h2>
         <div className="space-y-20">
           {features.map((feature, index) => (
             <div
@@ -137,7 +137,7 @@ export default function ESGablePage() {
             >
               {/* Image */}
               <div className="lg:w-1/2">
-                <div className="relative aspect-video rounded-2xl overflow-hidden border border-dark-200">
+                <div className="relative aspect-video rounded-2xl overflow-hidden border border-line">
                   <Image
                     src={feature.image}
                     alt={feature.title}
@@ -149,7 +149,7 @@ export default function ESGablePage() {
 
               {/* Content */}
               <div className="lg:w-1/2 space-y-4">
-                <h3 className="text-xl font-bold text-light">
+                <h3 className="text-xl font-bold text-ink">
                   {feature.title}
                 </h3>
                 <p className="text-muted leading-relaxed">

@@ -3,7 +3,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { projectList } from '@/data/projects';
 import { externalLinkProps } from '@/lib/utils';
-import { ArrowUpRight, ExternalLink, Github } from 'lucide-react';
+import {
+  ExternalLink,
+  Github,
+  ChevronLeft,
+  ChevronRight,
+  Lock,
+  Share,
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   title: '프로젝트 포트폴리오',
@@ -17,84 +24,99 @@ export const metadata: Metadata = {
 
 export default function Project() {
   return (
-    <section className="section" aria-labelledby="project-title">
+    <section className="section !pt-10 lg:!pt-14" aria-labelledby="project-title">
       {/* Header */}
-      <div className="mb-16">
-        <p className="text-accent text-sm font-medium tracking-widest uppercase mb-3">
-          Portfolio
-        </p>
-        <h1 id="project-title" className="text-4xl lg:text-5xl font-bold text-light mb-4">
-          Projects
+      <header className="mb-12">
+        <p className="eyebrow mb-3">Portfolio</p>
+        <h1
+          id="project-title"
+          className="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4"
+        >
+          Projects<span className="text-accent">.</span>
         </h1>
-        <p className="text-muted text-lg max-w-xl">
+        <p className="text-ink-soft text-lg max-w-xl">
           실무에서 진행한 프로젝트와 개인 사이드 프로젝트입니다.
         </p>
-      </div>
+      </header>
 
-      {/* Project Grid */}
-      <div className="grid gap-8 md:grid-cols-2">
+      {/* Project Grid - macOS 윈도우 카드 */}
+      <div className="grid md:grid-cols-2 gap-6">
         {projectList.map((project, index) => {
           const isInternal = project.link.startsWith('/');
+          const [name, subtitle] = project.title.split(' - ');
 
           const CardContent = (
-            <article className="group h-full card p-0 overflow-hidden hover:border-accent/30">
-              {/* Image */}
-              <div className="relative overflow-hidden">
-                <Image
-                  width={800}
-                  height={450}
-                  src={project.image}
-                  alt={`${project.title} 프로젝트`}
-                  className="object-cover object-left-top w-full h-[220px] lg:h-[260px] group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="flex items-center gap-2 text-light font-medium">
-                    View Project
-                    <ArrowUpRight size={18} />
+            <article className="group mac-window h-full hover:-translate-y-1 transition-all duration-300 animate-fade-up flex flex-col"
+              style={{ animationDelay: `${index * 80}ms` }}
+            >
+              {/* Safari 스타일 툴바 */}
+              <div className="flex items-center gap-2 px-3.5 h-10 bg-paper border-b border-black/[0.06]">
+                <span className="flex gap-1.5 shrink-0">
+                  <span className="mac-dot bg-ios-red" />
+                  <span className="mac-dot bg-ios-yellow" />
+                  <span className="mac-dot bg-ios-green" />
+                </span>
+                <span className="hidden sm:flex items-center gap-0.5 text-paper-200 shrink-0">
+                  <ChevronLeft size={15} className="text-muted" />
+                  <ChevronRight size={15} />
+                </span>
+                <span className="flex-1 flex items-center justify-center gap-1.5 bg-white rounded-lg py-1 text-tiny text-muted font-medium border border-black/[0.04] truncate px-3">
+                  <Lock size={9} className="shrink-0" />
+                  <span className="truncate">
+                    {String(index + 1).padStart(2, '0')} — {name}
                   </span>
-                </div>
+                </span>
+                <Share
+                  size={13}
+                  className="text-muted group-hover:text-accent transition-colors shrink-0"
+                />
+              </div>
+
+              {/* Screenshot */}
+              <div className="relative overflow-hidden aspect-[16/9]">
+                <Image
+                  fill
+                  src={project.image}
+                  alt={`${name} 프로젝트`}
+                  sizes="(min-width: 768px) 480px, 100vw"
+                  className="object-cover object-top group-hover:scale-[1.03] transition-transform duration-500"
+                />
               </div>
 
               {/* Content */}
-              <div className="p-6">
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
+              <div className="p-5 flex-1 flex flex-col">
+                <h2 className="text-lg font-bold text-ink group-hover:text-accent transition-colors">
+                  {name}
+                </h2>
+                {subtitle && (
+                  <p className="mt-0.5 text-sm font-medium text-muted">
+                    {subtitle}
+                  </p>
+                )}
+                <p className="mt-2.5 text-sm text-ink-soft leading-relaxed line-clamp-2">
+                  {project.description}
+                </p>
+                <div className="mt-auto pt-4 flex flex-wrap gap-1.5">
                   {project.tags.slice(0, 4).map((tag) => (
-                    <span key={tag} className="tag text-xs">
+                    <span key={tag} className="tag">
                       {tag}
                     </span>
                   ))}
                   {project.tags.length > 4 && (
-                    <span className="tag text-xs">+{project.tags.length - 4}</span>
+                    <span className="tag">+{project.tags.length - 4}</span>
                   )}
                 </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-bold text-light mb-2 group-hover:text-accent transition-colors">
-                  {project.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-sm text-muted leading-relaxed line-clamp-2">
-                  {project.description}
-                </p>
               </div>
             </article>
           );
 
           return (
-            <div
-              key={project.title}
-              className="animate-fade-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
+            <div key={project.title}>
               {isInternal ? (
                 <Link
                   href={project.link}
                   className="block h-full"
-                  aria-label={`${project.title} 상세 보기`}
+                  aria-label={`${name} 상세 보기`}
                 >
                   {CardContent}
                 </Link>
@@ -103,7 +125,7 @@ export default function Project() {
                   href={project.link}
                   {...externalLinkProps}
                   className="block h-full"
-                  aria-label={`${project.title} GitHub 방문`}
+                  aria-label={`${name} GitHub 방문`}
                 >
                   {CardContent}
                 </a>
@@ -114,19 +136,17 @@ export default function Project() {
       </div>
 
       {/* GitHub CTA */}
-      <div className="mt-16 text-center">
-        <p className="text-muted mb-4">
-          더 많은 프로젝트는 GitHub에서 확인하세요
-        </p>
+      <div className="mt-14 flex flex-col items-center gap-4">
+        <p className="text-muted text-sm">더 많은 프로젝트는 GitHub에서 확인하세요</p>
         <a
           href="https://github.com/mae916"
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-outline"
         >
-          <Github size={18} />
+          <Github size={16} />
           <span>View GitHub</span>
-          <ExternalLink size={14} />
+          <ExternalLink size={13} />
         </a>
       </div>
     </section>

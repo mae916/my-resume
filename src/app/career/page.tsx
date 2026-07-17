@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
-import { Briefcase, Calendar, MapPin } from 'lucide-react';
-import type { WorkItem } from '@/types';
-import { workData } from '@/data/career';
+import type { WorkItem, EducationItem } from '@/types';
+import { workData, educationData } from '@/data/career';
 import { getYearsOfExperienceLabel } from '@/lib/career';
 
 export const metadata: Metadata = {
@@ -14,100 +13,126 @@ export const metadata: Metadata = {
   },
 };
 
+const tints = ['bg-paper-100', 'bg-paper-100', 'bg-paper-100', 'bg-paper-100'];
+
 export default function Career() {
   return (
-    <section className="section" aria-labelledby="career-title">
+    <section className="section !pt-10 lg:!pt-14" aria-labelledby="career-title">
       {/* Header */}
-      <div className="mb-16">
-        <p className="text-accent text-sm font-medium tracking-widest uppercase mb-3">
-          Experience
-        </p>
-        <h1 id="career-title" className="text-4xl lg:text-5xl font-bold text-light mb-4">
-          Career
+      <header className="mb-12">
+        <p className="eyebrow mb-3">Experience</p>
+        <h1
+          id="career-title"
+          className="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4"
+        >
+          Career<span className="text-accent">.</span>
         </h1>
-        <p className="text-muted text-lg max-w-xl">
-          프론트엔드 개발자로서의 경력과 성장 과정입니다.
+        <p className="text-ink-soft text-lg max-w-xl">
+          개발자로서의 경력과 성장 과정입니다.
         </p>
-      </div>
+      </header>
 
-      {/* Timeline */}
-      <div className="relative">
-        {/* Vertical Line */}
-        <div
-          className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-dark-200 md:-translate-x-px"
-          aria-hidden="true"
-        />
+      {/* Work - 알림 스택 스타일 */}
+      <div className="space-y-5 max-w-3xl">
+        {workData.map((item: WorkItem, idx: number) => (
+          <article
+            key={idx}
+            className="card !p-6 md:!p-7 animate-fade-up"
+            style={{ animationDelay: `${idx * 100}ms` }}
+          >
+            <div className="flex items-start gap-4">
+              {/* 앱 아이콘 */}
+              <span
+                className={`shrink-0 flex items-center justify-center w-12 h-12 rounded-[14px] ${tints[idx % tints.length]} border border-black/[0.05] text-lg font-bold`}
+                aria-hidden="true"
+              >
+                {item.company.slice(0, 1)}
+              </span>
 
-        {/* Timeline Items */}
-        <div className="space-y-12">
-          {workData.map((item: WorkItem, idx: number) => (
-            <div
-              key={idx}
-              className={`relative flex flex-col md:flex-row gap-8 ${
-                idx % 2 === 0 ? 'md:flex-row-reverse' : ''
-              }`}
-            >
-              {/* Timeline Dot */}
-              <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-dark border-4 border-accent rounded-full -translate-x-[7px] md:-translate-x-1/2 z-10" />
-
-              {/* Content */}
-              <div className={`flex-1 pl-8 md:pl-0 ${idx % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
-                <div className="card group hover:border-accent/30">
-                  {/* Period Badge */}
-                  <div className={`flex items-center gap-2 mb-4 ${idx % 2 === 0 ? 'md:justify-end' : ''}`}>
-                    <Calendar size={14} className="text-accent" />
-                    <span className="text-sm font-medium text-accent">
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+                  <h2 className="text-lg md:text-xl font-bold text-ink">
+                    {item.company}
+                  </h2>
+                  <span className="flex items-center gap-2.5">
+                    <span className="text-tiny font-medium text-muted bg-paper rounded-full px-2.5 py-1 border border-black/[0.05]">
                       {item.period}
                     </span>
-                  </div>
-
-                  {/* Company */}
-                  <h3 className="text-xl font-bold text-light mb-2 group-hover:text-accent transition-colors">
-                    {item.company}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-muted leading-relaxed">
-                    {item.desc}
-                  </p>
-
-                  {/* Tags (if exists) */}
-                  {item.tags && (
-                    <div className={`flex flex-wrap gap-2 mt-4 ${idx % 2 === 0 ? 'md:justify-end' : ''}`}>
-                      {item.tags.map((tag: string) => (
-                        <span key={tag} className="tag text-xs">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
+                    {/* iOS 토글 - 재직 여부 */}
+                    <span
+                      className={`ios-toggle ${item.period.includes('현재') ? 'on' : 'off'}`}
+                      role="img"
+                      aria-label={item.period.includes('현재') ? '재직 중' : '퇴사'}
+                      title={item.period.includes('현재') ? '재직 중' : '근무 종료'}
+                    />
+                  </span>
                 </div>
+                <p className="mt-3 text-sm md:text-[15px] text-ink-soft leading-[1.8]">
+                  {item.desc}
+                </p>
+                {item.tags && (
+                  <div className="flex flex-wrap gap-1.5 mt-4">
+                    {item.tags.map((tag: string) => (
+                      <span key={tag} className="tag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
-
-              {/* Spacer for alternating layout */}
-              <div className="hidden md:block flex-1" />
             </div>
-          ))}
-        </div>
+          </article>
+        ))}
       </div>
 
-      {/* Summary Stats */}
-      <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* Summary Stats - 위젯 */}
+      <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
           { value: getYearsOfExperienceLabel(), label: '년 경력' },
           { value: '10+', label: '프로젝트' },
           { value: '5+', label: '협업 기업' },
-          { value: '100%', label: '열정' },
+          { value: '4', label: '운영 중 서비스' },
         ].map((stat) => (
-          <div key={stat.label} className="card text-center py-6">
-            <p className="text-2xl lg:text-3xl font-bold text-accent mb-1">
-              {stat.value}
-            </p>
-            <p className="text-xs text-muted uppercase tracking-wide">
-              {stat.label}
-            </p>
+          <div
+            key={stat.label}
+            className="bg-white rounded-2xl border border-black/[0.06] shadow-widget p-6 min-h-[110px] flex flex-col justify-between"
+          >
+            <p className="text-3xl font-extrabold tracking-tight">{stat.value}</p>
+            <p className="text-sm text-ink-soft font-medium mt-1">{stat.label}</p>
           </div>
         ))}
+      </div>
+
+      {/* Education - 리스트 윈도우 */}
+      <div className="mt-16 max-w-3xl">
+        <div className="mb-6">
+          <p className="eyebrow mb-2">Education</p>
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight">교육 이수</h2>
+        </div>
+        <div className="mac-window">
+          <div className="mac-titlebar">
+            <span className="mac-dot bg-ios-red" />
+            <span className="mac-dot bg-ios-yellow" />
+            <span className="mac-dot bg-ios-green" />
+            <span className="mac-title">education.list</span>
+          </div>
+          <ul className="divide-y divide-black/[0.05]">
+            {educationData.map((item: EducationItem, idx: number) => (
+              <li
+                key={idx}
+                className="px-5 md:px-6 py-4 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-5 hover:bg-paper/60 transition-colors"
+              >
+                <span className="shrink-0 text-tiny font-medium text-muted w-[130px]">
+                  {item.period}
+                </span>
+                <span className="text-sm font-semibold text-ink whitespace-nowrap">
+                  {item.school}
+                </span>
+                <span className="text-sm text-ink-soft">{item.major}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

@@ -71,7 +71,7 @@ export default function JagangPage() {
       {/* Back Button */}
       <Link
         href="/project"
-        className="inline-flex items-center gap-2 text-muted hover:text-light transition-colors mb-8"
+        className="inline-flex items-center gap-2 text-muted hover:text-ink transition-colors mb-8"
       >
         <ArrowLeft size={16} />
         <span className="text-sm font-medium">프로젝트 목록</span>
@@ -83,7 +83,7 @@ export default function JagangPage() {
           <p className="text-accent text-sm font-medium tracking-widest uppercase mb-3">
             Profile Website
           </p>
-          <h1 className="text-4xl lg:text-5xl font-bold text-light mb-3">
+          <h1 className="text-4xl lg:text-5xl font-bold text-ink mb-3">
             보험 설계사 소개
           </h1>
           <p className="text-muted text-lg">
@@ -122,7 +122,7 @@ export default function JagangPage() {
       </div>
 
       {/* Main Screenshot */}
-      <div className="relative aspect-video rounded-2xl overflow-hidden border border-dark-200 mb-10">
+      <div className="relative aspect-video rounded-2xl overflow-hidden border border-line mb-10">
         <Image
           src="/images/project/jagang.png"
           alt="보험 설계사 소개 웹사이트 메인 화면"
@@ -135,7 +135,7 @@ export default function JagangPage() {
       {/* Project Info */}
       <div className="grid lg:grid-cols-2 gap-6 mb-16">
         <div className="card">
-          <h2 className="text-lg font-semibold text-light mb-4">
+          <h2 className="text-lg font-semibold text-ink mb-4">
             프로젝트 개요
           </h2>
           <div className="space-y-3 text-sm">
@@ -150,14 +150,14 @@ export default function JagangPage() {
             ].map((item) => (
               <div key={item.label} className="flex gap-4">
                 <span className="text-muted min-w-[100px]">{item.label}</span>
-                <span className="font-medium text-light">{item.value}</span>
+                <span className="font-medium text-ink">{item.value}</span>
               </div>
             ))}
           </div>
         </div>
 
         <div className="card">
-          <h2 className="text-lg font-semibold text-light mb-4">페이지 구성</h2>
+          <h2 className="text-lg font-semibold text-ink mb-4">페이지 구성</h2>
           <ul className="grid grid-cols-1 gap-2">
             {sections.map((section) => (
               <li
@@ -174,12 +174,12 @@ export default function JagangPage() {
 
       {/* Background */}
       <div className="card mb-16">
-        <h2 className="text-lg font-semibold text-light mb-4">프로젝트 배경</h2>
+        <h2 className="text-lg font-semibold text-ink mb-4">프로젝트 배경</h2>
         <div className="space-y-3 text-sm text-muted leading-relaxed">
           <p>
             지인 보험설계사의 요청으로 시작한 프로젝트입니다. 기존에는
             명함만으로 고객에게 정보를 전달했지만,
-            <span className="text-light">
+            <span className="text-ink">
               {' '}
               QR코드를 통해 접근할 수 있는 디지털 프로필 페이지
             </span>
@@ -189,7 +189,7 @@ export default function JagangPage() {
             고객이 명함의 QR코드를 스캔하면 설계사의 프로필, 전문 분야, 실제
             보험 사례를 한눈에 확인하고, 바로 카카오톡이나 전화로 상담을 요청할
             수 있습니다.
-            <span className="text-light"> 실제로 운영 중인 서비스</span>로, 고객
+            <span className="text-ink"> 실제로 운영 중인 서비스</span>로, 고객
             상담 전환율 향상에 기여하고 있습니다.
           </p>
         </div>
@@ -197,7 +197,7 @@ export default function JagangPage() {
 
       {/* Features */}
       <div>
-        <h2 className="text-2xl font-bold text-light text-center mb-10">
+        <h2 className="text-2xl font-bold text-ink text-center mb-10">
           주요 기능 및 기술
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -206,7 +206,7 @@ export default function JagangPage() {
               key={feature.title}
               className="card group hover:border-accent/30"
             >
-              <h3 className="text-base font-semibold text-light mb-2 group-hover:text-accent transition-colors">
+              <h3 className="text-base font-semibold text-ink mb-2 group-hover:text-accent transition-colors">
                 {feature.title}
               </h3>
               <p className="text-sm text-muted leading-relaxed">

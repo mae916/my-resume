@@ -83,7 +83,7 @@ export default function QuaiPage() {
       {/* Back Button */}
       <Link
         href="/project"
-        className="inline-flex items-center gap-2 text-muted hover:text-light transition-colors mb-8"
+        className="inline-flex items-center gap-2 text-muted hover:text-ink transition-colors mb-8"
       >
         <ArrowLeft size={16} />
         <span className="text-sm font-medium">프로젝트 목록</span>
@@ -95,7 +95,7 @@ export default function QuaiPage() {
           <p className="text-accent text-sm font-medium tracking-widest uppercase mb-3">
             AI SaaS Platform
           </p>
-          <h1 className="text-4xl lg:text-5xl font-bold text-light mb-3">
+          <h1 className="text-4xl lg:text-5xl font-bold text-ink mb-3">
             Quai
           </h1>
           <p className="text-muted text-lg">
@@ -125,7 +125,7 @@ export default function QuaiPage() {
       </div>
 
       {/* Main Screenshot */}
-      <div className="relative aspect-video rounded-2xl overflow-hidden border border-dark-200 mb-10">
+      <div className="relative aspect-video rounded-2xl overflow-hidden border border-line mb-10">
         <Image
           src="/images/project/quai.png"
           alt="Quai 메인 화면 - 복잡한 견적, 쿼이가 해결!"
@@ -138,7 +138,7 @@ export default function QuaiPage() {
       {/* Project Info */}
       <div className="grid lg:grid-cols-2 gap-6 mb-16">
         <div className="card">
-          <h2 className="text-lg font-semibold text-light mb-4">
+          <h2 className="text-lg font-semibold text-ink mb-4">
             프로젝트 개요
           </h2>
           <div className="space-y-3 text-sm">
@@ -153,14 +153,14 @@ export default function QuaiPage() {
             ].map((item) => (
               <div key={item.label} className="flex gap-4">
                 <span className="text-muted min-w-[100px]">{item.label}</span>
-                <span className="font-medium text-light">{item.value}</span>
+                <span className="font-medium text-ink">{item.value}</span>
               </div>
             ))}
           </div>
         </div>
 
         <div className="card">
-          <h2 className="text-lg font-semibold text-light mb-4">핵심 지표</h2>
+          <h2 className="text-lg font-semibold text-ink mb-4">핵심 지표</h2>
           <ul className="space-y-2">
             {[
               '공급자: AI로 3분 만에 견적서 생성 및 공유 링크 발송',
@@ -184,13 +184,13 @@ export default function QuaiPage() {
 
       {/* Background */}
       <div className="card mb-16">
-        <h2 className="text-lg font-semibold text-light mb-4">
+        <h2 className="text-lg font-semibold text-ink mb-4">
           프로젝트 배경
         </h2>
         <div className="space-y-3 text-sm text-muted leading-relaxed">
           <p>
             인테리어, 청소, IT 개발 등 다양한 서비스 분야에서
-            <span className="text-light">
+            <span className="text-ink">
               {' '}
               견적서 작성은 시간이 오래 걸리고, 받는 입장에서는 적정 가격인지
               판단하기 어려운 문제
@@ -199,12 +199,12 @@ export default function QuaiPage() {
           </p>
           <p>
             Quai는 이 양쪽의 문제를 동시에 해결합니다.
-            <span className="text-light">
+            <span className="text-ink">
               {' '}
               공급자에게는 AI가 업종과 조건에 맞는 견적서를 자동 생성
             </span>
             해주고,
-            <span className="text-light">
+            <span className="text-ink">
               {' '}
               소비자에게는 받은 견적서의 항목별 적정가를 AI가 분석
             </span>
@@ -213,7 +213,7 @@ export default function QuaiPage() {
           </p>
           <p>
             기획부터 디자인, 풀스택 개발, 인프라, 운영까지
-            <span className="text-light"> 1인 전담으로 진행한 SaaS 프로젝트</span>
+            <span className="text-ink"> 1인 전담으로 진행한 SaaS 프로젝트</span>
             로, Supabase를 활용한 인증/DB/실시간 구독부터 토스페이먼츠 결제
             연동, AWS SES 이메일 발송, Sentry 모니터링까지 프로덕션 레벨의
             서비스를 구축했습니다.
@@ -223,12 +223,12 @@ export default function QuaiPage() {
 
       {/* Architecture */}
       <div className="card mb-16">
-        <h2 className="text-lg font-semibold text-light mb-4">
+        <h2 className="text-lg font-semibold text-ink mb-4">
           시스템 아키텍처
         </h2>
         <div className="grid md:grid-cols-2 gap-6 text-sm">
           <div>
-            <h3 className="font-medium text-light mb-2">공급자 플로우</h3>
+            <h3 className="font-medium text-ink mb-2">공급자 플로우</h3>
             <div className="space-y-1 text-muted">
               <p>1. 카카오/구글 소셜 로그인</p>
               <p>2. 업종 선택 (10개 카테고리)</p>
@@ -239,7 +239,7 @@ export default function QuaiPage() {
             </div>
           </div>
           <div>
-            <h3 className="font-medium text-light mb-2">소비자 플로우</h3>
+            <h3 className="font-medium text-ink mb-2">소비자 플로우</h3>
             <div className="space-y-1 text-muted">
               <p>1. 견적 코드 입력 또는 견적 내용 직접 입력</p>
               <p>2. AI가 항목별 시장 가격 비교 분석</p>
@@ -253,7 +253,7 @@ export default function QuaiPage() {
 
       {/* Features */}
       <div>
-        <h2 className="text-2xl font-bold text-light text-center mb-10">
+        <h2 className="text-2xl font-bold text-ink text-center mb-10">
           주요 기능 및 기술
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -262,7 +262,7 @@ export default function QuaiPage() {
               key={feature.title}
               className="card group hover:border-accent/30"
             >
-              <h3 className="text-base font-semibold text-light mb-2 group-hover:text-accent transition-colors">
+              <h3 className="text-base font-semibold text-ink mb-2 group-hover:text-accent transition-colors">
                 {feature.title}
               </h3>
               <p className="text-sm text-muted leading-relaxed">
@@ -275,7 +275,7 @@ export default function QuaiPage() {
 
       {/* Tech Highlights */}
       <div className="mt-16">
-        <h2 className="text-2xl font-bold text-light text-center mb-10">
+        <h2 className="text-2xl font-bold text-ink text-center mb-10">
           기술적 하이라이트
         </h2>
         <div className="grid md:grid-cols-2 gap-4">
@@ -302,7 +302,7 @@ export default function QuaiPage() {
             },
           ].map((item) => (
             <div key={item.title} className="card">
-              <h3 className="text-base font-semibold text-light mb-2">
+              <h3 className="text-base font-semibold text-ink mb-2">
                 {item.title}
               </h3>
               <p className="text-sm text-muted leading-relaxed">

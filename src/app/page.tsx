@@ -1,194 +1,233 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { hashTags } from '@/data/navigation';
+import { projectList } from '@/data/projects';
 import { externalLinkProps } from '@/lib/utils';
 import { getYearsOfExperienceLabel } from '@/lib/career';
 import profileImg from '@/../public/images/profile.jpg';
-import { ArrowUpRight, Github, Mail, ChevronDown } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, MousePointer2 } from 'lucide-react';
 
 export default function Home() {
+  const selectedWork = projectList.slice(0, 4);
+
   return (
     <div className="relative">
       {/* Hero Section */}
-      <section className="min-h-[90vh] flex flex-col justify-center relative">
-        {/* Background Grid Pattern */}
-        <div className="absolute inset-0 grid-pattern opacity-50" />
+      <section className="pt-8 md:pt-16 pb-16 md:pb-20 relative">
+        <div className="absolute inset-0 grid-pattern -mx-8" aria-hidden="true" />
 
-        <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-20 py-16">
-          {/* Profile Image */}
-          <div className="relative group">
-            {/* Glow Effect */}
-            <div className="absolute -inset-1 bg-accent/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-            <div className="relative">
-              <Image
-                width={400}
-                height={480}
-                src={profileImg}
-                alt="프론트엔드 개발자 김혜진"
-                className="w-[280px] h-[340px] lg:w-[380px] lg:h-[460px] object-cover object-top rounded-2xl border border-dark-200"
-                priority
-                placeholder="blur"
-              />
-
-              {/* Status Badge */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-dark-100 border border-dark-200 rounded-full">
-                <div className="flex items-center gap-2 text-sm">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-                  </span>
-                  <span className="text-light-200">Available for work</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 text-center lg:text-left">
-            {/* Eyebrow */}
-            <p className="text-muted text-sm font-medium tracking-widest uppercase mb-4 animate-fade-up">
-              Frontend Developer
+        <div className="relative grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+          {/* Text */}
+          <div className="lg:col-span-7">
+            <p className="eyebrow mb-6 animate-fade-up">
+              Full-stack Developer — Incheon
             </p>
 
-            {/* Main Heading */}
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-light leading-[1.1] tracking-tight mb-6">
+            <h1 className="text-5xl md:text-6xl xl:text-[4.25rem] font-extrabold tracking-[-0.03em] leading-[1.08] mb-7">
               <span className="block animate-fade-up">
                 기능보다 <span className="text-accent">이유</span>를
               </span>
               <span className="block animate-fade-up delay-100">
-                먼저 묻는 개발자
+                먼저 묻는 개발자<span className="text-accent">.</span>
               </span>
             </h1>
 
-            {/* Description */}
-            <p className="text-muted text-lg leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8 animate-fade-up delay-300">
-              사용자 경험을 고민하고, 문제의 본질을 파악하여
-              <br className="hidden lg:block" />
-              더 나은 서비스를 만들어갑니다.
+            <p className="text-ink-soft text-base md:text-lg leading-relaxed max-w-md mb-9 animate-fade-up delay-300">
+              사용자 경험을 고민하고 문제의 본질을 파악해,
+              <br className="hidden md:block" />
+              앱과 서버·인프라까지 직접 만들고 운영합니다.
             </p>
 
-            {/* Tags */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-10 animate-fade-up delay-400">
-              {hashTags.map((tag) => (
-                <span key={tag} className="tag">
-                  <span className="text-accent mr-1">#</span>
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-up delay-500">
+            <div className="flex flex-wrap items-center gap-3 animate-fade-up delay-400">
+              <Link href="/project" className="btn btn-primary group">
+                <span>프로젝트 보기</span>
+                <ArrowRight
+                  size={15}
+                  className="group-hover:translate-x-0.5 transition-transform"
+                />
+              </Link>
               <a
                 href="https://github.com/mae916"
                 {...externalLinkProps}
-                className="btn btn-primary w-full sm:w-auto"
+                className="btn btn-outline"
               >
-                <Github size={18} />
                 <span>GitHub</span>
                 <ArrowUpRight size={14} />
               </a>
-              <Link
-                href="/contact"
-                className="btn btn-outline w-full sm:w-auto"
-              >
-                <Mail size={18} />
-                <span>Contact</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted animate-bounce">
-          <span className="text-xs">Scroll</span>
-          <ChevronDown size={16} />
-        </div>
-      </section>
-
-      {/* About Section Preview */}
-      <section className="py-20 border-t border-dark-200">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* Left */}
-          <div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-light mb-6">
-              사용자 관점에서
-              <br />
-              <span className="text-muted">서비스를 설계합니다</span>
-            </h2>
-            <div className="space-y-4 text-muted leading-relaxed">
-              <p>
-                단순히 동작하는 코드보다,{' '}
-                <span className="text-light">왜 이렇게 구현해야 하는지</span>를 먼저 고민합니다.
-                사용자에게 더 나은 경험을 제공하는 것이 개발의 목적이라고 생각합니다.
-              </p>
-              <p>
-                궁금한 건 끝까지 파고들고, 모르는 건 찾아서 해결합니다.
-                퇴근 후에도 그날 마주친 문제를 복기하며 성장하는 개발자입니다.
-              </p>
             </div>
           </div>
 
-          {/* Right - Stats */}
-          <div className="grid grid-cols-2 gap-6">
-            {[
-              { number: getYearsOfExperienceLabel(), label: '년 경력' },
-              { number: '10+', label: '프로젝트' },
-              { number: 'React', label: 'Vue.js / Next.js' },
-              { number: 'TS', label: 'TypeScript' },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="card flex flex-col justify-center items-center text-center py-8"
-              >
-                <span className="text-3xl lg:text-4xl font-bold text-accent mb-2">
-                  {stat.number}
+          {/* Portrait - macOS 윈도우 */}
+          <div className="lg:col-span-5 animate-fade-up delay-200">
+            <div className="relative max-w-[340px] mx-auto lg:ml-auto lg:mr-0">
+              <div className="mac-window">
+                <div className="mac-titlebar">
+                  <span className="mac-dot bg-ios-red" />
+                  <span className="mac-dot bg-ios-yellow" />
+                  <span className="mac-dot bg-ios-green" />
+                  <span className="mac-title">profile.jpg</span>
+                </div>
+                <Image
+                  width={400}
+                  height={480}
+                  src={profileImg}
+                  alt="풀스택 개발자 김혜진"
+                  className="w-full aspect-[4/5] object-cover object-top"
+                  priority
+                  placeholder="blur"
+                />
+              </div>
+
+              {/* 커서 + 툴팁 스티커 */}
+              <div className="absolute -bottom-4 -left-6 md:-left-10 flex items-start gap-0.5">
+                <MousePointer2
+                  size={18}
+                  className="text-ink fill-white mt-4 drop-shadow"
+                />
+                <span className="ui-tooltip">김혜진 — Kim Hyejin</span>
+              </div>
+
+              {/* 상태 배지 */}
+              <div className="absolute -top-3 -right-2 md:-right-4 bg-white rounded-full border border-black/[0.06] shadow-widget px-3.5 py-2 flex items-center gap-2 text-xs font-medium">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-ios-green opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-ios-green" />
                 </span>
-                <span className="text-sm text-muted">{stat.label}</span>
+                Available for work
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Quick Links */}
-      <section className="py-20 border-t border-dark-200">
-        <div className="grid md:grid-cols-3 gap-4">
+      {/* Stats - 미니멀 위젯 */}
+      <section className="pb-16 md:pb-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            {
-              href: '/career',
-              title: 'Career',
-              desc: '경력 및 프로젝트 경험',
-            },
-            {
-              href: '/skills',
-              title: 'Skills',
-              desc: '기술 스택 및 역량',
-            },
-            {
-              href: '/project',
-              title: 'Projects',
-              desc: '포트폴리오',
-            },
-          ].map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="group card flex items-center justify-between p-6 hover:border-accent/50"
+            { number: getYearsOfExperienceLabel(), label: '년차 개발자' },
+            { number: '10+', label: '프로젝트 출시' },
+            { number: '4', label: '운영 중인 서비스' },
+            { number: 'A–Z', label: '앱 · 서버 · 인프라' },
+          ].map((stat) => (
+            <div
+              key={stat.label}
+              className="bg-white rounded-2xl border border-black/[0.06] shadow-widget p-6 flex flex-col justify-between min-h-[120px]"
             >
-              <div>
-                <h3 className="text-lg font-semibold text-light mb-1 group-hover:text-accent transition-colors">
-                  {link.title}
-                </h3>
-                <p className="text-sm text-muted">{link.desc}</p>
-              </div>
-              <ArrowUpRight
-                size={20}
-                className="text-muted group-hover:text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"
-              />
-            </Link>
+              <p className="text-3xl md:text-4xl font-extrabold tracking-tight">
+                {stat.number}
+              </p>
+              <p className="text-sm text-muted font-medium mt-2">{stat.label}</p>
+            </div>
           ))}
+        </div>
+      </section>
+
+      {/* Selected Work - 앱 윈도우 그리드 */}
+      <section className="pb-16 md:pb-20">
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <p className="eyebrow mb-2">Selected Work</p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+              대표 프로젝트
+            </h2>
+          </div>
+          <Link
+            href="/project"
+            className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-accent-hover"
+          >
+            전체 보기 <ArrowRight size={14} />
+          </Link>
+        </div>
+
+        {/* Finder 폴더 그리드 */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
+          {selectedWork.map((project) => {
+            const [name, subtitle] = project.title.split(' - ');
+            return (
+              <Link
+                key={project.title}
+                href={project.link}
+                className="group text-center"
+                aria-label={`${name} 상세 보기`}
+              >
+                <div className="folder mb-4">
+                  <div className="folder-back" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={project.image}
+                    alt=""
+                    aria-hidden="true"
+                    className="folder-photo"
+                    loading="lazy"
+                  />
+                  <div className="folder-front" />
+                </div>
+                <h3 className="text-[15px] font-semibold text-ink group-hover:text-accent transition-colors">
+                  {name}
+                </h3>
+                <p className="mt-0.5 text-xs text-muted truncate px-1">
+                  {subtitle ?? project.description}
+                </p>
+              </Link>
+            );
+          })}
+        </div>
+
+        <Link
+          href="/project"
+          className="sm:hidden mt-6 inline-flex items-center gap-1 text-sm font-semibold text-accent"
+        >
+          전체 프로젝트 보기 <ArrowRight size={14} />
+        </Link>
+      </section>
+
+      {/* About */}
+      <section className="pb-8">
+        <div className="card !p-8 md:!p-10">
+          <div className="grid lg:grid-cols-12 gap-8">
+            <div className="lg:col-span-4">
+              <p className="eyebrow mb-2">About</p>
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight leading-snug">
+                사용자 관점에서
+                <br />
+                서비스를 설계합니다
+              </h2>
+            </div>
+            <div className="lg:col-span-8">
+              <div className="space-y-4 text-ink-soft leading-[1.8]">
+                <p>
+                  단순히 동작하는 코드보다{' '}
+                  <span className="font-semibold text-ink">
+                    왜 이렇게 구현해야 하는지
+                  </span>
+                  를 먼저 고민합니다. 사용자에게 더 나은 경험을 제공하는 것이
+                  개발의 목적이라고 생각합니다.
+                </p>
+                <p>
+                  프론트엔드에서 출발해 지금은 모바일 앱, 백엔드, 인프라,
+                  운영까지 담당하는 풀스택 개발자로 일하고 있습니다.
+                </p>
+              </div>
+
+              {/* Quick Links */}
+              <div className="mt-8 flex flex-wrap gap-x-7 gap-y-3">
+                {[
+                  { href: '/career', label: 'Career' },
+                  { href: '/skills', label: 'Skills' },
+                  { href: '/qna', label: 'Q&A' },
+                  { href: '/contact', label: 'Contact' },
+                ].map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-accent-hover"
+                  >
+                    {link.label}
+                    <ArrowRight size={13} />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

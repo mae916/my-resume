@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { skills } from '@/data/skills';
-import { Code2, Layers, Server, Wrench } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: '기술 스택',
@@ -13,40 +12,40 @@ export const metadata: Metadata = {
   },
 };
 
-// 스킬 카테고리화
-const categories = [
-  { id: 'frontend', name: 'Frontend', icon: Code2 },
-  { id: 'backend', name: 'Backend', icon: Server },
-  { id: 'tools', name: 'Tools & Others', icon: Wrench },
-];
-
 export default function Skills() {
   return (
-    <section className="section" aria-labelledby="skills-title">
+    <section className="section !pt-10 lg:!pt-14" aria-labelledby="skills-title">
       {/* Header */}
-      <div className="mb-16">
-        <p className="text-accent text-sm font-medium tracking-widest uppercase mb-3">
-          Tech Stack
-        </p>
-        <h1 id="skills-title" className="text-4xl lg:text-5xl font-bold text-light mb-4">
-          Skills
+      <header className="mb-12">
+        <p className="eyebrow mb-3">Tech Stack</p>
+        <h1
+          id="skills-title"
+          className="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4"
+        >
+          Skills<span className="text-accent">.</span>
         </h1>
-        <p className="text-muted text-lg max-w-xl">
+        <p className="text-ink-soft text-lg max-w-xl">
           프로젝트에서 활용하는 주요 기술 스택입니다.
         </p>
-      </div>
+      </header>
 
-      {/* Skills Grid */}
-      <div className="grid md:grid-cols-2 gap-4">
-        {skills.map((skill, index) => (
-          <article
-            key={skill.name}
-            className="card group hover:border-accent/30 animate-fade-up"
-            style={{ animationDelay: `${index * 50}ms` }}
-          >
-            <div className="flex items-start gap-4">
-              {/* Icon */}
-              <div className="flex-shrink-0 p-3 rounded-xl bg-dark-200 border border-dark-300 group-hover:border-accent/30 transition-colors">
+      {/* Skills - App Store 리스트 */}
+      <div className="mac-window">
+        <div className="mac-titlebar">
+          <span className="mac-dot bg-ios-red" />
+          <span className="mac-dot bg-ios-yellow" />
+          <span className="mac-dot bg-ios-green" />
+          <span className="mac-title">App Store — 내 기술 스택</span>
+        </div>
+        <ul className="divide-y divide-black/[0.05]">
+          {skills.map((skill, index) => (
+            <li
+              key={skill.name}
+              className="group px-5 md:px-7 py-5 flex items-start gap-4 md:gap-5 hover:bg-paper/60 transition-colors animate-fade-up"
+              style={{ animationDelay: `${index * 50}ms` }}
+            >
+              {/* 앱 아이콘 타일 */}
+              <div className="shrink-0 flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-[16px] bg-paper border border-black/[0.06] shadow-chip group-hover:scale-105 transition-transform">
                 <Image
                   width={32}
                   height={32}
@@ -60,43 +59,59 @@ export default function Skills() {
 
               {/* Content */}
               <div className="flex-1 min-w-0">
-                <h3 className="text-lg font-semibold text-light group-hover:text-accent transition-colors">
-                  {skill.name}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
+                <div className="flex items-center justify-between gap-3">
+                  <h2 className="text-base md:text-lg font-bold text-ink">
+                    {skill.name}
+                  </h2>
+                  {/* GET 버튼 스타일 배지 */}
+                  <span className="shrink-0 text-[11px] md:text-xs font-bold text-accent bg-paper-100 group-hover:bg-accent group-hover:text-white transition-colors rounded-full px-3.5 py-1 uppercase tracking-wide">
+                    사용 중
+                  </span>
+                </div>
+                <p className="mt-1 text-sm leading-relaxed text-ink-soft max-w-2xl">
                   {skill.description}
                 </p>
               </div>
-            </div>
-          </article>
-        ))}
+            </li>
+          ))}
+        </ul>
       </div>
 
-      {/* Additional Skills Summary */}
-      <div className="mt-16 card">
-        <h2 className="text-xl font-bold text-light mb-6">Development Approach</h2>
-        <div className="grid md:grid-cols-3 gap-6">
+      {/* Development Approach - 위젯 3종 */}
+      <div className="mt-16">
+        <div className="mb-6">
+          <p className="eyebrow mb-2">How I Work</p>
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+            일하는 방식
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-3 gap-4">
           {[
             {
-              icon: '🎯',
+              no: '01',
               title: '사용자 중심',
-              desc: 'UX를 최우선으로 고려한 개발',
+              desc: '기능을 만들기 전에 사용자가 왜 필요로 하는지부터 묻습니다. UX를 최우선으로 고려합니다.',
             },
             {
-              icon: '🔄',
-              title: '지속적 학습',
-              desc: '새로운 기술과 트렌드를 적극적으로 습득',
+              no: '02',
+              title: '근본 해결',
+              desc: '증상 완화와 근본 치료를 구분합니다. 재발하지 않도록 원인까지 파고들어 구조적으로 해결합니다.',
             },
             {
-              icon: '🤝',
-              title: '협업 지향',
-              desc: '코드 리뷰와 문서화를 통한 팀워크',
+              no: '03',
+              title: '기록과 공유',
+              desc: '문제 해결 과정과 운영 절차를 문서로 남깁니다. 코드 리뷰와 문서화로 지식이 쌓이게 합니다.',
             },
           ].map((item) => (
-            <div key={item.title} className="text-center p-4">
-              <span className="text-3xl mb-3 block">{item.icon}</span>
-              <h3 className="font-semibold text-light mb-2">{item.title}</h3>
-              <p className="text-sm text-muted">{item.desc}</p>
+            <div
+              key={item.title}
+              className="bg-white rounded-2xl border border-black/[0.06] shadow-widget p-6"
+            >
+              <p className="text-tiny font-bold text-accent tracking-[0.14em] mb-3">
+                {item.no}
+              </p>
+              <h3 className="font-bold text-ink mb-2">{item.title}</h3>
+              <p className="text-sm text-ink-soft leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>

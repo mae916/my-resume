@@ -53,7 +53,7 @@ export default function SNHTPage() {
       {/* Back Button */}
       <Link
         href="/project"
-        className="inline-flex items-center gap-2 text-muted hover:text-light transition-colors mb-8"
+        className="inline-flex items-center gap-2 text-muted hover:text-ink transition-colors mb-8"
       >
         <ArrowLeft size={16} />
         <span className="text-sm font-medium">프로젝트 목록</span>
@@ -64,7 +64,7 @@ export default function SNHTPage() {
         <p className="text-accent text-sm font-medium tracking-widest uppercase mb-3">
           Corporate Website
         </p>
-        <h1 className="text-4xl lg:text-5xl font-bold text-light mb-3">
+        <h1 className="text-4xl lg:text-5xl font-bold text-ink mb-3">
           S&HT
         </h1>
         <p className="text-muted text-lg">
@@ -84,7 +84,7 @@ export default function SNHTPage() {
       {/* Project Info */}
       <div className="grid lg:grid-cols-2 gap-6 mb-16">
         <div className="card">
-          <h2 className="text-lg font-semibold text-light mb-4">프로젝트 개요</h2>
+          <h2 className="text-lg font-semibold text-ink mb-4">프로젝트 개요</h2>
           <div className="space-y-3 text-sm">
             {[
               { label: '참여 기간', value: '2025.12 - 2026.01' },
@@ -95,7 +95,7 @@ export default function SNHTPage() {
             ].map((item) => (
               <div key={item.label} className="flex gap-4">
                 <span className="text-muted min-w-[100px]">{item.label}</span>
-                <span className="font-medium text-light">{item.value}</span>
+                <span className="font-medium text-ink">{item.value}</span>
               </div>
             ))}
           </div>
@@ -111,7 +111,7 @@ export default function SNHTPage() {
         </div>
 
         <div className="card">
-          <h2 className="text-lg font-semibold text-light mb-4">주요 담당 업무</h2>
+          <h2 className="text-lg font-semibold text-ink mb-4">주요 담당 업무</h2>
           <ul className="space-y-2">
             {[
               'Next.js 16 App Router 기반 프로젝트 아키텍처 설계',
@@ -133,7 +133,7 @@ export default function SNHTPage() {
 
       {/* Features */}
       <div>
-        <h2 className="text-2xl font-bold text-light text-center mb-12">주요 기능</h2>
+        <h2 className="text-2xl font-bold text-ink text-center mb-12">주요 기능</h2>
         <div className="space-y-20">
           {features.map((feature, index) => (
             <div
@@ -144,7 +144,7 @@ export default function SNHTPage() {
             >
               {/* Image */}
               <div className="lg:w-1/2">
-                <div className="relative aspect-video rounded-2xl overflow-hidden border border-dark-200">
+                <div className="relative aspect-video rounded-2xl overflow-hidden border border-line">
                   <Image
                     src={feature.image}
                     alt={feature.title}
@@ -156,7 +156,7 @@ export default function SNHTPage() {
 
               {/* Content */}
               <div className="lg:w-1/2 space-y-4">
-                <h3 className="text-xl font-bold text-light">
+                <h3 className="text-xl font-bold text-ink">
                   {feature.title}
                 </h3>
                 <p className="text-muted leading-relaxed">
@@ -170,7 +170,7 @@ export default function SNHTPage() {
 
       {/* Technical Highlights */}
       <div className="mt-20">
-        <h2 className="text-2xl font-bold text-light text-center mb-12">기술적 특징</h2>
+        <h2 className="text-2xl font-bold text-ink text-center mb-12">기술적 특징</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             {
@@ -199,7 +199,7 @@ export default function SNHTPage() {
             },
           ].map((item) => (
             <div key={item.title} className="card">
-              <h3 className="text-base font-semibold text-light mb-2">{item.title}</h3>
+              <h3 className="text-base font-semibold text-ink mb-2">{item.title}</h3>
               <p className="text-sm text-muted">{item.description}</p>
             </div>
           ))}

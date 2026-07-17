@@ -17,6 +17,9 @@ interface FormErrors {
   message?: string;
 }
 
+const inputBase =
+  'w-full px-4 py-3 text-sm text-ink bg-paper rounded-xl border focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent focus:bg-white transition-all placeholder:text-muted';
+
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -88,139 +91,147 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="card">
-      <h2 className="text-lg font-semibold text-light mb-6">문의하기</h2>
-
-      <div className="grid gap-5 md:grid-cols-2">
-        {/* 이름 */}
-        <div>
-          <label htmlFor="name" className="block mb-2 text-sm font-medium text-light">
-            이름 <span className="text-accent">*</span>
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className={`w-full px-4 py-3 text-sm text-light bg-dark-200 border rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all placeholder:text-muted ${
-              errors.name ? 'border-red-500' : 'border-dark-300'
-            }`}
-            placeholder="홍길동"
-          />
-          {errors.name && (
-            <p className="mt-2 text-xs text-red-400">{errors.name}</p>
-          )}
-        </div>
-
-        {/* 이메일 */}
-        <div>
-          <label htmlFor="email" className="block mb-2 text-sm font-medium text-light">
-            이메일 <span className="text-accent">*</span>
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className={`w-full px-4 py-3 text-sm text-light bg-dark-200 border rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all placeholder:text-muted ${
-              errors.email ? 'border-red-500' : 'border-dark-300'
-            }`}
-            placeholder="email@example.com"
-          />
-          {errors.email && (
-            <p className="mt-2 text-xs text-red-400">{errors.email}</p>
-          )}
-        </div>
-
-        {/* 회사/소속 */}
-        <div>
-          <label htmlFor="company" className="block mb-2 text-sm font-medium text-light">
-            회사/소속
-          </label>
-          <input
-            type="text"
-            id="company"
-            name="company"
-            value={formData.company}
-            onChange={handleChange}
-            className="w-full px-4 py-3 text-sm text-light bg-dark-200 border border-dark-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all placeholder:text-muted"
-            placeholder="회사명 또는 소속"
-          />
-        </div>
-
-        {/* 연락처 */}
-        <div>
-          <label htmlFor="phone" className="block mb-2 text-sm font-medium text-light">
-            연락처
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full px-4 py-3 text-sm text-light bg-dark-200 border border-dark-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all placeholder:text-muted"
-            placeholder="010-1234-5678"
-          />
-        </div>
-
-        {/* 문의 내용 */}
-        <div className="md:col-span-2">
-          <label htmlFor="message" className="block mb-2 text-sm font-medium text-light">
-            문의 내용 <span className="text-accent">*</span>
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={5}
-            value={formData.message}
-            onChange={handleChange}
-            className={`w-full px-4 py-3 text-sm text-light bg-dark-200 border rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all resize-none placeholder:text-muted ${
-              errors.message ? 'border-red-500' : 'border-dark-300'
-            }`}
-            placeholder="문의하실 내용을 자유롭게 작성해주세요."
-          />
-          {errors.message && (
-            <p className="mt-2 text-xs text-red-400">{errors.message}</p>
-          )}
-        </div>
+    <div className="mac-window">
+      {/* 새 메시지 작성 윈도우 */}
+      <div className="mac-titlebar">
+        <span className="mac-dot bg-ios-red" />
+        <span className="mac-dot bg-ios-yellow" />
+        <span className="mac-dot bg-ios-green" />
+        <span className="mac-title">새 메시지 — 받는 사람: 김혜진</span>
       </div>
 
-      {/* 상태 메시지 */}
-      {submitStatus === 'success' && (
-        <div className="flex items-center gap-3 p-4 mt-6 text-sm text-green-400 rounded-xl bg-green-500/10 border border-green-500/20">
-          <CheckCircle size={18} />
-          문의가 전송되었습니다! 빠른 시일 내에 답변 드리겠습니다.
-        </div>
-      )}
+      <form onSubmit={handleSubmit} className="p-6 md:p-7">
+        <div className="grid gap-5 md:grid-cols-2">
+          {/* 이름 */}
+          <div>
+            <label htmlFor="name" className="block mb-2 text-sm font-semibold text-ink">
+              이름 <span className="text-accent">*</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className={`${inputBase} ${
+                errors.name ? 'border-ios-red' : 'border-black/[0.08]'
+              }`}
+              placeholder="홍길동"
+            />
+            {errors.name && (
+              <p className="mt-2 text-xs text-ios-red">{errors.name}</p>
+            )}
+          </div>
 
-      {submitStatus === 'error' && (
-        <div className="flex items-center gap-3 p-4 mt-6 text-sm text-red-400 rounded-xl bg-red-500/10 border border-red-500/20">
-          <AlertCircle size={18} />
-          전송에 실패했습니다. 이메일로 직접 문의해주세요.
-        </div>
-      )}
+          {/* 이메일 */}
+          <div>
+            <label htmlFor="email" className="block mb-2 text-sm font-semibold text-ink">
+              이메일 <span className="text-accent">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className={`${inputBase} ${
+                errors.email ? 'border-ios-red' : 'border-black/[0.08]'
+              }`}
+              placeholder="email@example.com"
+            />
+            {errors.email && (
+              <p className="mt-2 text-xs text-ios-red">{errors.email}</p>
+            )}
+          </div>
 
-      {/* 제출 버튼 */}
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="flex items-center justify-center w-full gap-2 px-6 py-4 mt-6 font-medium text-white transition-all rounded-xl bg-accent hover:bg-accent-hover hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-      >
-        {isSubmitting ? (
-          <>
-            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-            전송 중...
-          </>
-        ) : (
-          <>
-            <Send size={18} />
-            문의 보내기
-          </>
+          {/* 회사/소속 */}
+          <div>
+            <label htmlFor="company" className="block mb-2 text-sm font-semibold text-ink">
+              회사/소속
+            </label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
+              className={`${inputBase} border-black/[0.08]`}
+              placeholder="회사명 또는 소속"
+            />
+          </div>
+
+          {/* 연락처 */}
+          <div>
+            <label htmlFor="phone" className="block mb-2 text-sm font-semibold text-ink">
+              연락처
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className={`${inputBase} border-black/[0.08]`}
+              placeholder="010-1234-5678"
+            />
+          </div>
+
+          {/* 문의 내용 */}
+          <div className="md:col-span-2">
+            <label htmlFor="message" className="block mb-2 text-sm font-semibold text-ink">
+              문의 내용 <span className="text-accent">*</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={5}
+              value={formData.message}
+              onChange={handleChange}
+              className={`${inputBase} resize-none ${
+                errors.message ? 'border-ios-red' : 'border-black/[0.08]'
+              }`}
+              placeholder="문의하실 내용을 자유롭게 작성해주세요."
+            />
+            {errors.message && (
+              <p className="mt-2 text-xs text-ios-red">{errors.message}</p>
+            )}
+          </div>
+        </div>
+
+        {/* 상태 메시지 */}
+        {submitStatus === 'success' && (
+          <div className="flex items-center gap-3 p-4 mt-6 text-sm font-medium text-green-700 rounded-xl bg-ios-mint border border-green-600/20">
+            <CheckCircle size={18} />
+            문의가 전송되었습니다! 빠른 시일 내에 답변 드리겠습니다.
+          </div>
         )}
-      </button>
-    </form>
+
+        {submitStatus === 'error' && (
+          <div className="flex items-center gap-3 p-4 mt-6 text-sm font-medium text-ios-red rounded-xl bg-ios-red/10 border border-ios-red/20">
+            <AlertCircle size={18} />
+            전송에 실패했습니다. 이메일로 직접 문의해주세요.
+          </div>
+        )}
+
+        {/* 제출 버튼 */}
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="flex items-center justify-center w-full gap-2 px-6 py-3.5 mt-6 font-semibold text-white transition-all rounded-full bg-accent hover:bg-accent-hover hover:scale-[1.01] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+        >
+          {isSubmitting ? (
+            <>
+              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              전송 중...
+            </>
+          ) : (
+            <>
+              <Send size={17} />
+              문의 보내기
+            </>
+          )}
+        </button>
+      </form>
+    </div>
   );
 }

@@ -90,7 +90,7 @@ export default function HidiaPage() {
       {/* Back Button */}
       <Link
         href="/project"
-        className="inline-flex items-center gap-2 text-muted hover:text-light transition-colors mb-8"
+        className="inline-flex items-center gap-2 text-muted hover:text-ink transition-colors mb-8"
       >
         <ArrowLeft size={16} />
         <span className="text-sm font-medium">프로젝트 목록</span>
@@ -102,7 +102,7 @@ export default function HidiaPage() {
           <p className="text-accent text-sm font-medium tracking-widest uppercase mb-3">
             Reservation Platform
           </p>
-          <h1 className="text-4xl lg:text-5xl font-bold text-light mb-3">
+          <h1 className="text-4xl lg:text-5xl font-bold text-ink mb-3">
             하이다이아
           </h1>
           <p className="text-muted text-lg">
@@ -132,12 +132,12 @@ export default function HidiaPage() {
       </div>
 
       {/* Main Screenshot */}
-      <div className="relative aspect-video rounded-2xl overflow-hidden border border-dark-200 mb-10">
+      <div className="relative aspect-video rounded-2xl overflow-hidden border border-line mb-10">
         <Image
           src="/images/project/hidia.png"
           alt="하이다이아 메인 화면"
           fill
-          className="object-contain bg-dark-100"
+          className="object-contain bg-paper-100"
           priority
         />
       </div>
@@ -145,7 +145,7 @@ export default function HidiaPage() {
       {/* Project Info */}
       <div className="grid lg:grid-cols-2 gap-6 mb-16">
         <div className="card">
-          <h2 className="text-lg font-semibold text-light mb-4">
+          <h2 className="text-lg font-semibold text-ink mb-4">
             프로젝트 개요
           </h2>
           <div className="space-y-3 text-sm">
@@ -163,14 +163,14 @@ export default function HidiaPage() {
             ].map((item) => (
               <div key={item.label} className="flex gap-4">
                 <span className="text-muted min-w-[100px]">{item.label}</span>
-                <span className="font-medium text-light">{item.value}</span>
+                <span className="font-medium text-ink">{item.value}</span>
               </div>
             ))}
           </div>
         </div>
 
         <div className="card">
-          <h2 className="text-lg font-semibold text-light mb-4">핵심 지표</h2>
+          <h2 className="text-lg font-semibold text-ink mb-4">핵심 지표</h2>
           <ul className="space-y-2">
             {[
               '실사용자 225명+, 등록 업체 269개+의 상용 서비스 운영',
@@ -194,30 +194,30 @@ export default function HidiaPage() {
 
       {/* Background */}
       <div className="card mb-16">
-        <h2 className="text-lg font-semibold text-light mb-4">프로젝트 배경</h2>
+        <h2 className="text-lg font-semibold text-ink mb-4">프로젝트 배경</h2>
         <div className="space-y-3 text-sm text-muted leading-relaxed">
           <p>
             하이다이아는 결혼반지·예물을 판매하는 매장과 세공·감정 전문가를
             고객과 연결하는
-            <span className="text-light"> 예약 관리 플랫폼</span>입니다. 고객은
+            <span className="text-ink"> 예약 관리 플랫폼</span>입니다. 고객은
             웹/앱에서 매장을 탐색하고 온라인으로 예약하며, 매장 방문 시 QR로
             포인트를 적립합니다.
           </p>
           <p>
             이전 개발사가 구축해 운영 중이던 서비스를
-            <span className="text-light"> 2026년 1월에 이관받아</span> 코드
+            <span className="text-ink"> 2026년 1월에 이관받아</span> 코드
             감사·보수와 함께 신규 시스템을 얹은
-            <span className="text-light"> 브라운필드(brownfield) 고도화
+            <span className="text-ink"> 브라운필드(brownfield) 고도화
             프로젝트</span>입니다. 기존 데이터와 사용자 흐름을 깨지 않으면서
             무중단으로 기능을 추가해야 하는 난이도가 있었고, 백엔드 API부터 웹
             프론트, 관리자/파트너 SPA, Android/iOS 네이티브 브릿지, AWS 인프라,
             CI/CD, 운영까지
-            <span className="text-light"> 전 영역을 1인 풀스택으로 수행</span>
+            <span className="text-ink"> 전 영역을 1인 풀스택으로 수행</span>
             했습니다.
           </p>
           <p>
             운영 중 발견한 개선 기회를 기능 제안서로 작성해
-            <span className="text-light"> 추가 계약 2건을 수주</span>하는 등
+            <span className="text-ink"> 추가 계약 2건을 수주</span>하는 등
             개발을 넘어 서비스 성장에도 기여했습니다.
           </p>
         </div>
@@ -225,12 +225,12 @@ export default function HidiaPage() {
 
       {/* Architecture */}
       <div className="card mb-16">
-        <h2 className="text-lg font-semibold text-light mb-4">
+        <h2 className="text-lg font-semibold text-ink mb-4">
           시스템 아키텍처
         </h2>
         <div className="grid md:grid-cols-2 gap-6 text-sm">
           <div>
-            <h3 className="font-medium text-light mb-2">
+            <h3 className="font-medium text-ink mb-2">
               Nuxt SSR + Express 단일 프로세스
             </h3>
             <div className="space-y-1 text-muted">
@@ -242,7 +242,7 @@ export default function HidiaPage() {
             </div>
           </div>
           <div>
-            <h3 className="font-medium text-light mb-2">
+            <h3 className="font-medium text-ink mb-2">
               하이브리드 앱 구조
             </h3>
             <div className="space-y-1 text-muted">
@@ -258,13 +258,13 @@ export default function HidiaPage() {
 
       {/* Features */}
       <div>
-        <h2 className="text-2xl font-bold text-light text-center mb-10">
+        <h2 className="text-2xl font-bold text-ink text-center mb-10">
           주요 기능 및 기술
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((feature) => (
             <div key={feature.title} className="card group hover:border-accent/30">
-              <h3 className="text-base font-semibold text-light mb-2 group-hover:text-accent transition-colors">
+              <h3 className="text-base font-semibold text-ink mb-2 group-hover:text-accent transition-colors">
                 {feature.title}
               </h3>
               <p className="text-sm text-muted leading-relaxed">
@@ -277,7 +277,7 @@ export default function HidiaPage() {
 
       {/* Tech Highlights */}
       <div className="mt-16">
-        <h2 className="text-2xl font-bold text-light text-center mb-10">
+        <h2 className="text-2xl font-bold text-ink text-center mb-10">
           기술적 하이라이트
         </h2>
         <div className="grid md:grid-cols-2 gap-4">
@@ -314,7 +314,7 @@ export default function HidiaPage() {
             },
           ].map((item) => (
             <div key={item.title} className="card">
-              <h3 className="text-base font-semibold text-light mb-2">
+              <h3 className="text-base font-semibold text-ink mb-2">
                 {item.title}
               </h3>
               <p className="text-sm text-muted leading-relaxed">
