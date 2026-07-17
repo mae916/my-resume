@@ -2,16 +2,17 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { qnaList } from '@/data/qna';
+import Reveal from '@/components/Reveal';
 import profileImg from '@/../public/images/profile.jpg';
 import { ArrowRight, Video, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Q&A 인터뷰',
   description:
-    '프론트엔드 개발자 김혜진에 대해 자주 묻는 질문들입니다. 프론트엔드 개발자의 실무 경험, 협업 방식, 개발 철학을 확인해보세요.',
+    '풀스택 개발자 김혜진에 대해 자주 묻는 질문들입니다. 프론트엔드 개발자의 실무 경험, 협업 방식, 개발 철학을 확인해보세요.',
   openGraph: {
-    title: 'Q&A 인터뷰 | 프론트엔드 개발자 김혜진',
-    description: '프론트엔드 개발자 김혜진의 실무 경험, 협업 방식, 개발 철학 Q&A',
+    title: 'Q&A 인터뷰 | 풀스택 개발자 김혜진',
+    description: '풀스택 개발자 김혜진의 실무 경험, 협업 방식, 개발 철학 Q&A',
   },
 };
 
@@ -88,7 +89,8 @@ export default function QNA() {
 
         <dl className="p-5 md:p-8 space-y-9">
           {qnaList.map((q, idx) => (
-            <div key={idx} className="space-y-3">
+            <Reveal key={idx} variant="pop">
+            <div className="space-y-3">
               {/* 구분 라벨 */}
               <p className="text-center text-tiny font-medium text-muted">
                 Q{idx + 1}
@@ -112,6 +114,7 @@ export default function QNA() {
                 <span className="text-tiny text-muted pr-1">읽음</span>
               </dd>
             </div>
+            </Reveal>
           ))}
 
           {/* 타이핑 인디케이터 */}

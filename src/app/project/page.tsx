@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { projectList } from '@/data/projects';
 import { externalLinkProps } from '@/lib/utils';
+import Reveal from '@/components/Reveal';
 import {
   ExternalLink,
   Github,
@@ -15,10 +16,10 @@ import {
 export const metadata: Metadata = {
   title: '프로젝트 포트폴리오',
   description:
-    '프론트엔드 개발자 김혜진의 프로젝트 포트폴리오입니다. React, Next.js, Vue.js를 활용한 프론트엔드 개발자 실무 프로젝트를 확인해보세요.',
+    '풀스택 개발자 김혜진의 프로젝트 포트폴리오입니다. React, Next.js, Vue.js를 활용한 프론트엔드 개발자 실무 프로젝트를 확인해보세요.',
   openGraph: {
-    title: '프로젝트 포트폴리오 | 프론트엔드 개발자 김혜진',
-    description: '프론트엔드 개발자 김혜진의 React, Next.js, Vue.js 프로젝트 포트폴리오',
+    title: '프로젝트 포트폴리오 | 풀스택 개발자 김혜진',
+    description: '풀스택 개발자 김혜진의 React, Next.js, Vue.js 프로젝트 포트폴리오',
   },
 };
 
@@ -52,9 +53,7 @@ export default function Project() {
           const [name, subtitle] = project.title.split(' - ');
 
           const CardContent = (
-            <article className="group mac-window h-full hover:-translate-y-1 transition-all duration-300 animate-fade-up flex flex-col"
-              style={{ animationDelay: `${index * 80}ms` }}
-            >
+            <article className="group mac-window h-full hover:-translate-y-1 transition-all duration-300 flex flex-col">
               {/* Safari 스타일 툴바 */}
               <div className="flex items-center gap-2 px-3.5 h-10 bg-paper border-b border-black/[0.06]">
                 <span className="flex gap-1.5 shrink-0">
@@ -117,7 +116,7 @@ export default function Project() {
           );
 
           return (
-            <div key={project.title}>
+            <Reveal key={project.title} delay={(index % 2) * 90} className="h-full">
               {isInternal ? (
                 <Link
                   href={project.link}
@@ -136,7 +135,7 @@ export default function Project() {
                   {CardContent}
                 </a>
               )}
-            </div>
+            </Reveal>
           );
         })}
       </div>

@@ -21,11 +21,17 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://profile.jinproject.xyz'),
   title: {
-    default: '프론트엔드 개발자 포트폴리오 | 김혜진 - React, Next.js, TypeScript',
-    template: '%s | 프론트엔드 개발자 김혜진',
+    default: '풀스택 개발자 포트폴리오 | 김혜진 - React Native, Next.js, NestJS',
+    template: '%s | 풀스택 개발자 김혜진',
   },
-  description: `프론트엔드 개발자 포트폴리오 | ${yearsOfExperience}년차 프론트엔드 개발자 김혜진입니다. React, Vue.js, Next.js, TypeScript 기반 웹 개발 전문. 사용자 경험을 최우선으로 생각하며, 비즈니스 가치를 만드는 프론트엔드 개발자입니다.`,
+  description: `풀스택 개발자 포트폴리오 | ${yearsOfExperience}년차 개발자 김혜진입니다. React Native 앱부터 Next.js·NestJS 백엔드, AWS 인프라까지 직접 만들고 운영합니다. 결제·정산 등 커머스 도메인 설계와 상용 서비스 운영 경험을 보유했습니다.`,
   keywords: [
+    '풀스택 개발자 포트폴리오',
+    '풀스택 개발자',
+    'React Native 개발자',
+    'NestJS 개발자',
+    '백엔드 개발자 포트폴리오',
+    '인천 개발자',
     '프론트엔드 개발자 포트폴리오',
     '프론트엔드 개발자',
     '프론트엔드 포트폴리오',
@@ -70,9 +76,9 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ko_KR',
     url: 'https://profile.jinproject.xyz',
-    siteName: '프론트엔드 개발자 김혜진 포트폴리오',
-    title: '프론트엔드 개발자 포트폴리오 | 김혜진 - React, Next.js, TypeScript',
-    description: `프론트엔드 개발자 포트폴리오 | ${yearsOfExperience}년차 프론트엔드 개발자 김혜진. React, Vue.js, Next.js, TypeScript 기반 웹 개발 전문.`,
+    siteName: '풀스택 개발자 김혜진 포트폴리오',
+    title: '풀스택 개발자 포트폴리오 | 김혜진 - React Native, Next.js, NestJS',
+    description: `풀스택 개발자 포트폴리오 | ${yearsOfExperience}년차 개발자 김혜진. 앱·웹·백엔드·인프라까지 직접 만들고 운영합니다.`,
     images: [
       {
         url: '/images/profile.jpg',
@@ -84,18 +90,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '프론트엔드 개발자 포트폴리오 | 김혜진',
-    description: `프론트엔드 개발자 포트폴리오 | ${yearsOfExperience}년차 프론트엔드 개발자 김혜진. React, Next.js, TypeScript 전문.`,
+    title: '풀스택 개발자 포트폴리오 | 김혜진',
+    description: `풀스택 개발자 포트폴리오 | ${yearsOfExperience}년차 개발자 김혜진. React Native, Next.js, NestJS, AWS.`,
     images: ['/images/profile.jpg'],
     creator: '@hyejin_dev',
   },
   category: 'technology',
   classification: 'Portfolio',
   alternates: {
-    canonical: 'https://profile.jinproject.xyz',
-    languages: {
-      'ko-KR': 'https://profile.jinproject.xyz',
-    },
+    canonical: './',
   },
   other: {
     'naver-site-verification': '4aadc5d2f8667c22b2835a51a9ce82523656b677',
@@ -133,8 +136,8 @@ export default function RootLayout({
               '@type': 'Person',
               name: '김혜진',
               alternateName: 'Hyejin Kim',
-              jobTitle: '프론트엔드 개발자',
-              description: `프론트엔드 개발자 포트폴리오 | ${yearsOfExperience}년차 프론트엔드 개발자. React, Vue.js, Next.js, TypeScript 전문.`,
+              jobTitle: '풀스택 개발자',
+              description: `풀스택 개발자 포트폴리오 | ${yearsOfExperience}년차 개발자. React Native, Next.js, NestJS, PostgreSQL, AWS 기반 서비스 개발·운영.`,
               url: 'https://profile.jinproject.xyz',
               image: 'https://profile.jinproject.xyz/images/profile.jpg',
               sameAs: [
@@ -142,19 +145,22 @@ export default function RootLayout({
               ],
               knowsAbout: [
                 'React',
+                'React Native',
                 'Vue.js',
                 'Next.js',
                 'TypeScript',
                 'JavaScript',
                 'Tailwind CSS',
                 'NestJS',
+                'Express',
                 'PostgreSQL',
+                'MongoDB',
                 'Docker',
                 'AWS',
               ],
               worksFor: {
                 '@type': 'Organization',
-                name: '프리랜서',
+                name: '다온더케어',
               },
               address: {
                 '@type': 'PostalAddress',
@@ -171,10 +177,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'WebSite',
-              name: '프론트엔드 개발자 김혜진 포트폴리오',
-              alternateName: 'Frontend Developer Hyejin Kim Portfolio',
+              name: '풀스택 개발자 김혜진 포트폴리오',
+              alternateName: 'Full-stack Developer Hyejin Kim Portfolio',
               url: 'https://profile.jinproject.xyz',
-              description: `프론트엔드 개발자 포트폴리오 | ${yearsOfExperience}년차 프론트엔드 개발자 김혜진`,
+              description: `풀스택 개발자 포트폴리오 | ${yearsOfExperience}년차 개발자 김혜진`,
               author: {
                 '@type': 'Person',
                 name: '김혜진',

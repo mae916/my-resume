@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { skills } from '@/data/skills';
+import Reveal from '@/components/Reveal';
 
 export const metadata: Metadata = {
   title: '기술 스택',
   description:
-    '프론트엔드 개발자 김혜진의 기술 스택입니다. React, Vue.js, Next.js, TypeScript 등 프론트엔드 개발자 핵심 기술과 실무 경험을 확인해보세요.',
+    '풀스택 개발자 김혜진의 기술 스택입니다. React, Vue.js, Next.js, TypeScript 등 프론트엔드 개발자 핵심 기술과 실무 경험을 확인해보세요.',
   openGraph: {
-    title: '기술 스택 | 프론트엔드 개발자 김혜진',
-    description: '프론트엔드 개발자 김혜진의 React, Vue.js, TypeScript, Next.js 기술 스택',
+    title: '기술 스택 | 풀스택 개발자 김혜진',
+    description: '풀스택 개발자 김혜진의 React, Vue.js, TypeScript, Next.js 기술 스택',
   },
 };
 
@@ -36,6 +37,7 @@ export default function Skills() {
       </header>
 
       {/* Skills - App Store 리스트 */}
+      <Reveal>
       <div className="mac-window">
         <div className="mac-titlebar">
           <span className="mac-dot bg-ios-red" />
@@ -82,6 +84,7 @@ export default function Skills() {
           ))}
         </ul>
       </div>
+      </Reveal>
 
       {/* Development Approach - 위젯 3종 */}
       <div className="mt-16">

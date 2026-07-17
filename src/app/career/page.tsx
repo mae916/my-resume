@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
 import type { WorkItem, EducationItem } from '@/types';
 import { workData, educationData } from '@/data/career';
+import Reveal from '@/components/Reveal';
 
 export const metadata: Metadata = {
   title: '경력사항',
   description:
     '개발자 김혜진의 경력사항입니다. 다온더케어, 프리랜서, 올수, 컨택트에서의 풀스택·프론트엔드 실무 경험과 프로젝트 이력을 확인해보세요.',
   openGraph: {
-    title: '경력사항 | 프론트엔드 개발자 김혜진',
-    description: '프론트엔드 개발자 김혜진의 경력과 프로젝트 실무 경험',
+    title: '경력사항 | 풀스택 개발자 김혜진',
+    description: '풀스택 개발자 김혜진의 경력과 프로젝트 실무 경험',
   },
 };
 
@@ -40,11 +41,8 @@ export default function Career() {
       {/* Work - 알림 스택 스타일 */}
       <div className="space-y-5 max-w-3xl">
         {workData.map((item: WorkItem, idx: number) => (
-          <article
-            key={idx}
-            className="card !p-6 md:!p-7 animate-fade-up"
-            style={{ animationDelay: `${idx * 100}ms` }}
-          >
+          <Reveal key={idx} delay={idx * 80}>
+          <article className="card !p-6 md:!p-7">
             <div className="flex items-start gap-4">
               {/* 앱 아이콘 */}
               <span
@@ -87,6 +85,7 @@ export default function Career() {
               </div>
             </div>
           </article>
+          </Reveal>
         ))}
       </div>
 

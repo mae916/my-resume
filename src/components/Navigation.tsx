@@ -56,7 +56,7 @@ export default function Navigation() {
           </Link>
 
           {/* Nav Links - 세그먼트 필 */}
-          <ul className="flex items-center gap-0.5 md:gap-1 bg-white/80 border border-black/[0.06] shadow-chip rounded-full p-1">
+          <ul className="glass-card flex items-center gap-0.5 md:gap-1 rounded-full p-1">
             {navItems.map(({ href, label }) => {
               const isActive = isActiveLink(pathname, href);
               return (
@@ -64,7 +64,7 @@ export default function Navigation() {
                   <Link
                     href={href}
                     className={classNames(
-                      'block px-2.5 md:px-4 py-1.5 rounded-full text-[11px] md:text-[13px] font-medium',
+                      'block px-2.5 md:px-4 py-1.5 rounded-full text-[11px] md:text-[13px] font-medium hover:scale-105',
                       'transition-all duration-200 whitespace-nowrap',
                       isActive
                         ? 'bg-ink text-white shadow-chip'

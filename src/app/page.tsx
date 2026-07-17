@@ -3,7 +3,10 @@ import Link from 'next/link';
 import { projectList } from '@/data/projects';
 import { externalLinkProps } from '@/lib/utils';
 import { getYearsOfExperienceLabel } from '@/lib/career';
+import { skills } from '@/data/skills';
 import profileImg from '@/../public/images/profile.jpg';
+import Reveal from '@/components/Reveal';
+import CountUp from '@/components/CountUp';
 import { ArrowUpRight, ArrowRight, MousePointer2 } from 'lucide-react';
 
 export default function Home() {
@@ -67,7 +70,7 @@ export default function Home() {
           {/* Portrait - macOS 윈도우 */}
           <div className="lg:col-span-5 animate-fade-up delay-200">
             <div className="relative max-w-[340px] mx-auto lg:ml-auto lg:mr-0">
-              <div className="mac-window">
+              <div className="mac-window floaty">
                 <div className="mac-titlebar">
                   <span className="mac-dot bg-ios-red" />
                   <span className="mac-dot bg-ios-yellow" />
@@ -86,7 +89,7 @@ export default function Home() {
               </div>
 
               {/* 커서 + 툴팁 스티커 */}
-              <div className="absolute -bottom-4 -left-6 md:-left-10 flex items-start gap-0.5">
+              <div className="cursor-sticker absolute -bottom-4 -left-6 md:-left-10 flex items-start gap-0.5">
                 <MousePointer2
                   size={18}
                   className="text-ink fill-white mt-4 drop-shadow"
@@ -95,7 +98,7 @@ export default function Home() {
               </div>
 
               {/* 상태 배지 */}
-              <div className="absolute -top-3 -right-2 md:-right-4 bg-white rounded-full border border-black/[0.06] shadow-widget px-3.5 py-2 flex items-center gap-2 text-xs font-medium">
+              <div className="glass-card absolute -top-3 -right-2 md:-right-4 rounded-full px-3.5 py-2 flex items-center gap-2 text-xs font-medium">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-ios-green opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-ios-green" />
@@ -107,27 +110,59 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats - 미니멀 위젯 */}
-      <section className="pb-16 md:pb-20">
+      {/* Stats - Liquid Glass 위젯 */}
+      <section className="pb-16 md:pb-20 relative">
+        <div
+          className="blob -top-24 left-1/4 w-[420px] h-[300px] bg-gradient-to-br from-[#BFD8FF] to-[#FFE3EC]"
+          aria-hidden="true"
+        />
+        <div
+          className="blob -bottom-16 right-1/4 w-[360px] h-[260px] bg-gradient-to-br from-[#E3D5FF] to-[#DFF5E9]"
+          aria-hidden="true"
+        />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { number: getYearsOfExperienceLabel(), label: '년차 개발자' },
             { number: '10+', label: '프로젝트 출시' },
             { number: '4', label: '운영 중인 서비스' },
             { number: 'A–Z', label: '앱 · 서버 · 인프라' },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="bg-white rounded-[22px] border border-black/[0.06] shadow-widget p-6 flex flex-col justify-between min-h-[130px]"
-            >
-              <p className="text-3xl md:text-4xl font-extrabold tracking-tight tabular-nums">
-                {stat.number}
-              </p>
-              <p className="text-[13px] text-muted font-semibold mt-2">
-                {stat.label}
-              </p>
-            </div>
+          ].map((stat, i) => (
+            <Reveal key={stat.label} delay={i * 90}>
+              <div className="glass-card rounded-[22px] p-6 flex flex-col justify-between min-h-[130px] hover:-translate-y-1 transition-all duration-300">
+                <p className="text-3xl md:text-4xl font-extrabold tracking-tight tabular-nums">
+                  <CountUp value={stat.number} />
+                </p>
+                <p className="text-[13px] text-muted font-semibold mt-2">
+                  {stat.label}
+                </p>
+              </div>
+            </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* Tech Marquee */}
+      <section className="pb-16 md:pb-20">
+        <div className="marquee" aria-hidden="true">
+          <div className="marquee-track gap-4 pr-4">
+            {[...skills, ...skills].map((skill, i) => (
+              <span
+                key={`${skill.name}-${i}`}
+                className="flex items-center gap-2.5 shrink-0 bg-white border border-black/[0.06] shadow-chip rounded-2xl px-4 py-2.5"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={skill.icon}
+                  alt=""
+                  className="w-5 h-5 object-contain"
+                  loading="lazy"
+                />
+                <span className="text-[13px] font-semibold text-ink-soft whitespace-nowrap">
+                  {skill.name}
+                </span>
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -150,13 +185,13 @@ export default function Home() {
 
         {/* Finder 폴더 그리드 */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
-          {selectedWork.map((project) => {
+          {selectedWork.map((project, i) => {
             const [name, subtitle] = project.title.split(' - ');
             return (
+              <Reveal key={project.title} delay={i * 90} variant="pop">
               <Link
-                key={project.title}
                 href={project.link}
-                className="group text-center"
+                className="group block text-center"
                 aria-label={`${name} 상세 보기`}
               >
                 <div className="folder mb-4">
@@ -178,6 +213,7 @@ export default function Home() {
                   {subtitle ?? project.description}
                 </p>
               </Link>
+              </Reveal>
             );
           })}
         </div>
@@ -191,8 +227,13 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section className="pb-8">
-        <div className="card !p-8 md:!p-10">
+      <section className="pb-8 relative">
+        <div
+          className="blob -top-10 -right-28 w-[380px] h-[280px] bg-gradient-to-br from-[#DDEBFF] to-[#FFE3EC]"
+          aria-hidden="true"
+        />
+        <Reveal>
+        <div className="glass-card rounded-2xl p-8 md:p-10">
           <div className="grid lg:grid-cols-12 gap-8">
             <div className="lg:col-span-4">
               <p className="eyebrow mb-2">About</p>
@@ -244,6 +285,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        </Reveal>
       </section>
     </div>
   );
