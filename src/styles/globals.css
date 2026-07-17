@@ -22,14 +22,18 @@
 /* macOS 스타일 커스텀 커서 (Safari는 네이티브 커서로 폴백) */
 @media (pointer: fine) {
   body {
-    cursor: url('/cursors/arrow.svg') 5 2, auto;
+    cursor:
+      url('/cursors/arrow.svg') 5 2,
+      auto;
   }
 
   a,
   button,
   [role='button'],
   summary {
-    cursor: url('/cursors/pointer.svg') 10 3, pointer;
+    cursor:
+      url('/cursors/pointer.svg') 10 3,
+      pointer;
   }
 }
 
@@ -187,7 +191,7 @@ body {
     right: 0;
     bottom: 0;
     top: 16%;
-    border-radius: 0 12px;
+    border-radius: 0 12px 12px 12px;
     background: #4da3f0;
   }
 
