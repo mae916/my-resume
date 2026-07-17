@@ -24,7 +24,13 @@ export const metadata: Metadata = {
 
 export default function Project() {
   return (
-    <section className="section !pt-10 lg:!pt-14" aria-labelledby="project-title">
+    <section className="section !pt-10 lg:!pt-14 relative" aria-labelledby="project-title">
+      {/* 키노트풍 배경 블롭 */}
+      <div
+        className="blob -top-16 -left-36 w-[360px] h-[360px] bg-gradient-to-br from-[#DDEBFF] to-[#E3D5FF]"
+        aria-hidden="true"
+      />
+
       {/* Header */}
       <header className="mb-12">
         <p className="eyebrow mb-3">Portfolio</p>

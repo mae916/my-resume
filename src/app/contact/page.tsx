@@ -1,5 +1,11 @@
 import type { Metadata } from 'next';
-import { Mail, Github, Clock, Users, Briefcase } from 'lucide-react';
+import {
+  Mail,
+  Github,
+  Clock,
+  Briefcase,
+  ChevronRight,
+} from 'lucide-react';
 import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
@@ -14,7 +20,13 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <section className="section !pt-10 lg:!pt-14" aria-labelledby="contact-title">
+    <section className="section !pt-10 lg:!pt-14 relative" aria-labelledby="contact-title">
+      {/* 키노트풍 배경 블롭 */}
+      <div
+        className="blob -top-16 -left-36 w-[360px] h-[360px] bg-gradient-to-br from-[#DDEBFF] to-[#FFE3EC]"
+        aria-hidden="true"
+      />
+
       {/* Header */}
       <header className="mb-12">
         <p className="eyebrow mb-3">Get in Touch</p>
@@ -30,56 +42,65 @@ export default function ContactPage() {
       </header>
 
       <div className="grid gap-6 lg:grid-cols-3">
-        {/* 연락처 정보 */}
+        {/* 연락처 - iOS 설정 스타일 그룹 리스트 */}
         <div className="space-y-6">
-          {/* Contact Info Card */}
-          <div className="card">
-            <h2 className="text-base font-bold text-ink mb-5">연락처</h2>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="mailto:ruchia916@naver.com"
-                  className="flex items-center gap-3.5 text-ink-soft hover:text-accent transition-colors group"
-                >
-                  <span className="flex items-center justify-center w-10 h-10 rounded-[12px] bg-ios-sky border border-black/[0.05] group-hover:scale-105 transition-transform">
-                    <Mail size={17} className="text-accent" />
+          <div>
+            <p className="text-tiny font-semibold text-muted uppercase tracking-[0.1em] px-4 mb-2">
+              연락처
+            </p>
+            <div className="ios-list">
+              <a href="mailto:ruchia916@naver.com" className="ios-list-row">
+                <span className="ios-icon bg-accent">
+                  <Mail size={16} />
+                </span>
+                <span className="flex-1 min-w-0">
+                  <span className="block text-sm font-medium text-ink">이메일</span>
+                  <span className="block text-tiny text-muted truncate">
+                    ruchia916@naver.com
                   </span>
-                  <span className="text-sm font-medium">ruchia916@naver.com</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/mae916"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3.5 text-ink-soft hover:text-accent transition-colors group"
-                >
-                  <span className="flex items-center justify-center w-10 h-10 rounded-[12px] bg-paper-100 border border-black/[0.05] group-hover:scale-105 transition-transform">
-                    <Github size={17} className="text-ink" />
+                </span>
+                <ChevronRight size={15} className="text-paper-200 shrink-0" />
+              </a>
+              <a
+                href="https://github.com/mae916"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ios-list-row"
+              >
+                <span className="ios-icon bg-ink">
+                  <Github size={16} />
+                </span>
+                <span className="flex-1 min-w-0">
+                  <span className="block text-sm font-medium text-ink">GitHub</span>
+                  <span className="block text-tiny text-muted truncate">
+                    github.com/mae916
                   </span>
-                  <span className="text-sm font-medium">github.com/mae916</span>
-                </a>
-              </li>
-            </ul>
+                </span>
+                <ChevronRight size={15} className="text-paper-200 shrink-0" />
+              </a>
+            </div>
           </div>
 
-          {/* Response Info Card */}
-          <div className="card">
-            <h2 className="text-base font-bold text-ink mb-5">응답 안내</h2>
-            <ul className="space-y-3.5">
-              <li className="flex items-start gap-3">
-                <Clock size={16} className="text-accent mt-0.5 flex-shrink-0" />
-                <span className="text-sm text-ink-soft">보통 1-2일 내로 회신드립니다</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Users size={16} className="text-accent mt-0.5 flex-shrink-0" />
-                <span className="text-sm text-ink-soft">채용/협업 문의 환영합니다</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Briefcase size={16} className="text-accent mt-0.5 flex-shrink-0" />
-                <span className="text-sm text-ink-soft">프로젝트 의뢰도 가능합니다</span>
-              </li>
-            </ul>
+          <div>
+            <p className="text-tiny font-semibold text-muted uppercase tracking-[0.1em] px-4 mb-2">
+              응답 안내
+            </p>
+            <div className="ios-list">
+              <div className="ios-list-row">
+                <span className="ios-icon bg-ios-green">
+                  <Clock size={16} />
+                </span>
+                <span className="text-sm text-ink">보통 1–2일 내로 회신드립니다</span>
+              </div>
+              <div className="ios-list-row">
+                <span className="ios-icon bg-[#FF9500]">
+                  <Briefcase size={16} />
+                </span>
+                <span className="text-sm text-ink">
+                  채용 · 협업 · 프로젝트 의뢰 환영
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 

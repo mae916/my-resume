@@ -254,6 +254,23 @@ body {
     @apply bg-paper-200;
   }
 
+  /* iOS 설정 앱 그룹 리스트 */
+  .ios-list {
+    @apply bg-white rounded-2xl border border-black/[0.06] shadow-widget divide-y divide-black/[0.05] overflow-hidden;
+  }
+
+  .ios-list-row {
+    @apply flex items-center gap-3.5 px-4 py-3.5 transition-colors;
+  }
+
+  a.ios-list-row:hover {
+    @apply bg-paper/70;
+  }
+
+  .ios-icon {
+    @apply flex items-center justify-center w-[30px] h-[30px] rounded-[8px] text-white shrink-0;
+  }
+
   /* 구분선 */
   .divider {
     @apply w-full h-px bg-line;
@@ -304,6 +321,16 @@ body {
   }
   .hover-scale:hover {
     @apply scale-[1.02];
+  }
+
+  /* 키노트풍 소프트 그라데이션 블롭 - 항상 배경 레이어 */
+  .blob {
+    position: absolute;
+    z-index: -1;
+    border-radius: 9999px;
+    filter: blur(80px);
+    opacity: 0.55;
+    pointer-events: none;
   }
 
   /* 글래스 - iOS 반투명 재질 */

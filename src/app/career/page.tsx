@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import type { WorkItem, EducationItem } from '@/types';
 import { workData, educationData } from '@/data/career';
-import { getYearsOfExperienceLabel } from '@/lib/career';
 
 export const metadata: Metadata = {
   title: '경력사항',
@@ -17,7 +16,13 @@ const tints = ['bg-paper-100', 'bg-paper-100', 'bg-paper-100', 'bg-paper-100'];
 
 export default function Career() {
   return (
-    <section className="section !pt-10 lg:!pt-14" aria-labelledby="career-title">
+    <section className="section !pt-10 lg:!pt-14 relative" aria-labelledby="career-title">
+      {/* 키노트풍 배경 블롭 */}
+      <div
+        className="blob -top-16 -left-36 w-[360px] h-[360px] bg-gradient-to-br from-[#DFF5E9] to-[#DDEBFF]"
+        aria-hidden="true"
+      />
+
       {/* Header */}
       <header className="mb-12">
         <p className="eyebrow mb-3">Experience</p>
@@ -82,24 +87,6 @@ export default function Career() {
               </div>
             </div>
           </article>
-        ))}
-      </div>
-
-      {/* Summary Stats - 위젯 */}
-      <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4">
-        {[
-          { value: getYearsOfExperienceLabel(), label: '년 경력' },
-          { value: '10+', label: '프로젝트' },
-          { value: '5+', label: '협업 기업' },
-          { value: '4', label: '운영 중 서비스' },
-        ].map((stat) => (
-          <div
-            key={stat.label}
-            className="bg-white rounded-2xl border border-black/[0.06] shadow-widget p-6 min-h-[110px] flex flex-col justify-between"
-          >
-            <p className="text-3xl font-extrabold tracking-tight">{stat.value}</p>
-            <p className="text-sm text-ink-soft font-medium mt-1">{stat.label}</p>
-          </div>
         ))}
       </div>
 

@@ -13,7 +13,15 @@ export default function Home() {
     <div className="relative">
       {/* Hero Section */}
       <section className="pt-8 md:pt-16 pb-16 md:pb-20 relative">
-        <div className="absolute inset-0 grid-pattern -mx-8" aria-hidden="true" />
+        {/* 키노트풍 배경 블롭 */}
+        <div
+          className="blob -top-24 -left-40 w-[440px] h-[440px] bg-gradient-to-br from-[#BFD8FF] to-[#E3D5FF]"
+          aria-hidden="true"
+        />
+        <div
+          className="blob top-32 -right-24 w-[380px] h-[380px] bg-gradient-to-br from-[#FFE3EC] to-[#DDEBFF]"
+          aria-hidden="true"
+        />
 
         <div className="relative grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
           {/* Text */}
@@ -32,9 +40,9 @@ export default function Home() {
             </h1>
 
             <p className="text-ink-soft text-base md:text-lg leading-relaxed max-w-md mb-9 animate-fade-up delay-300">
-              사용자 경험을 고민하고 문제의 본질을 파악해,
+              문제의 본질을 파악해 앱부터 서버·인프라까지 직접 만들고,
               <br className="hidden md:block" />
-              앱과 서버·인프라까지 직접 만들고 운영합니다.
+              실사용자가 있는 서비스를 책임지고 운영합니다.
             </p>
 
             <div className="flex flex-wrap items-center gap-3 animate-fade-up delay-400">
@@ -110,12 +118,14 @@ export default function Home() {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="bg-white rounded-2xl border border-black/[0.06] shadow-widget p-6 flex flex-col justify-between min-h-[120px]"
+              className="bg-white rounded-[22px] border border-black/[0.06] shadow-widget p-6 flex flex-col justify-between min-h-[130px]"
             >
-              <p className="text-3xl md:text-4xl font-extrabold tracking-tight">
+              <p className="text-3xl md:text-4xl font-extrabold tracking-tight tabular-nums">
                 {stat.number}
               </p>
-              <p className="text-sm text-muted font-medium mt-2">{stat.label}</p>
+              <p className="text-[13px] text-muted font-semibold mt-2">
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>
@@ -203,8 +213,13 @@ export default function Home() {
                   개발의 목적이라고 생각합니다.
                 </p>
                 <p>
-                  프론트엔드에서 출발해 지금은 모바일 앱, 백엔드, 인프라,
-                  운영까지 담당하는 풀스택 개발자로 일하고 있습니다.
+                  프론트엔드에서 출발해 지금은{' '}
+                  <span className="font-semibold text-ink">
+                    React Native 앱부터 NestJS 백엔드, AWS 인프라까지
+                  </span>{' '}
+                  혼자 맡아 실사용자가 있는 상용 서비스를 운영합니다.
+                  결제·환불·정산처럼 틀리면 안 되는 도메인을 설계하고, 장애가
+                  나면 복구에서 끝내지 않고 재발 방지 장치까지 만드는 개발자입니다.
                 </p>
               </div>
 

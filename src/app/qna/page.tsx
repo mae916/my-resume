@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { qnaList } from '@/data/qna';
-import { ArrowRight } from 'lucide-react';
+import profileImg from '@/../public/images/profile.jpg';
+import { ArrowRight, Video, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Q&A 인터뷰',
@@ -28,7 +30,13 @@ export default function QNA() {
   };
 
   return (
-    <section className="section !pt-10 lg:!pt-14" aria-labelledby="qna-title">
+    <section className="section !pt-10 lg:!pt-14 relative" aria-labelledby="qna-title">
+      {/* 키노트풍 배경 블롭 */}
+      <div
+        className="blob -top-16 -left-36 w-[360px] h-[360px] bg-gradient-to-br from-[#FFE3EC] to-[#DDEBFF]"
+        aria-hidden="true"
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -53,7 +61,29 @@ export default function QNA() {
           <span className="mac-dot bg-ios-red" />
           <span className="mac-dot bg-ios-yellow" />
           <span className="mac-dot bg-ios-green" />
-          <span className="mac-title">김혜진 님과의 대화</span>
+          <span className="mac-title">메시지</span>
+        </div>
+
+        {/* iMessage 연락처 헤더 */}
+        <div className="flex items-center justify-between px-5 md:px-6 py-3.5 border-b border-black/[0.06] bg-paper/50">
+          <div className="flex items-center gap-3">
+            <Image
+              src={profileImg}
+              alt=""
+              aria-hidden="true"
+              width={40}
+              height={40}
+              className="w-10 h-10 rounded-full object-cover object-top border border-black/[0.06]"
+            />
+            <div>
+              <p className="text-sm font-semibold leading-tight">김혜진</p>
+              <p className="text-tiny text-muted">Full-stack Developer</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4 text-accent" aria-hidden="true">
+            <Video size={19} />
+            <Phone size={17} />
+          </div>
         </div>
 
         <dl className="p-5 md:p-8 space-y-9">
