@@ -8,7 +8,7 @@
     "start": "next start -p 9000",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap && node -e \"require('fs').copyFileSync('public/sitemap.xml','public/sitemap-pages.xml')\""
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.1013.0",

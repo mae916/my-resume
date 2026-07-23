@@ -4,6 +4,7 @@ Allow: /
 
 # Sitemaps
 Sitemap: https://profile.jinproject.xyz/sitemap.xml
+Sitemap: https://profile.jinproject.xyz/sitemap-pages.xml
 
 # Host
 Host: https://profile.jinproject.xyz
